@@ -44,7 +44,7 @@
         <div id="main-content">
             <div class="container-fluid">
                 <div class="block-header">
-                    <h2 class="float-start mb-3"> @yield('title')</h2>
+                    <h2 class="float-start my-3"> @yield('title')</h2>
                     <div class="row justify-content-center">
 
                         @yield('content')
