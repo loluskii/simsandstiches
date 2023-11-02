@@ -254,7 +254,8 @@
 @endsection
 
 @section('scripts')
-<script src="https://www.paypal.com/sdk/js?client-id=Aaq8grawg0kQg4sBFLspIiydwxi9g8nW7CQ0zbuRtzzBybc59s-P9WXSSKb80cmdG0kjUuFZ-JdO0z-D&disable-funding=credit,card&currency={{ $currency }}">
+<script
+    src="https://www.paypal.com/sdk/js?client-id=Aaq8grawg0kQg4sBFLspIiydwxi9g8nW7CQ0zbuRtzzBybc59s-P9WXSSKb80cmdG0kjUuFZ-JdO0z-D&disable-funding=credit,card&currency={{ $currency }}">
 </script>
 <script>
     paypal.Buttons({
@@ -262,7 +263,7 @@
         // This function sets up the details of the transaction, including the amount and line item details.
         return actions.order.create({
             application_context: {
-                brand_name : 'Bibah Michael',
+                brand_name : 'Sims & Stitches',
                 user_action : 'PAY_NOW',
             },
             purchase_units: [{
@@ -270,7 +271,7 @@
                     currency_code: "{{ $currency }}",
                     value: '{{ number_format(App\Helpers\Helper::currency_converter(Cart::session(App\Helpers\Helper::getSessionID())->getTotal()), 2) }}'
                 },
-                description: "Order from Bibah Michael",
+                description: "Order from Sims & Stitches",
             }],
         });
         },

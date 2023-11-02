@@ -58,11 +58,14 @@
                                 <tr>
                                     <td class="content-cell"
                                         style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; max-width: 100vw; padding: 32px;">
-                                        <h1 style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; color: #121212; font-size: 23px; font-weight: 500; margin-top: 0; text-align: left;">
+                                        <h1
+                                            style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; color: #121212; font-size: 23px; font-weight: 500; margin-top: 0; text-align: left;">
                                             You received a new order.
                                         </h1>
-                                        <p style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; font-size: 16px; line-height: 1.5em; margin-top: 0; text-align: left;">
-                                            You have received a new order. Log in to your dashboard to view the details by clicking the button below.</p>
+                                        <p
+                                            style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; font-size: 16px; line-height: 1.5em; margin-top: 0; text-align: left;">
+                                            You have received a new order. Log in to your dashboard to view the details
+                                            by clicking the button below.</p>
                                         <table class="action" align="center" width="100%" cellpadding="0"
                                             cellspacing="0" role="presentation"
                                             style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; -premailer-cellpadding: 0; -premailer-cellspacing: 0; -premailer-width: 100%; margin: 30px auto; padding: 0; text-align: center; width: 100%;">
@@ -132,14 +135,19 @@
                                                                                             <table
                                                                                                 style="border-spacing:0;border-collapse:collapse">
                                                                                                 <tbody>
-                                                                                                    @foreach ($newOrder->items as $item)
+                                                                                                    @foreach
+                                                                                                    ($newOrder->items as
+                                                                                                    $item)
                                                                                                     @php
-                                                                                                        if($newOrder->order_currency == "GBP"){
-                                                                                                        $code = "£";
-                                                                                                    }else if($newOrder->order_currency == "USD"){
-                                                                                                        $code = "$";
+                                                                                                    if($newOrder->order_currency
+                                                                                                    == "GBP"){
+                                                                                                    $code = "£";
+                                                                                                    }else
+                                                                                                    if($newOrder->order_currency
+                                                                                                    == "USD"){
+                                                                                                    $code = "$";
                                                                                                     }else{
-                                                                                                        $code = "₦";
+                                                                                                    $code = "₦";
                                                                                                     }
                                                                                                     @endphp
                                                                                                     <tr>
@@ -154,17 +162,39 @@
                                                                                                                 data-bit="iit">
 
                                                                                                         </td>
-                                                                                                        <td style="font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;width:100%">
+                                                                                                        <td
+                                                                                                            style="font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;width:100%">
 
-                                                                                                            <span style="font-size:16px;font-weight:600;line-height:1.4;color:#555">{{ $item->name }}×{{ $item->pivot->quantity }}</span><br>
-                                                                                                            <span style="font-size:14px;color:#999">Size: {{ $item->pivot->size ?? 'None' }} / Color: {{ $item->pivot->color ?? "None" }}</span><br>
+                                                                                                            <span
+                                                                                                                style="font-size:16px;font-weight:600;line-height:1.4;color:#555">{{
+                                                                                                                $item->name
+                                                                                                                }}×{{
+                                                                                                                $item->pivot->quantity
+                                                                                                                }}</span><br>
+                                                                                                            <span
+                                                                                                                style="font-size:14px;color:#999">Size:
+                                                                                                                {{
+                                                                                                                $item->pivot->size
+                                                                                                                ??
+                                                                                                                'None'
+                                                                                                                }} /
+                                                                                                                Color:
+                                                                                                                {{
+                                                                                                                $item->pivot->color
+                                                                                                                ??
+                                                                                                                "None"
+                                                                                                                }}</span><br>
 
                                                                                                         </td>
                                                                                                         <td
                                                                                                             style="font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;white-space:nowrap">
 
-                                                                                                            <p style="color:#555;line-height:150%;font-size:16px;font-weight:600;margin:0 0 0 15px" align="right">
-                                                                                                                {{ $code }}{{ number_format($item->pivot->price, 2) }}
+                                                                                                            <p style="color:#555;line-height:150%;font-size:16px;font-weight:600;margin:0 0 0 15px"
+                                                                                                                align="right">
+                                                                                                                {{ $code
+                                                                                                                }}{{
+                                                                                                                number_format($item->pivot->price,
+                                                                                                                2) }}
                                                                                                             </p>
                                                                                                         </td>
                                                                                                     </tr>
@@ -190,14 +220,17 @@
                                                                                                 <tbody>
                                                                                                     <tr>
                                                                                                         @php
-                                                                                                        if($newOrder->order_currency == "GBP"){
+                                                                                                        if($newOrder->order_currency
+                                                                                                        == "GBP"){
                                                                                                         $code = "£";
-                                                                                                    }else if($newOrder->order_currency == "USD"){
+                                                                                                        }else
+                                                                                                        if($newOrder->order_currency
+                                                                                                        == "USD"){
                                                                                                         $code = "$";
-                                                                                                    }else{
+                                                                                                        }else{
                                                                                                         $code = "₦";
-                                                                                                    }
-                                                                                                    @endphp
+                                                                                                        }
+                                                                                                        @endphp
                                                                                                         <td
                                                                                                             style="font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;padding:5px 0">
                                                                                                             <p
@@ -209,7 +242,12 @@
                                                                                                         <td style="font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;padding:5px 0"
                                                                                                             align="right">
                                                                                                             <strong
-                                                                                                                style="font-size:16px;color:#555">{{ $code }}{{ number_format($newOrder->subtotal, 2) }} </strong>
+                                                                                                                style="font-size:16px;color:#555">{{
+                                                                                                                $code
+                                                                                                                }}{{
+                                                                                                                number_format($newOrder->subtotal,
+                                                                                                                2) }}
+                                                                                                            </strong>
                                                                                                         </td>
                                                                                                     </tr>
                                                                                                     <tr>
@@ -224,7 +262,14 @@
                                                                                                         <td style="font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;padding:5px 0"
                                                                                                             align="right">
                                                                                                             <strong
-                                                                                                                style="font-size:16px;color:#555">{{ $code }}{{ number_format($newOrder->grand_total - $newOrder->subtotal, 2) }}</strong>
+                                                                                                                style="font-size:16px;color:#555">{{
+                                                                                                                $code
+                                                                                                                }}{{
+                                                                                                                number_format($newOrder->grand_total
+                                                                                                                -
+                                                                                                                $newOrder->subtotal,
+                                                                                                                2)
+                                                                                                                }}</strong>
                                                                                                         </td>
                                                                                                     </tr>
                                                                                                     {{-- <tr>
@@ -259,7 +304,9 @@
                                                                                                         <td style="font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;padding:20px 0 0"
                                                                                                             align="right">
                                                                                                             <strong
-                                                                                                                style="font-size:24px;color:#555">{{ $code }}{{
+                                                                                                                style="font-size:24px;color:#555">{{
+                                                                                                                $code
+                                                                                                                }}{{
                                                                                                                 number_format($newOrder->grand_total,
                                                                                                                 2) }} {{
                                                                                                                 $newOrder->order_currency
@@ -287,8 +334,12 @@
                                             <tr>
                                                 <td
                                                     style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative;">
-                                                    <p style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; line-height: 1.5em; margin-top: 0; text-align: center; font-size: 14px;">
-                                                        If you have any questions, reply to this email or contact us at <a href="mailto:shop.bibahmichael@gmail.com">shop.bibahmichael@gmail.com</a></p>
+                                                    <p
+                                                        style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; line-height: 1.5em; margin-top: 0; text-align: center; font-size: 14px;">
+                                                        If you have any questions, reply to this email or contact us at
+                                                        <a
+                                                            href="mailto:shop.bibahmichael@gmail.com">shop.bibahmichael@gmail.com</a>
+                                                    </p>
                                                 </td>
                                             </tr>
                                         </table> --}}
@@ -309,7 +360,7 @@
                                         style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; max-width: 100vw; padding: 32px;">
                                         <p
                                             style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; line-height: 1.5em; margin-top: 0; color: #b0adc5; font-size: 12px; text-align: center;">
-                                            © 2022 Bibah Michael. All rights reserved.</p>
+                                            © 2022 Sims & Stitches. All rights reserved.</p>
 
                                     </td>
                                 </tr>
