@@ -164,6 +164,14 @@ Route::get('/shipping', function () {
     return view('cms.shipping');
 })->name('shipping');
 
+Route::get('/terms-and-conditions', function () {
+    return view('cms.terms-and-conditions');
+})->name('terms_conditions');
+
+Route::get('/privacy-policy', function () {
+    return view('cms.privacy-policy');
+})->name('privacy_policy');
+
 Route::get('/mailtest', function () {
     File::deleteDirectory(public_path('images/products'));
     // return view('mail.order-invoice');

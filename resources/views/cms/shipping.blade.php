@@ -3,7 +3,7 @@
 @section('content')
 <div class="container py-5">
     <div class="row">
-        <div class="col-10 mx-auto">
+        <div class="col-md-10 mx-auto">
             <h6 class="mt-3 text-capitalize">Domestic Shipping</h6>
             <p>Delivery within Lagos takes 1-3 working days while deliveries outside Lagos but within Nigeria takes 4-6
                 working days.</p>
