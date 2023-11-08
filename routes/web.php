@@ -1,20 +1,16 @@
 <?php
 
-use App\Helpers\Helper;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BaseController;
 use App\Http\Controllers\CartController;
-
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\CurrencyController;
-use App\Http\Requests\EmailVerificationRequest;
 use App\Http\Controllers\ForgotPasswordController;
+use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\UserController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest as NewRegistrationVerificationEmail;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,13 +21,13 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest as NewRegistrationVerifi
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+ */
 
-Route::get('/', [BaseController::class,'index'])->name('home');
+Route::get('/', [BaseController::class, 'index'])->name('home');
 Route::get('/x', function () {
     return view('coming-soon');
 })->name('coming-soon');
-Route::post('currency_load',[CurrencyController::class, 'currencyLoad'])->name('currency.load');
+Route::post('currency_load', [CurrencyController::class, 'currencyLoad'])->name('currency.load');
 
 Route::get('/wipe', function () {
     Artisan::call('migrate:reset', [
@@ -46,8 +42,6 @@ Route::get('/wipe', function () {
     Artisan::call('optimize:clear');
     return 'yes';
 });
-
-
 
 // Route::get('update/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
 //     $request->fulfillUpdateEmail();
@@ -67,8 +61,6 @@ Route::middleware(['force_maintenance'])->group(function () {
 
         Route::post('/register', [AuthController::class, 'register'])->name('auth.register');
         Route::post('/login', [AuthController::class, 'login'])->name('auth.login');
-
-
 
         Route::get('/auth/new-password/{token?}', function (Request $request) {
             return view('auth.passwords.reset', ['token' => $request->token, 'email' => $request->email]);
@@ -101,21 +93,21 @@ Route::middleware(['force_maintenance'])->group(function () {
 
     });
 
-    Route::get('/collections/all',[BaseController::class,'viewShop'])->name('shop');
-    Route::get('/collections/{category}',[BaseController::class,'getCategory'])->name('shop.category');
-    Route::get('/products/{slug}',[BaseController::class,'viewProduct'])->name('shop.product.show');
-    Route::get('/cart',[BaseController::class,'viewCart'])->name('shop.cart');
-    Route::post('/add/{id}',[CartController::class, 'add'])->name('cart.add');
+    Route::get('/collections/all', [BaseController::class, 'viewShop'])->name('shop');
+    Route::get('/collections/{category}', [BaseController::class, 'getCategory'])->name('shop.category');
+    Route::get('/products/{slug}', [BaseController::class, 'viewProduct'])->name('shop.product.show');
+    Route::get('/cart', [BaseController::class, 'viewCart'])->name('shop.cart');
+    Route::post('/add/{id}', [CartController::class, 'add'])->name('cart.add');
     Route::post('/cart/update/{id}', [CartController::class, 'update'])->name('cart.update');
     Route::get('/cart/destroy/{id}', [CartController::class, 'destroy'])->name('cart.destroy');
 
     //Checkout Routes
-    Route::get('/checkout/{session}', [PaymentController::class,'checkout'])->name('checkout.page-1');
-    Route::post('/checkout/store', [PaymentController::class,'contactInformation'])->name('checkout.page-1.store');
-    Route::get('/checkout/2/{session}', [PaymentController::class,'shipping'])->name('checkout.page-2');
-    Route::post('/checkout/2/store', [PaymentController::class,'postShipping'])->name('checkout.page-2.store');
-    Route::get('/checkout/3/{session}', [PaymentController::class,'showPayment'])->name('checkout.page-3');
-    Route::post('/checkout/3/store', [PaymentController::class,'getPaymentMethod'])->name('checkout.page-3.store');
+    Route::get('/checkout/{session}', [PaymentController::class, 'checkout'])->name('checkout.page-1');
+    Route::post('/checkout/store', [PaymentController::class, 'contactInformation'])->name('checkout.page-1.store');
+    Route::get('/checkout/2/{session}', [PaymentController::class, 'shipping'])->name('checkout.page-2');
+    Route::post('/checkout/2/store', [PaymentController::class, 'postShipping'])->name('checkout.page-2.store');
+    Route::get('/checkout/3/{session}', [PaymentController::class, 'showPayment'])->name('checkout.page-3');
+    Route::post('/checkout/3/store', [PaymentController::class, 'getPaymentMethod'])->name('checkout.page-3.store');
     Route::get('/orders/{reference}', [PaymentController::class, 'checkoutSuccessful'])->name('checkout.success');
 
     //Payment Routes
@@ -124,26 +116,26 @@ Route::middleware(['force_maintenance'])->group(function () {
     // Route::get('/rave/callback', [PaymentController::class,'flutterwaveCallback'])->name('flutter.callback');
 
     //Paypal
-    Route::post('/paypal/order/store',[PaymentController::class,'paypalCreate'])->name('paypal.store');
+    Route::post('/paypal/order/store', [PaymentController::class, 'paypalCreate'])->name('paypal.store');
 
     // Stripe
     Route::post('/stripe/webhook', [PaymentController::class, 'stripeWebhook']);
     Route::get('/stripe/redirect/{ref}', [PaymentController::class, 'stripeRedirect'])->name('stripe.redirect');
 
     //User Routes
-    Route::middleware(['auth','verified'])->group(function () {
-        Route::get('/user',[UserController::class, 'index'])->name('user');
-        Route::get('/user/order/{ref}',[UserController::class,'show'])->name('user.order.show');
-        Route::post('/user/update',[UserController::class, 'edit'])->name('user.edit.address');
+    Route::middleware(['auth', 'verified'])->group(function () {
+        Route::get('/user', [UserController::class, 'index'])->name('user');
+        Route::get('/user/order/{ref}', [UserController::class, 'show'])->name('user.order.show');
+        Route::post('/user/update', [UserController::class, 'edit'])->name('user.edit.address');
     });
 
     //Custom Orders
     Route::get('/custom-order', function () {
         $message = null;
-        return view('shop.custom')->with('message',$message);
+        return view('shop.custom')->with('message', $message);
     })->name('custom');
 
-    Route::post('/custom-order/store', [BaseController::class,'storeCustom'])->name('custom.store');
+    Route::post('/custom-order/store', [BaseController::class, 'storeCustom'])->name('custom.store');
 
     //Gallery
     Route::get('/gallery', function () {
@@ -172,10 +164,7 @@ Route::get('/shipping', function () {
     return view('cms.shipping');
 })->name('shipping');
 
-
 Route::get('/mailtest', function () {
     File::deleteDirectory(public_path('images/products'));
     // return view('mail.order-invoice');
 })->name('mail');
-
-
