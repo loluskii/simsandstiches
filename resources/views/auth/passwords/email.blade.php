@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-Login | Bibah Michael
+Login | Sims & Stitches
 @endsection
 
 @section('css')
@@ -32,8 +32,7 @@ Login | Bibah Michael
                         @endif
                         <div class="mb-2">
                             <label for="" class="form-label"></label>
-                            <input type="text" name="email" id=""
-                                class="form-control form-control-lg"
+                            <input type="text" name="email" id="" class="form-control form-control-lg"
                                 placeholder="Email" aria-describedby="helpId">
                         </div>
 
@@ -42,7 +41,8 @@ Login | Bibah Michael
                                 class="rounded-0 btn btn-dark text-uppercase">Submit</button>
                         </div>
                     </form>
-                    <p class="text-muted text-center mt-3">Already have an account? <a href="{{ route('login') }}" class="text-decoration-none">Go Back</a></p>
+                    <p class="text-muted text-center mt-3">Already have an account? <a href="{{ route('login') }}"
+                            class="text-decoration-none">Go Back</a></p>
                 </div>
             </div>
         </div>

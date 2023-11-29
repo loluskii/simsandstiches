@@ -2,21 +2,18 @@
 <html lang="en">
 
 <head>
-    <title>Bibah Michael | BM</title>
+    <title>Amari | Simss & Stitches</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="keywords" content="Bridal Wears, Online Shopping, Online Fashion, fashion, fashion stores, bibah michael">
-    <meta name="application-name" content="www.bibahmichael.co.uk">
-    <meta name="description" content="Come join me. Let's go shopping!">
+    <meta name="keywords" content="Online Shopping, Online Fashion, fashion, fashion stores, sims and stiches">
+    <meta name="description"
+        content="Simss And Stitches is the perfect place to shop for all kinds of women's clothing and accessories, and we are committed to empowering women to be modest in fashion but audacious in style.">
     <meta property="og:image" content="{{ secure_asset('images/favicon/android-chrome-512x512.png') }}" />
     <meta property="og:image:secure_url" content="{{ secure_asset('images/favicon/android-chrome-512x512.png') }}" />
     <meta property="og:image:type" content="image/png" />
-    {{-- <meta property="og:description" content="Shop Bibah Michael Today!" /> --}}
     <meta name="google" content="nopagereadaloud" />
-    <meta property="og:title" content="Shop your best wears on Bibah Michael" />
-    <meta property="og:url" content="http://www.bibahmichael.co.uk" />
-    <meta property="og:site_name" content="bibahMichael" />
+    <meta property="og:title" content="Simss And Stitches: The Perfect Place For African Fashion" />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
 
@@ -30,11 +27,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
         integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap"
-    rel="stylesheet">
+
     <style>
         header.header {
-            letter-spacing: 4px;
+            /* letter-spacing: 4px; */
         }
 
         header .top {
@@ -47,7 +43,7 @@
         }
 
         .navbar-brand img {
-            height: 40px;
+            height: 60px;
         }
 
         @media (max-width: 600px) {
@@ -89,11 +85,13 @@
 
         @else
         <header class="header border-bottom">
-            <div class="d-flex align-items-center justify-content-between top py-2 bg-dark px-2 px-lg-5 px-md">
-                <p class="mb-0 text-white text-decoration-underline" style="cursor: pointer;"  data-bs-toggle="modal" data-bs-target="#size-chart">Size Chart</p>
+            <div class="d-flex align-items-center justify-content-between top py-2 bg-dark px-2 px-lg-5 px-md d-none">
+                <p class="mb-0 text-white text-decoration-underline d-no" style="cursor: pointer;"
+                    data-bs-toggle="modal" data-bs-target="#size-chart">Size Chart</p>
                 @include('partials.size-chart')
                 <div class="col-auto">
-                    <select class="form-select form-select-sm rounded-0 bg-transparent text-white" name="currency" id="currency">
+                    <select class="form-select form-select-sm rounded-0 bg-transparent text-white" name="currency"
+                        id="currency">
                         @php
                         $currencies = App\Models\Currency::where('status','active')->get();
                         App\Helpers\Helper::currency_load();
@@ -106,17 +104,20 @@
                         }
                         @endphp
                         @foreach ($currencies as $currency)
-                        <option class="text-dark" {{ ($currency_code==$currency->code) ? 'selected' : '' }} value="{{ $currency->code
+                        <option class="text-dark" {{ ($currency_code==$currency->code) ? 'selected' : '' }} value="{{
+                            $currency->code
                             }}">{{ $currency->icon }} {{ $currency->name }}</option>
                         @endforeach
                     </select>
                 </div>
             </div>
-            <div class="container-fluid">
-                <nav class="navbar navbar-expand-lg bg-white py-1">
+            <div class="">
+                <nav class="navbar navbar-expand-lg py-3" style="background-color: #">
                     <div class="row gx-0 w-100 align-items-center">
                         <div class="col-2 col-md-2 text-start">
-                            <button class="navbar-toggler d-lg-none" data-bs-toggle="modal" data-bs-target="#mobileSideNav" type="button" aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
+                            <button class="navbar-toggler d-lg-none" data-bs-toggle="modal"
+                                data-bs-target="#mobileSideNav" type="button" aria-controls="collapsibleNavId"
+                                aria-expanded="false" aria-label="Toggle navigation">
                                 <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 0 448 512">
                                     <!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
                                     <path
@@ -126,8 +127,8 @@
                         </div>
                         <div class="col-8 col-md-8 text-center">
                             <a class="navbar-brand me-0" href="/">
-                                <img src="{{ secure_asset('2.png') }}" class="d-inline-block align-text-top" alt=""
-                                    srcset="">
+                                <img src="{{ secure_asset('images/sss-logo.png') }}"
+                                    class="d-inline-block align-text-top" alt="" srcset="">
                             </a>
                         </div>
                         <div class="col-2 col-md-2 text-end">
@@ -136,7 +137,8 @@
                                 <div>
                                     <a data-bs-toggle="modal" data-bs-target="#modelId">
                                         <i class="bi bi-bag" style="font-size: 20px"></i>
-                                        <span class="position-absolute bage start-100 translate-middle p-1 bg-dark border border-light rounded-circle {{ \Cart::session(App\Helpers\Helper::getSessionID())->getContent()->count() > 0 ? '' : 'd-none'}}" ></span>
+                                        <span
+                                            class="position-absolute bage start-100 translate-middle p-1 bg-dark border border-light rounded-circle {{ \Cart::session(App\Helpers\Helper::getSessionID())->getContent()->count() > 0 ? '' : 'd-none'}}"></span>
                                     </a>
                                 </div>
                             </div>
@@ -147,14 +149,15 @@
                                     <li><a href="{{ route('shop.cart') }}"
                                             class="text-decoration-none mx-3 text-uppercase"
                                             style="font-weight: 300">Cart ({{
-                                            Cart::session(App\Helpers\Helper::getSessionID())->getContent()->count() }})</a></li>
+                                            Cart::session(App\Helpers\Helper::getSessionID())->getContent()->count()
+                                            }})</a></li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                 </nav>
 
-                <nav class="navbar navbar-expand-lg bg-light d-none d-lg-block py-0">
+                <nav class="navbar navbar-expand-lg bg-white d-none d-lg-block">
                     {{-- <a class="navbar-brand me-0" href="#">
                         SUBSCRIBE
                     </a> --}}
@@ -201,7 +204,7 @@
         @include('partials.cart-modal')
         @endif
         @if (Route::is('home'))
-            {{-- @include('partials.shop-with-bm-modal') --}}
+        {{-- @include('partials.shop-with-bm-modal') --}}
         @else
 
         @endif

@@ -164,7 +164,7 @@ Dashboard
                                 <th>Email</th>
                                 <th>Country</th>
                                 <th>Member Since</th>
-                                <th>Action</th>
+                                {{-- <th>Action</th> --}}
                             </tr>
                         </thead>
                         <tbody>
@@ -175,7 +175,7 @@ Dashboard
                                 <td>{{ $user->email }}</td>
                                 <td>{{ $user->getCountry() ?? 'Not Available' }}</td>
                                 <td>{{ $user->created_at->diffForHumans() }}</td>
-                                <td><button class="btn btn-info btn-sm">View</button></td>
+                                {{-- <td><button class="btn btn-info btn-sm">View</button></td> --}}
                             </tr>
                             @endforeach
                         </tbody>

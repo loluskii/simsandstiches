@@ -46,7 +46,7 @@
                             <a href="/pages/frequently-asked-questions" class="Link Link--primary">FAQs</a>
                         </li> --}}
                         <li class="Linklist__Item">
-                            <a href="https://nuraniya-studios.myshopify.com/apps/sizings?id=16613353"
+                            <a href=""
                                 class="Link Link--primary">Size Chart</a>
                         </li>
                         <li class="Linklist__Item">
@@ -64,14 +64,14 @@
 
                     <ul class="Linklist">
                         <li class="Linklist__Item">
-                            <a href="#" class="Link Link--primary">Terms of Service</a>
+                            <a href="{{ route('terms_conditions') }}" class="Link Link--primary">Terms & Conditions</a>
                         </li>
                         <li class="Linklist__Item">
-                            <a href="#" class="Link Link--primary">Privacy Policy</a>
+                            <a href="{{ route('privacy_policy') }}" class="Link Link--primary">Privacy Policy</a>
                         </li>
-                        <li class="Linklist__Item">
+                        {{-- <li class="Linklist__Item">
                             <a href="#" class="Link Link--primary">Cookie Policy</a>
-                        </li>
+                        </li> --}}
                     </ul>
                 </div>
             </div>
@@ -110,7 +110,7 @@
         </div>
         <div class="Footer__Aside mt-5 row justify-content-between">
             <div class="col-md-6 Footer__Copyright text-lg-start text-md-start text-center">
-                <a href="/" class="Footer__StoreName Heading u-h7 Link Link--secondary">© BIBAH MICHAEL</a>
+                <a href="/" class="Footer__StoreName Heading u-h7 Link Link--secondary">© Sims & Stitches</a>
             </div>
             <hr class="d-md-none d-lg-none d-block">
             <div class="col-md-6 text-lg-end text-md-end text-center">

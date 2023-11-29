@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class CategorySeeder extends Seeder
 {
@@ -17,32 +16,32 @@ class CategorySeeder extends Seeder
     {
         $category = [
             [
-                'name' => 'Jumpsuits',
-                'slug' => 'jumpsuits',
+                'name' => 'Coats & Jackets',
+                'slug' => 'c_j',
             ],
             [
                 'name' => 'Dresses',
                 'slug' => 'dresses',
             ],
             [
+                'name' => 'Jeans, Trousers & Leggins',
+                'slug' => 'jtl',
+            ],
+            [
+                'name' => 'Jumpsuits & Playsuits',
+                'slug' => 'js_ps',
+            ],
+            [
+                'name' => 'Shorts',
+                'slug' => 'shorts',
+            ],
+            [
                 'name' => 'Skirts',
                 'slug' => 'skirts',
             ],
             [
-                'name' => 'Pants',
-                'slug' => 'pants',
-            ],
-            [
-                'name' => 'Tops',
-                'slug' => 'tops',
-            ],
-            [
-                'name' => 'Kimonos',
-                'slug' => 'kimonos',
-            ],
-            [
-                'name' => 'Kaftan',
-                'slug' => 'kaftan',
+                'name' => 'T-Shirts & Tops',
+                'slug' => 'ts_t',
             ],
 
         ];

@@ -1,9 +1,7 @@
-
-
 @extends('layouts.app')
 
 @section('title')
-Register | Bibah Michael
+Register | Sims & Stitches
 @endsection
 
 @section('css')
@@ -28,9 +26,9 @@ Register | Bibah Michael
                     <form method="POST" action="{{ route('auth.register') }}" autocomplete="off">
                         @csrf
                         @error('email')
-                            <div class="alert alert-danger alert-dismissible mb-1 py-2 rounded-0" role="alert">
-                                <p class="mb-0">{{ $message }}</p>
-                            </div>
+                        <div class="alert alert-danger alert-dismissible mb-1 py-2 rounded-0" role="alert">
+                            <p class="mb-0">{{ $message }}</p>
+                        </div>
                         @enderror
                         @error('password')
                         <div class="alert alert-danger alert-dismissible mb-1 py-2 rounded-0" role="alert">
@@ -40,36 +38,33 @@ Register | Bibah Michael
 
                         <div class="mb-2">
                             <label for="" class="form-label"></label>
-                            <input type="text" required name="fname" id=""
-                                class="form-control form-control-lg"
+                            <input type="text" required name="fname" id="" class="form-control form-control-lg"
                                 placeholder="First Name" aria-describedby="helpId">
                         </div>
                         <div class="mb-2">
                             <label for="" class="form-label"></label>
-                            <input type="text" required name="lname" id=""
-                                class="form-control form-control-lg"
+                            <input type="text" required name="lname" id="" class="form-control form-control-lg"
                                 placeholder="Last Name" aria-describedby="helpId">
                         </div>
 
                         <div class="mb-2">
                             <label for="" class="form-label"></label>
-                            <input type="text" required name="email" id=""
-                                class="form-control form-control-lg"
+                            <input type="text" required name="email" id="" class="form-control form-control-lg"
                                 placeholder="Email" aria-describedby="helpId">
                         </div>
                         <div class="mb-4">
                             <label for="" class="form-label"></label>
-                            <input type="password" required name="password" id=""
-                                class="form-control form-control-lg"
+                            <input type="password" required name="password" id="" class="form-control form-control-lg"
                                 placeholder="Password" aria-describedby="helpId">
                         </div>
 
                         <div class="d-grid gap-2">
-                            <button type="submit" name="" id=""
-                                class="rounded-0 btn btn-dark text-uppercase">create my account</button>
+                            <button type="submit" name="" id="" class="rounded-0 btn btn-dark text-uppercase">create my
+                                account</button>
                         </div>
                     </form>
-                    <p class="text-muted text-center mt-3">Already have an account? <a href="{{ route('login') }}" class="text-decoration-none">Login</a></p>
+                    <p class="text-muted text-center mt-3">Already have an account? <a href="{{ route('login') }}"
+                            class="text-decoration-none">Login</a></p>
                 </div>
             </div>
         </div>

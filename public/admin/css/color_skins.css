@@ -132,68 +132,68 @@
 
 .theme-cyan ::selection {
     color: #fff;
-    background: #49c5b6
+    background: #121821
 }
 
 .theme-cyan .page-loader-wrapper {
-    background: #49c5b6
+    background: #121821
 }
 
 .theme-cyan #left-sidebar .nav-tabs .nav-link.active {
-    color: #49c5b6
+    color: #121821
 }
 
 .theme-cyan:before, .theme-cyan:after {
-    background: #49c5b6
+    background: #fff
 }
 
 .theme-cyan #wrapper:before, .theme-cyan #wrapper:after {
-    background: #49c5b6
+    background: #121821
 }
 
 .theme-cyan .sidebar-nav .metismenu>li.active>a {
-    border-left-color: #49c5b6
+    border-left-color: #121821
 }
 
 .theme-cyan .navbar-nav ul.menu-icon {
-    background: #49c5b6
+    background: #121821
 }
 
 .theme-cyan .fancy-checkbox input[type=checkbox]:checked+span:before {
-    background: #49c5b6;
-    border-color: #49c5b6
+    background: #121821;
+    border-color: #121821
 }
 
 .theme-cyan .chat-widget li.right .chat-info {
-    background: #49c5b6;
+    background: #121821;
     color: #fff
 }
 
 .theme-cyan .chat-widget li.right .chat-info:before {
-    border-left: 10px solid #49c5b6
+    border-left: 10px solid #121821
 }
 
 .theme-cyan .fc .fc-view-container .fc-view.fc-basic-view>table>thead tr th.fc-widget-header {
-    background: #49c5b6;
-    border-color: #49c5b6;
+    background: #121821;
+    border-color: #121821;
     color: #fff
 }
 
 .theme-cyan .blog-page .single_post .footer .stats li a:hover {
-    color: #49c5b6
+    color: #121821
 }
 
 .theme-cyan .auth-main .btn-primary {
-    background: #49c5b6;
-    border-color: #49c5b6
+    background: #121821;
+    border-color: #121821
 }
 
 .theme-cyan .sidebar-nav .metismenu>li i {
-    color: #49c5b6
+    color: #121821
 }
 
 .theme-cyan .right_chat li a:hover .media-object {
-    border-color: #49c5b6
+    border-color: #121821
 }
 
 .theme-green ::selection {

@@ -102,7 +102,6 @@
         background-size: cover;
         position: relative;
     }
-
 </style>
 @endsection
 
@@ -110,9 +109,9 @@
 <div class="container">
     <div class="border-0 mb-5">
         <div class="row main-content">
-            <aside class="col-md-6 text-center pb-3 pb-md-3 pb-lg-3 pb-xl-3">
+            <aside class="col-md-5 text-center pb-3 pb-md-3 pb-lg-3 pb-xl-3">
                 <div class="row">
-                    <div class="col-lg-4 col-md-4 col-sm-12 order-lg-first order-md-first order-last">
+                    <div class="col-lg-3 col-md-3 col-sm-12 order-lg-first order-md-first order-last">
                         <div
                             class="img-small-wrap d-flex justify-content-between align-items-center flex-lg-column flex-md-column flex-sm-row order-lg-1 mt-lg-0 mt-md-0 mt-3">
                             @foreach ($product->images->take(3) as $image)
@@ -123,18 +122,19 @@
                             @endforeach
                         </div>
                     </div>
-                    <div class="col-lg-8 col-md-8 col-sm-12 order-lg-last order-md-last order-first product-image">
+                    <div class="col-lg-9 col-md-9 col-sm-12 order-lg-last order-md-last order-first product-image">
                         <img src="{{ $product->images()->first()->url ?? '' }}" id="product-image" style=""
                             class="primary img-fluid">
                         {{-- <div class="prodcut-image"></div> --}}
                     </div>
                 </div>
             </aside>
-            <aside class="col-md-6">
+            <aside class="col-md-7">
                 <article class="card-body px-lg-5 px-md-5 p-sm-2 py-0">
                     <header
                         class="d-flex flex-lg-column flex-md-column flex-column align-items-lg-start align-items-md-start">
-                        <p class=" text-decoration-underline" style="cursor: pointer;"  data-bs-toggle="modal" data-bs-target="#size-chart">Size Chart <i class="fa-solid fa-ruler"></i></p>
+                        <p class=" text-decoration-underline" style="cursor: pointer;" data-bs-toggle="modal"
+                            data-bs-target="#size-chart">Size Chart <i class="fa-solid fa-ruler"></i></p>
                         <h4 class="text-uppercase me-md-auto me-lg-auto me-xl-auto fw-bold">{{ $product->name }}</h4>
                         @php
                         $currencies = App\Models\Currency::where('status','active')->get();
@@ -149,11 +149,13 @@
                         @endphp
                         <p class="price-detail-wrap">
                             <span class="price h6" style="font-weight: 500">
-                                <span class="num font-weight-bold">{{ $currency_symbol }}{{ number_format(App\Helpers\Helper::currency_converter($product->price), 2) }}</span>
+                                <span class="num font-weight-bold">{{ $currency_symbol }}{{
+                                    number_format(App\Helpers\Helper::currency_converter($product->price), 2) }}</span>
                             </span>
                         </p>
                     </header>
-                    <form id="addToCart" class="pt-2 pt-md-4 pt-lg-4 pt-xl-4" action="{{ route('cart.add',$product->id) }}" method="post">
+                    <form id="addToCart" class="pt-2 pt-md-4 pt-lg-4 pt-xl-4"
+                        action="{{ route('cart.add',$product->id) }}" method="post">
                         @csrf
 
                         @foreach ($group as $key => $item)
@@ -165,8 +167,8 @@
                                     @foreach ($item as $value)
                                     <div class="cat action">
                                         <label>
-                                            <input type="radio" name="{{ $key }}" checked value="{{ $value->value }}"><span
-                                                class="text-uppercase">{{
+                                            <input type="radio" name="{{ $key }}" checked
+                                                value="{{ $value->value }}"><span class="text-uppercase">{{
                                                 $value->value }}</span>
                                         </label>
                                     </div>
@@ -226,34 +228,33 @@
         </div>
     </div>
 </div>
+@if ($similar->count() > 0)
 <div class="container border-top">
     <div class="pt-3 pb-5">
         <div class="text-center pb-5">
-
             <h4>YOU MAY LIKE THESE</h4>
         </div>
         <div class="row justify-content-center">
-            @if ($similar->count() > 0)
-                @foreach ($similar as $product)
-                <div class="col-md-3 mb-3">
-                    <a class=" text-decoration-none" href="{{ route('shop.product.show',$product->slug) }}">
-                        <div class="card rounded-0 border-0">
-                            <div class="product_image" style="background-image: url('{{ $product->images()->first()->url ?? '' }}')"></div>
-                            <div class="card-body text-center text-decoration-none">
-                                <h5 class="card-title text-uppercase  text-decoration-none">{{ $product->name }}</h5>
-                                <p class="card-text ">{{ $currency_symbol }}{{
-                                    number_format(App\Helpers\Helper::currency_converter($product->price), 2) }}</p>
-                            </div>
+            @foreach ($similar as $product)
+            <div class="col-md-3 mb-3">
+                <a class=" text-decoration-none" href="{{ route('shop.product.show',$product->slug) }}">
+                    <div class="card rounded-0 border-0">
+                        <div class="product_image"
+                            style="background-image: url('{{ $product->images()->first()->url ?? '' }}')"></div>
+                        <div class="card-body text-center text-decoration-none">
+                            <h5 class="card-title text-uppercase  text-decoration-none">{{ $product->name }}</h5>
+                            <p class="card-text ">{{ $currency_symbol }}{{
+                                number_format(App\Helpers\Helper::currency_converter($product->price), 2) }}</p>
                         </div>
-                    </a>
-                </div>
-                @endforeach
-            @else
-                <p>No similar products. </p>
-            @endif
+                    </div>
+                </a>
+            </div>
+            @endforeach
+
         </div>
     </div>
 </div>
+@endif
 @endsection
 
 @section('scripts')

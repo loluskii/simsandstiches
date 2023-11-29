@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <meta name="description" content="Bibah Michael">
+    <meta name="description" content="Sims & Stitches">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
 
     <link rel="stylesheet"
@@ -44,7 +44,7 @@
         <div id="main-content">
             <div class="container-fluid">
                 <div class="block-header">
-                    <h2 class="float-start mb-3"> @yield('title')</h2>
+                    <h2 class="float-start my-3"> @yield('title')</h2>
                     <div class="row justify-content-center">
 
                         @yield('content')

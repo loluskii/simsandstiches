@@ -33,14 +33,14 @@
                         <label class="form-check-label" for="rememberMe">Remember me</label>
                     </div>
                 </div> --}}
-                <div class="col">
+                {{-- <div class="col">
                     <div class="form-group clearfix">
                         <label class="fancy-checkbox element-left">
                             <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
                             <span>Remember me</span>
                         </label>
                     </div>
-                </div>
+                </div> --}}
                 <div class="col-12">
                     <button class="btn btn-dark btn-lg w-100" type="submit">Login</button>
                 </div>

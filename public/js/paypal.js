@@ -4,7 +4,7 @@
         // This function sets up the details of the transaction, including the amount and line item details.
         return actions.order.create({
             application_context: {
-                brand_name : 'Bibah Michael',
+                brand_name : 'Sims & Stitches',
                 user_action : 'PAY_NOW',
             },
             purchase_units: [{
@@ -12,7 +12,7 @@
                     currency_code: "{{ $currency }}",
                     value: '{{ number_format(App\Helpers\Helper::currency_converter(Cart::session(App\Helpers\Helper::getSessionID())->getTotal()), 2) }}'
                 },
-                description: "Order from Bibah Michael",
+                description: "Order from Sims & Stitches",
             }],
         });
         },

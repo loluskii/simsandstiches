@@ -201,7 +201,7 @@ class PaymentController extends Controller
                         'price_data' => [
                             'currency' => $request->currency,
                             'product_data' => [
-                                'name' => 'Order from Bibah Michael',
+                                'name' => 'Order from Sims and Stitches',
                             ],
                             'unit_amount' => round($request->amount, 2) * 100,
                         ],
