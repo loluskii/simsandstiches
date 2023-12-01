@@ -4,7 +4,7 @@
 @section('css')
 <style>
 	.main-header {
-		background-image: url("https://drive.google.com/file/d/19aqdVsJ-JxGsVwmx87YFR5D6qrq5h32k/view?usp=drive_link");
+		background-image: url("{{ secure_asset('images/pexels-godisable-jacob-923210.jpg') }}");
 		background-color: #cccccc;
 		height: 700px;
 		background-position: center;
@@ -15,7 +15,7 @@
 	}
 
 	.jumbotron {
-		background-image: url("https://drive.google.com/file/d/19aqdVsJ-JxGsVwmx87YFR5D6qrq5h32k/view?usp=drive_link");
+		 background-image: url("{{ secure_asset('images/pexels-godisable-jacob-928000.jpg') }}");
 		background-color: #cccccc;
 		/* height: 700px; */
 		background-position: center;
@@ -97,13 +97,13 @@
 @endsection
 
 @section('content')
-<div class="main-header my-">
-	<div class="header-text">
-		<h3>get your best wears for your best moments</h3>
-		<button class="btn btn-dark px-3">SHOP NOW</button>
-	</div>
-</div>
 <div class="container container-md container-lg">
+    <div class="main-header mt-5">
+        <div class="header-text">
+            <h3>get your best wears for your best moments</h3>
+            <button class="btn btn-dark px-3">SHOP NOW</button>
+        </div>
+    </div>
 	<div class="section-1 py-5">
 		<div class="text-center pb-5">
 			<h4>NEW ARRIVALS</h4>
@@ -137,21 +137,21 @@
 			</div>
 			@endforeach
 			<div class="d-flex justify-content-center text-center">
-				<button class="btn btn-dark">VISIT STORE</button>
+				<a href="{{ route('shop') }}" class="btn btn-dark">VISIT STORE</a>
 			</div>
 			@else
 			<p class="py-5">No Products Available</p>
 			@endif
 		</div>
 	</div>
-</div>
-<div class="p-5 mb-4 bg-light rounded-3 jumbotron" style="height: 400px">
-	<div class="container-fluid col-md-4 offset-8 fs-6 py-3 mt-3 mb-5 bg-light bg-opacity-50">
-		<h3 class="">Look your absolute best.</h3>
-		<p class="">Using a series of utilities, you can create this jumbotron, just like the one in
-			previous versions of Bootstrap. Check out the examples below for how you can remix and restyle it to your
-			liking.</p>
-	</div>
+    <div class="p-5 mb-4 bg-light rounded-3 jumbotron" style="height: 400px">
+        <div class="container-fluid col-md-4 offset-8 fs-6 py-3 mt-3 mb-5 bg-light bg-opacity-50">
+            <h3 class="">Look your absolute best.</h3>
+            <p class="">Using a series of utilities, you can create this jumbotron, just like the one in
+                previous versions of Bootstrap. Check out the examples below for how you can remix and restyle it to your
+                liking.</p>
+        </div>
+    </div>
 </div>
 {{-- <div class="container py-5 d-none">
 	<div class="row g-5">

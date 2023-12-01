@@ -176,7 +176,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-2 d-lg-block d-none">
+            {{-- <div class="col-md-2 d-lg-block d-none">
 
                 <form action="{{ Route::is('shop') ? '' : route('shop') }}" id="productsFilter">
                     <div class="price"></div>
@@ -203,8 +203,8 @@
                         @endforeach
                     </div>
                 </form>
-            </div>
-            <div class="col-md-10 d-lg-block d-none">
+            </div> --}}
+            <div class="col-md-12 d-lg-block d-none">
                 <div class="row">
                     @if ($products->count() > 0)
                         @foreach ($products as $product)

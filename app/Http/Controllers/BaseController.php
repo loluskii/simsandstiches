@@ -35,7 +35,7 @@ class BaseController extends Controller
         if (Auth::check() && Auth::user()->is_admin == 1) {
             return redirect()->route('admin.dashboard');
         }
-        $products = Product::take(4)->get();
+        $products = Product::take(7)->get();
         $categories = Category::all();
         // if(session()->has('session') == false){
         //     session()->put('session',session_create_id());

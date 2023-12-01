@@ -105,6 +105,25 @@
                         </li>
 
                     </ul>
+                    <select class="form-select mt-3 form-select-sm rounded-0 bg-transparent" name="currency"
+                        id="currency">
+                        @php
+                        $currencies = App\Models\Currency::where('status','active')->get();
+                        App\Helpers\Helper::currency_load();
+                        $currency_code = session('currency_code');
+                        $currency_symbol = session('currency_symbol');
+                        if($currency_symbol == ""){
+                        $system_default_currency_info = session('system_default_currency_info');
+                        $currency_symbol = $system_default_currency_info->symbol;
+                        $currency_code = $system_default_currency_info->code;
+                        }
+                        @endphp
+                        @foreach ($currencies as $currency)
+                        <option {{ ($currency_code==$currency->code) ? 'selected' : '' }} value="{{
+                            $currency->code
+                            }}">{{ $currency->icon }} {{ $currency->name }}</option>
+                        @endforeach
+                    </select>
                 </div>
             </div>
         </div>

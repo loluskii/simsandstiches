@@ -85,9 +85,9 @@
 
         @else
         <header class="header border-bottom">
-            <div class="d-flex align-items-center justify-content-between top py-2 bg-dark px-2 px-lg-5 px-md d-none">
-                <p class="mb-0 text-white text-decoration-underline d-no" style="cursor: pointer;"
-                    data-bs-toggle="modal" data-bs-target="#size-chart">Size Chart</p>
+            <div class="d-flex align-items-center justify-content-end top py-2 bg-dark px-2 px-lg-5 px-md d-none">
+                {{-- <p class="mb-0 text-white text-decoration-underline d-no" style="cursor: pointer;"
+                    data-bs-toggle="modal" data-bs-target="#size-chart">Size Chart</p> --}}
                 @include('partials.size-chart')
                 <div class="col-auto">
                     <select class="form-select form-select-sm rounded-0 bg-transparent text-white" name="currency"
@@ -167,26 +167,22 @@
                             <li class="nav-item mx-4">
                                 <a class="nav-link" aria-current="page" href="{{ route('home') }}">HOME</a>
                             </li>
-                            <li class="nav-item dropdown mx-4">
-                                <a class="nav-link" role="button" href="{{ route('shop') }}">SHOP</a>
-                                <ul class="dropdown-menu border-0 shadow" style="letter-spacing: normal;">
-                                    @foreach (App\Models\Category::all() as $item)
-                                    <li><a class="dropdown-item" href="{{ route('shop.category',$item->slug) }}">{{
-                                            $item->name }}</a></li>
-                                    @endforeach
-                                    {{-- <li><a class="dropdown-item" href="#">Action</a></li>
-                                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                                    <li><a class="dropdown-item" href="#">Something else here</a></li> --}}
-                                </ul>
+                            @foreach (App\Models\Category::all() as $item)
+                            <li class="nav-item mx-4">
+                                <a class="nav-link text-uppercase" aria-current="page"
+                                    href="{{ route('shop.category',$item->slug) }}">{{
+                                    $item->name }}</a>
                             </li>
 
+                            @endforeach
 
-                            <li class="nav-item mx-4">
+
+                            {{-- <li class="nav-item mx-4">
                                 <a href="{{ route('custom') }}" class="nav-link">CUSTOM ORDER</a>
-                            </li>
-                            <li class="nav-item mx-4">
+                            </li> --}}
+                            {{-- <li class="nav-item mx-4">
                                 <a href="{{ route('gallery') }}" class="nav-link">GALLERY</a>
-                            </li>
+                            </li> --}}
                             <li class="nav-item">
                                 <a href="{{ route('contact') }}" class="nav-link">CONTACT</a>
                             </li>
