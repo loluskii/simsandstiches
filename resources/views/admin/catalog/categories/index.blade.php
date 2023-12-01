@@ -23,7 +23,8 @@ Categories List
         <div class="card">
             <div class="header d-flex justify-content-between">
                 <h2>All Categories</h2>
-                <button data-toggle="modal" data-target="#newCategory" class="btn btn-secondary btn-sm">New catergory</button>
+                <button data-toggle="modal" data-target="#newCategory" class="btn btn-secondary btn-sm">New
+                    catergory</button>
                 @include('admin.catalog.categories.create')
             </div>
             <div class="body">
@@ -33,6 +34,7 @@ Categories List
                             <tr>
                                 <th>#</th>
                                 <th>Name</th>
+                                <th>No. of Products</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -42,6 +44,7 @@ Categories List
                             <tr>
                                 <td>{{ ++$key }}</td>
                                 <td class="text-uppercase">{{ $category->name }}</td>
+                                <td>{{ $category->products()->count() }}</td>
                                 <td>
                                     @include('admin.catalog.categories.category-action')
                                 </td>

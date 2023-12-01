@@ -1,7 +1,7 @@
 <a data-toggle="modal" data-target="#edit-{{ $currency->id }}" class="btn btn-sm btn-primary"> <i class="fa fa-pencil-square-o text-white"></i> </a>
 
 
-<a href="{{ route('admin.category.delete', $currency->id) }}"
+<a href="{{ route('admin.settings.currency.delete', $currency->id) }}"
     onclick="return confirm('Are you sure you want to delete this record?')" class="btn btn-sm btn-danger"> <i class="fa fa-trash-o"></i> </a>
 
 

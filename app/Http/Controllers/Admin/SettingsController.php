@@ -34,17 +34,16 @@ class SettingsController extends Controller
 
     public function editCurrency(Request $request, $id)
     {
+        // dd($request->all());
         try{
-            DB::beginTransaction();
-                $currency = Currency::find($id);
-                $currency->name = $request->name;
-                $currency->symbol = $request->symbol;
-                $currency->exchange_rate = $request->exchange_rate;
-                $currency->code = $request->code;
-                $currency->icon = $request->icon;
-                $currency->slug = $request->slug ?? $currency->slug;
-                $currency->save();
-            DB::commit();
+            $currency = Currency::find($id);
+            $currency->name = $request->name;
+            $currency->symbol = $request->symbol;
+            $currency->exchange_rate = $request->exchange_rate;
+            $currency->code = $request->code;
+            $currency->icon = $request->icon;
+            $currency->save();
+
             return back()->with('success','Product updated!');
 
         }catch(\Exception $e){

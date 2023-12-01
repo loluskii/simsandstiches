@@ -4,7 +4,7 @@
 @section('css')
 <style>
 	.main-header {
-		background-image: url("{{ secure_asset('images/pexels-godisable-jacob-923210.jpg') }}");
+		background-image: url("https://drive.google.com/file/d/19aqdVsJ-JxGsVwmx87YFR5D6qrq5h32k/view?usp=drive_link");
 		background-color: #cccccc;
 		height: 700px;
 		background-position: center;
@@ -15,7 +15,7 @@
 	}
 
 	.jumbotron {
-		background-image: url("{{ secure_asset('images/pexels-godisable-jacob-928000.jpg') }}");
+		background-image: url("https://drive.google.com/file/d/19aqdVsJ-JxGsVwmx87YFR5D6qrq5h32k/view?usp=drive_link");
 		background-color: #cccccc;
 		/* height: 700px; */
 		background-position: center;
