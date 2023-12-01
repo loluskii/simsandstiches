@@ -16,7 +16,7 @@ class Helper{
 
     public static function currency_load(){
         if(session()->has('system_default_currency_info') == false ){
-            session()->put('system_default_currency_info', Currency::findOrFail(1));
+            session()->put('system_default_currency_info', Currency::first());
         }
     }
 

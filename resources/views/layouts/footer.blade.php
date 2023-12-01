@@ -105,8 +105,8 @@
                         </li>
 
                     </ul>
-                    <select class="form-select mt-3 form-select-sm rounded-0 bg-transparent" name="currency"
-                        id="currency">
+                    <select class="form-select mt-3 currency form-select-sm rounded-0 bg-transparent" name="currency"
+                        id="">
                         @php
                         $currencies = App\Models\Currency::where('status','active')->get();
                         App\Helpers\Helper::currency_load();

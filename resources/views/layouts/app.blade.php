@@ -85,12 +85,12 @@
 
         @else
         <header class="header border-bottom">
-            <div class="d-flex align-items-center justify-content-end top py-2 bg-dark px-2 px-lg-5 px-md d-none">
+            <div class="d-flex align-items-center justify-content-end top py-2 bg-dark px-2 px-lg-5 px-md">
                 {{-- <p class="mb-0 text-white text-decoration-underline d-no" style="cursor: pointer;"
                     data-bs-toggle="modal" data-bs-target="#size-chart">Size Chart</p> --}}
                 @include('partials.size-chart')
                 <div class="col-auto">
-                    <select class="form-select form-select-sm rounded-0 bg-transparent text-white" name="currency"
+                    <select class="form-select form-select-sm rounded-0 bg-transparent currency text-white" name="currency"
                         id="currency">
                         @php
                         $currencies = App\Models\Currency::where('status','active')->get();
@@ -196,6 +196,14 @@
             </div>
 
         </header>
+
+
+
+        <!-- Optional: Place to the bottom of scripts -->
+        <script>
+            const myModal = new bootstrap.Modal(document.getElementById('modalId'), options)
+
+        </script>
         @include('partials.mobile-nav')
         @include('partials.cart-modal')
         @endif
@@ -215,47 +223,7 @@
         </div>
         @endif
     </div>
-
-
-    <script src="{{ secure_asset('js/app.js') }}"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
-        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous">
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type="text/javascript">
-    </script>
-    <script>
-        $(document).ready(function (){
-            $("#myModal").modal('show');
-            $('#currency').on('change',function (){
-                var currency_code = $(this).val();
-                $.ajax({
-                    type: 'POST',
-                    url: "{{ route('currency.load') }}",
-                    data: {
-                        currency_code: currency_code,
-                        _token: '{{ csrf_token() }}'
-                    },
-                    success: function (response){
-                        if(response['status']){
-                            location.reload();
-                        }else{
-                            console.log(response);
-                            alert('server error');
-                        }
-                    }
-                })
-            });
-            // $('.dropdown').hover(function() {
-            //     $('.dropdown-toggle',this).addClass('show');
-            // },
-            // function() {
-            //     $('.dropdown-toggle',this).removeClass('show');
-            // });
-        })
-    </script>
-
-
+    <!-- Modal trigger button -->
     @yield('scripts')
 
 </body>
