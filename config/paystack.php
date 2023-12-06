@@ -15,7 +15,7 @@ return [
      * Public Key From Paystack Dashboard
      *
      */
-    'publicKey' => getenv('PAYSTACK_PUBLIC_KEY'),
+    'publicKey' => getenv('PAYSTACK_PUBLIC_KEY') ,
 
     /**
      * Secret Key From Paystack Dashboard

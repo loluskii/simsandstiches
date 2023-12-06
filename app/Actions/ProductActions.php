@@ -25,7 +25,6 @@ class ProductActions
                 'price' => $request->price,
                 'category_id' => $request->category_id,
                 'description' => $request->description,
-                'additional_information' => $request->additional_information,
             ]);
 
             // Create ProductAttributes
@@ -35,6 +34,7 @@ class ProductActions
                     $attribute->product_id = $product->id;
                     $attribute->attribute_name = $value['attribute_name'];
                     $attribute->value = $value['value'];
+                    $attribute->cost = $value['has_extra_cost'] ?? 0;
                     $attribute->save();
                 }
             }
@@ -57,7 +57,38 @@ class ProductActions
     public static function update($request, $id)
     {
         return DB::transaction(function () use ($request, $id) {
-            // TODO: Implement the update logic here
+
+            $product = Product::findOrFail($id);
+            $product->update([
+                'name' => $request->name,
+                'price' => $request->price,
+                'category_id' => $request->category_id,
+                'description' => $request->description,
+            ]);
+            // Remove existing attributes
+            $product->attributes()->delete();
+            if ($request->has('attributes')) {
+                foreach ($request->collect('attributes') as $value) {
+                    $attribute = new ProductAttribute;
+                    $attribute->product_id = $product->id;
+                    $attribute->attribute_name = $value['attribute_name'];
+                    $attribute->value = $value['value'];
+                    $attribute->cost = $value['has_extra_cost'] ? $value['extra_cost'] : 0;
+                    $attribute->save();
+                }
+            }
+
+            $product->images()->delete();
+            if ($request->has('image_urls')) {
+                foreach ($request->collect('image_urls') as $value) {
+                    $image = new Image;
+                    $image->product_id = $product->id;
+                    $image->thumbnail = $product->slug;
+                    $image->url = $value;
+                    $image->save();
+                }
+            }
+
             return true;
         });
     }

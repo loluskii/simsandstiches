@@ -106,7 +106,7 @@
     </div>
 	<div class="section-1 py-5">
 		<div class="text-center pb-5">
-			<h4>NEW ARRIVALS</h4>
+			<h5>NEW ARRIVALS</h5>
 		</div>
 		<div class="row justify-content-center">
 			@if ($products->count() > 0)
@@ -128,7 +128,7 @@
 						<div class="product-image" style="background-image: url('{{ $product->images()->first()->url ?? '' }}')">
 						</div>
 						<div class="card-body text-center text-decoration-none">
-							<h5 class="card-title text-uppercase  text-decoration-none">{{ $product->name }}</h5>
+							<h6 class="card-title text-uppercase h6 text-decoration-none">{{ $product->name }}</h6>
 							<p class="card-text ">{{ $currency_symbol }}{{
 								number_format(App\Helpers\Helper::currency_converter($product->price), 2) }}</p>
 						</div>
@@ -137,7 +137,7 @@
 			</div>
 			@endforeach
 			<div class="d-flex justify-content-center text-center">
-				<a href="{{ route('shop') }}" class="btn btn-dark">VISIT STORE</a>
+				<a href="{{ route('shop') }}" class="btn btn-dark rounded-0 btn-sm small p-2">VISIT STORE</a>
 			</div>
 			@else
 			<p class="py-5">No Products Available</p>

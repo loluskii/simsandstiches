@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="keywords" content="Online Shopping, Online Fashion, fashion, fashion stores, sims and stiches">
     <meta name="description"
-        content="Simss And Stitches is the perfect place to shop for all kinds of women's clothing and accessories, and we are committed to empowering women to be modest in fashion but audacious in style.">
+        content="Elevate your style with Simss & Stitches - where tradition meets elegant fashion in the heart of Africa.">
     <meta property="og:image" content="{{ secure_asset('images/favicon/android-chrome-512x512.png') }}" />
     <meta property="og:image:secure_url" content="{{ secure_asset('images/favicon/android-chrome-512x512.png') }}" />
     <meta property="og:image:type" content="image/png" />
@@ -223,6 +223,7 @@
         </div>
         @endif
     </div>
+    @include('layouts.footer-scripts')
     <!-- Modal trigger button -->
     @yield('scripts')
 

@@ -6,7 +6,6 @@ use App\Actions\OrderActions;
 use App\Http\Controllers\Controller;
 use App\Jobs\SendOrderUpdate;
 use App\Models\Currency;
-use App\Models\Custom;
 use App\Models\Order;
 use Illuminate\Http\Request;
 
@@ -16,7 +15,7 @@ class OrderController extends Controller
     {
         $orders = Order::all();
         $pending = Order::where('status', 1)->get();
-        return view('admin.sales.orders.index', compact('orders', 'pending'));
+        return view('admin.orders.index', compact('orders', 'pending'));
     }
 
     public function show($id)
@@ -24,7 +23,7 @@ class OrderController extends Controller
         $order = Order::where('order_reference', '=', $id)->first();
         // dd($order->order_currency);
         $currency = Currency::where('code', '=', $order->order_currency)->first();
-        return view('admin.sales.orders.show', compact('order', 'currency'));
+        return view('admin.orders.show', compact('order', 'currency'));
     }
 
     public function update(Request $request, $id)
@@ -73,18 +72,5 @@ class OrderController extends Controller
         } catch (\Exception $e) {
             return back()->with('error', $e->getMEssage());
         }
-    }
-
-    public function customOrders()
-    {
-        // return true;
-        $orders = Custom::all();
-        return view('admin.sales.custom.index', compact('orders'));
-    }
-
-    public function viewCustom($id)
-    {
-        $order = Custom::findOrFail($id);
-        return view('admin.sales.custom.show', compact('order'));
     }
 }

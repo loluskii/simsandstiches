@@ -62,8 +62,8 @@
                     <div class="col-md-3 col-lg-3 col-xl-3">
                         <p class="lead text-uppercase fw-bold mb-2">{{ $item->name }}</p>
                         <p>
-                            @foreach ($item->attributes as $key => $value)
-                            <span class="text-muted text-capitalize">{{ $key }}: {{ $value }}</span>
+                            @foreach ($item->attributes as $key => $attribute)
+                                {{ $key }}: {{ $attribute['value'] }}<br>
                             @endforeach
                         </p>
                     </div>
@@ -141,7 +141,7 @@
             return false;
         });
         $('#checkout').on('click', function(){
-            
+
         })
     })
 </script>

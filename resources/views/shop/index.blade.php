@@ -176,34 +176,6 @@
             </div>
         </div>
         <div class="row">
-            {{-- <div class="col-md-2 d-lg-block d-none">
-
-                <form action="{{ Route::is('shop') ? '' : route('shop') }}" id="productsFilter">
-                    <div class="price"></div>
-                    <div class="category">
-                        <h6>CATEGORY</h6>
-                        @foreach ($categories as $category)
-                        @php
-                            $checked = array();
-                            if(isset($_GET['category'])){
-                                $checked[] = $_GET['category'];
-                            }
-                        @endphp
-                        <label class="checkbox-label w-100">
-                            <input type="radio" value="{{ $category->slug }}" onclick="this.form.submit()"
-                                @if (in_array($category->slug, $checked))
-                                    checked
-                                @endif
-                                name="category" />
-                            <span class="icon"></span>
-                            <div class="checkbox-content">
-                                <p class="font-weight-bold mb-1">{{ $category->name }}</p>
-                            </div>
-                        </label>
-                        @endforeach
-                    </div>
-                </form>
-            </div> --}}
             <div class="col-md-12 d-lg-block d-none">
                 <div class="row">
                     @if ($products->count() > 0)
@@ -225,7 +197,7 @@
                                     <div class="product-image"
                                         style="background-image: url('{{ $product->images()->first()->url ?? '' }}')"></div>
                                     <div class="card-body text-center text-decoration-none">
-                                        <h5 class="card-title text-uppercase  text-decoration-none">{{ $product->name }}
+                                        <h5 class="card-title text-uppercase h6 text-decoration-none">{{ $product->name }}
                                         </h5>
                                         <p class="card-text ">{{ $currency_symbol }}{{
                                             number_format(App\Helpers\Helper::currency_converter($product->price), 2) }}</p>

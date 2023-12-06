@@ -9,9 +9,10 @@ class ProductAttribute extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['product_id','attribute_name','value'];
+    protected $fillable = ['product_id', 'attribute_name', 'value', 'cost'];
 
-    public function product(){
+    public function product()
+    {
         return $this->belongsTo(Product::class, 'product_id');
     }
 }

@@ -9,72 +9,70 @@ Dashboard
 @section('content')
 <div class="row clearfix w-100">
     <div class="col-lg-3 col-md-6">
-        <div class="card overflowhidden">
-            <div class="body">
-                <h3>{{ $products }} <i class="icon-briefcase float-right"></i></h3>
-                <span>Total Products</span>
-            </div>
-        </div>
-    </div>
-    {{-- <div class="col-lg-3 col-md-6">
-        <div class="card overflowhidden">
-            <div class="body">
-                <h3>{{ $sales }} <i class="fa fa-money float-right"></i></h3>
-                <span>Total Sales</span>
-            </div>
-        </div>
-    </div> --}}
-    <div class="col-lg-3 col-md-6">
-        <div class="card overflowhidden">
-            <div class="body">
-                <h3>{{ $orders }} <i class="icon-clock float-right"></i></h3>
-                <span>Total Orders</span>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-3 col-md-6">
-        <div class="card overflowhidden">
-            <div class="body">
-                <h3>{{ $users }} <i class=" icon-users float-right"></i></h3>
-                <span>Total Customers</span>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="row clearfix w-100">
-    <div class="col-md-12">
         <div class="card">
-            <div class="header">
-                <h2>Monthly Report</h2>
-            </div>
-            <div class="body">
-                <div class="row clearfix">
-                    <div class="col-lg-4 col-md-4 col-sm-4">
-                        <span class="text-muted">Monthly Report (GBP)</span>
-                        <h3 class="text-warning">£{{ number_format($gbp, 2) }}</h3>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-4">
-                        <span class="text-muted">Monthly Report (NGN)</span>
-                        <h3 class="text-warning">₦{{ number_format($ngn, 2) }}</h3>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-4">
-                        <span class="text-muted">Monthly Report (USD)</span>
-                        <h3 class="text-warning">${{ number_format($usd, 2) }}</h3>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col mt-0">
+                        <h5 class="card-title">Sales This Week</h5>
                     </div>
                 </div>
-                <div id="area_char" class="graph"></div>
+                <h1 class="mt-1 mb-3">{{ $sales }}</h1>
+                <div class="mb-0 d-none">
+                    <span class="badge badge-success-light"> <i class="mdi mdi-arrow-bottom-right"></i> 3.65% </span>
+                    <span class="text-muted">Since last week</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col mt-0">
+                        <h5 class="card-title">Orders This Week</h5>
+                    </div>
+                </div>
+                <h1 class="mt-1 mb-3">{{ $sales }}</h1>
+                <div class="mb-0 d-none">
+                    <span class="badge badge-success-light"> <i class="mdi mdi-arrow-bottom-right"></i> 3.65% </span>
+                    <span class="text-muted">Since last week</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col mt-0">
+                        <h5 class="card-title">Total Orders</h5>
+                    </div>
+                </div>
+                <h1 class="mt-1 mb-3">{{ $orders }}</h1>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col mt-0">
+                        <h5 class="card-title">Total Users</h5>
+                    </div>
+                </div>
+                <h1 class="mt-1 mb-3">{{ $users }}</h1>
             </div>
         </div>
     </div>
 </div>
+
 <div class="row clearfix w-100">
     <div class="col-sm-12 col-md-12 col-lg-12">
         <div class="card">
-            <div class="header">
-                <h2>Recent Orders</h2>
-
-            </div>
-            <div class="body">
+            <div class="card-body">
+                <div class="header">
+                    <h2 class="card-title">Recent Orders</h2>
+                </div>
                 <div class="table-responsive">
                     <table class="table table-striped">
                         <thead class="thead-dark">
@@ -82,8 +80,9 @@ Dashboard
                                 <th style="width:60px;">#</th>
                                 <th>Order ID</th>
                                 <th>Email</th>
-                                <th>Payment Method</th>
+                                <th>Method</th>
                                 <th>Total</th>
+                                <th>Currency</th>
                                 <th>Date</th>
                                 <th>Status</th>
                                 <th>Action</th>
@@ -94,49 +93,41 @@ Dashboard
                             @foreach ($recent_orders as $key => $order)
                             @php
                             if($order->status == 1){
-                                $color = 'success';
-                                $status = 'Payment Confirmed';
+                            $color = 'success';
+                            $status = 'Payment Confirmed';
                             }elseif ($order->status == 2) {
-                                $color = 'success';
-                                $status = 'Awaiting Pickup';
+                            $color = 'success';
+                            $status = 'Awaiting Pickup';
                             }elseif ($order->status == 3) {
-                                $color = 'success';
-                                $status = 'Shipping in Progress';
+                            $color = 'success';
+                            $status = 'Shipping in Progress';
                             }elseif ($order->status == 5) {
-                                $color = 'success';
-                                $status = 'Delivered';
+                            $color = 'success';
+                            $status = 'Delivered';
                             }elseif ($order->status == 6) {
-                                $color = 'danger';
-                                $status = 'Cancelled';
+                            $color = 'danger';
+                            $status = 'Cancelled';
                             }else {
-                                $color = 'bg-secondary';
-                                $status = 'Unknown';
-                            }
-
-
-                            if($order->order_currency == "GBP"){
-                                $code = "£";
-                            }else if($order->order_currency == "USD"){
-                                $code = "$";
-                            }else{
-                                $code = "₦";
+                            $color = 'bg-secondary';
+                            $status = 'Unknown';
                             }
                             @endphp
                             <tr>
                                 <td>{{ ++$key }}</td>
-                                <td>{{ $order->order_reference }}</td>
+                                <td class="text-truncate">{{ $order->order_reference }}</td>
                                 <td>{{ $order->shipping_email }}</td>
                                 <td>{{ $order->payment_method }}</td>
-                                <td>{{ $code }}{{ number_format($order->subtotal, 2) }}</td>
-                                <td>{{ $order->created_at->diffForHumans() }}</td>
-                                <td><span class="badge badge-{{ $color ?? 'success' }}">{{ $status }}</span></td>
+                                <td>{{ number_format($order->subtotal, 2) }}</td>
+                                <td>{{ $order->order_currency }}</td>
+                                <td class="text-nowrap">{{ $order->created_at->diffForHumans() }}</td>
+                                <td><span class="badge bg-{{ $color ?? 'success' }}">{{ $status }}</span></td>
                                 <td><a href="{{ route('admin.orders.show', $order->order_reference) }}"
                                         class="btn btn-info btn-sm">View</a></td>
                             </tr>
                             @endforeach
                             @else
                             <tr class="text-center">
-                                <td colspan="7">No Recent Orders</td>
+                                <td colspan="9">No Recent Orders</td>
                             </tr>
                             @endif
                         </tbody>
@@ -147,12 +138,11 @@ Dashboard
     </div>
 </div>
 
-<div class="row clearfix w-100">
+<div class="d-none row clearfix w-100">
     <div class="col-sm-12 col-md-12 col-lg-12">
         <div class="card">
             <div class="header">
                 <h2>Recent Customers</h2>
-
             </div>
             <div class="body">
                 <div class="table-responsive">

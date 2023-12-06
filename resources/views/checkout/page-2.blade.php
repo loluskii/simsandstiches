@@ -68,7 +68,7 @@
                 <div class="col-md-11 col-12">
                     <div class="main ps-0 ms-0 ps-md-5 ms-md-5 ps-lg-5">
                         <div class="header text-center">
-                            <img src="{{ secure_asset('2.png') }}" class="img-fluid" style="height: 40px;" alt="">
+                            <img src="{{ secure_asset('images/sss-logo.png') }}" class="img-fluid" style="height: 40px;" alt="">
                             <nav aria-label="breadcrumb" class="pb-4 text-center">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item " aria-current="page"><a
@@ -106,7 +106,9 @@
                                                 <span class="text-muted">Ships to</span>
                                             </div>
                                             <div class="col-auto col-md-10 h-100">
-                                                <span class="text-wrap">{{ $order->shipping_address }}, {{ $order->shipping_zipcode }} {{ $order->shipping_state }},{{ $order->shipping_country }}</span>
+                                                <span class="text-wrap">{{ $order->shipping_address }}, {{
+                                                    $order->shipping_zipcode }} {{ $order->shipping_state }},{{
+                                                    $order->shipping_country }}</span>
                                             </div>
                                         </div>
                                         {{-- <a href="" class="text-decoration-none"><small
@@ -135,27 +137,34 @@
                                 <div class="shipping-information">
                                     <h4 style="font-weight: normal" class="mb-4">Shipping Method</h4>
 
-                                    <label class="card p-3 checkbox-label d-flex w-100" id="planbox">
-                                        <div class="d-flex align-items-center justify-content-between">
-                                            {{-- <div class="d-flex align-items-center">
-                                                <input type="radio" class="form-check-input" class="me-4" checked
-                                                    value="{{ 0 }}" name="shipping">
+                                    @php
+                                    $condition = Cart::getCondition('Express Shipping');
+                                    $attributes = $condition ? $condition->getAttributes() : null
+                                    @endphp
 
-                                                <h5 class="h6 text-muted">Standard Shipping</h5>
-                                            </div> --}}
-                                            <div class="form-check">
-                                                <input class="form-check-input me-3" type="radio" name="exampleRadios"
-                                                    id="exampleRadios1" value="option1" checked>
-                                                <label class="form-check-label" for="exampleRadios1">
-                                                    <h6 class="mb-0">{{ $conditionName }}</h6>
-                                                    <small class="mb-0 text-muted">
-                                                        7 - 21 business days
-                                                    </small>
-                                                </label>
+                                    @foreach ($shippings as $key => $location)
+
+                                    <label
+                                        class="card p-3 checkbox-label d-flex w-100 rounded-0 {{ $key == 0 ? 'rounded-top': '' }} {{ $key == $shippings->count() - 1 ? 'rounded-bottom': 'border-bottom-0' }}"
+                                        id="planbox">
+                                        <div class="d-flex align-items-center justify-content-between">
+                                            <div class="d-flex w-100 justify-content-start align-items-center">
+                                                <input type="radio" class="form-check-input me-4 mt-0 shipping-location"
+                                                    value="{{ $location->id }}" name="shipping" {{
+                                                    $attributes && $attributes['id']===$location->id ? 'checked' : '' }}>
+
+                                                <div class="d-flex w-100 justify-content-between align-items-center">
+                                                    <div>
+                                                        <h5 class="h6 mb-0">{{ $location->group_name }}</h5>
+                                                        <p class="text-muted mb-0">{{ $location->group_locations }}</p>
+                                                    </div>
+                                                    <span>{{ $currency_symbol }}{{ number_format($location->price, 2)
+                                                        }}</span>
+                                                </div>
                                             </div>
-                                            <span> {{ $currency_symbol }} {{ number_format(App\Helpers\Helper::currency_converter($conditionValue), 2) }}</span>
                                         </div>
                                     </label>
+                                    @endforeach
                                 </div>
 
                                 <div class="d-flex justify-content-between align-items-center pt-3">
@@ -181,5 +190,22 @@
 @endsection
 
 @section('scripts')
+<script>
+    $('input[name=shipping]').on('change',function (){
+            var id = $(this).val();
+            console.log(id)
 
+            $.ajax({
+                type: 'POST',
+                url: `{{ route('shipping.update') }}`,
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    id: id
+                },
+                success: function (response){
+                    location.reload()
+                }
+            })
+        });
+</script>
 @endsection

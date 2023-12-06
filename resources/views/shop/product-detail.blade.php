@@ -31,45 +31,6 @@
         object-fit: cover;
     }
 
-
-    .cat {
-        margin: 4px;
-        background-color: transparent;
-        color: #BBBBBB;
-        overflow: hidden;
-        float: left;
-        border: 1px solid #BBBBBB;
-    }
-
-    .cat label {
-        float: left;
-        min-width: 51px;
-        height: 100%;
-
-    }
-
-    .cat label span {
-        text-align: center;
-        padding: 5px 15px;
-        display: block;
-        align-items: center;
-        height: 100%;
-        color: #bbb;
-        font-weight: 500;
-    }
-
-    .cat label input {
-        position: absolute;
-        display: none;
-        color: #fff !important;
-    }
-
-
-    .cat input:checked+span {
-        color: #121212;
-        border: 1px solid #121212;
-    }
-
     #button-addon1 {
         border-top: 1px solid #ced4da;
         border-left: 1px solid #ced4da;
@@ -107,16 +68,14 @@
         <div class="row main-content justify-content-center">
             <aside class="col-md-5 text-center pb-3 pb-md-3 pb-lg-3 pb-xl-3">
                 <div class="row">
-
                     <div class="col-lg-9 col-md-9 col-sm-12 product-image">
                         <img src="{{ $product->images()->first()->url ?? '' }}" id="product-image" style=""
                             class="primary img-fluid">
-                        {{-- <div class="prodcut-image"></div> --}}
                     </div>
                     <div class="col-lg-3 col-md-3 col-sm-12 ">
                         <div
-                            class="img-small-wrap d-flex justify-content-between align-items-center flex-lg-column flex-md-column flex-sm-row order-lg-1 mt-lg-0 mt-md-0 mt-3">
-                            @foreach ($product->images->take(3) as $image)
+                            class="img-small-wrap d-flex justify-content-start align-items-center flex-lg-column flex-md-column flex-sm-row order-lg-1 mt-lg-0 mt-md-0 mt-3">
+                            @foreach ($product->images->take(5) as $image)
                             <div class="item-gallery d-flex align-items-center ">
                                 <a href="#" class="thumbnail mb-3" data-big="{{ $image->url ?? '' }}"
                                     style="background-image: url('{{ $image->url ?? '' }}')"></a>
@@ -164,10 +123,11 @@
                                     </div>
                                     <div class="col">
                                         <div class="mb-3">
-                                            <select class="form-select rounded-0" name="{{ $key }}" id="">
+                                            <select required class="form-select rounded-0" name="{{ $key }}" id="">
                                                 <option>Select one</option>
                                                 @foreach ($item as $value)
-                                                <option value="{{ $value->value }}">{{ $value->value }}</option>
+                                                <option value="{{ $value->id }}">{{ $value->value }} {{ $value->cost
+                                                    > 0 ? '- '.$currency_symbol.number_format($value->cost, 2) : '' }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -194,9 +154,12 @@
                             </div>
                         </div>
 
-                        <button type="submit" class="btn btn-block btn-dark rounded-0 w-100 mb-3 px-5">ADD TO
+                        <button type="submit" class="add_to_cart btn btn-block btn-dark rounded-0 w-100 mb-3 px-5">ADD
+                            TO
                             CART</button>
                     </form>
+                    <hr>
+                    <p>{{ $product->description }}</p>
                 </article>
             </aside>
         </div>
@@ -215,7 +178,8 @@
                 <a class=" text-decoration-none" href="{{ route('shop.product.show',$product->slug) }}">
                     <div class="card rounded-0 border-0">
                         <div class="product_image"
-                            style="background-image: url('{{ $product->images()->first()->url ?? '' }}')"></div>
+                            style="background-image: url('{{ $product->images()->first()->url ?? '' }}')">
+                        </div>
                         <div class="card-body text-center text-decoration-none">
                             <h5 class="card-title text-uppercase  text-decoration-none">{{ $product->name }}</h5>
                             <p class="card-text ">{{ $currency_symbol }}{{

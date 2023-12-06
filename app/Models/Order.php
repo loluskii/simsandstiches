@@ -10,14 +10,14 @@ class Order extends Model
     use HasFactory;
     protected $fillable = [
         'shipping_fname',
-        'shipping_lname' ,
+        'shipping_lname',
         'shipping_email',
-        'shipping_address'  ,
-        'shipping_city' ,
-        'shipping_state' ,
+        'shipping_address',
+        'shipping_city',
+        'shipping_state',
         'shipping_country',
-        'shipping_phone' ,
-        'shipping_landmark' ,
+        'shipping_phone',
+        'shipping_landmark',
         'shipping_postal_code',
     ];
     public function user()
@@ -32,12 +32,12 @@ class Order extends Model
 
     public function items()
     {
-        return $this->belongsToMany(Product::class, 'order_items','order_id','product_id')->withPivot('quantity','price','size','color');
+        return $this->belongsToMany(Product::class, 'order_items', 'order_id', 'product_id')->withPivot('quantity', 'price');
     }
 
     public function pending()
     {
-        return $this->where('status',1)->get();
+        return $this->where('status', 1)->get();
     }
 
     // public function currency(){

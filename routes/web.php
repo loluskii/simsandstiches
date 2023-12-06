@@ -100,8 +100,8 @@ Route::middleware(['force_maintenance'])->group(function () {
     Route::post('/add/{id}', [CartController::class, 'add'])->name('cart.add');
     Route::post('/cart/update/{id}', [CartController::class, 'update'])->name('cart.update');
     Route::get('/cart/destroy/{id}', [CartController::class, 'destroy'])->name('cart.destroy');
-
     //Checkout Routes
+    Route::post('/set-shipping', [PaymentController::class, 'setShipping'])->name('shipping.update');
     Route::get('/checkout/{session}', [PaymentController::class, 'checkout'])->name('checkout.page-1');
     Route::post('/checkout/store', [PaymentController::class, 'contactInformation'])->name('checkout.page-1.store');
     Route::get('/checkout/2/{session}', [PaymentController::class, 'shipping'])->name('checkout.page-2');
@@ -111,16 +111,11 @@ Route::middleware(['force_maintenance'])->group(function () {
     Route::get('/orders/{reference}', [PaymentController::class, 'checkoutSuccessful'])->name('checkout.success');
 
     //Payment Routes
+    Route::get('/payment/callback', [PaymentController::class, 'paystackHandleGatewayCallback'])->name('payment');
+
     //Flutterwave Checkout
     // Route::post('/pay', [PaymentController::class, 'flutterInit'])->name('pay.flutter');
     // Route::get('/rave/callback', [PaymentController::class,'flutterwaveCallback'])->name('flutter.callback');
-
-    //Paypal
-    Route::post('/paypal/order/store', [PaymentController::class, 'paypalCreate'])->name('paypal.store');
-
-    // Stripe
-    Route::post('/stripe/webhook', [PaymentController::class, 'stripeWebhook']);
-    Route::get('/stripe/redirect/{ref}', [PaymentController::class, 'stripeRedirect'])->name('stripe.redirect');
 
     //User Routes
     Route::middleware(['auth', 'verified'])->group(function () {

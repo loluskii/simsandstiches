@@ -16,34 +16,13 @@ class CategorySeeder extends Seeder
     {
         $category = [
             [
-                'name' => 'Coats & Jackets',
-                'slug' => 'c_j',
+                'name' => 'Kimonos',
+                'slug' => 'kimonos',
             ],
             [
-                'name' => 'Dresses',
-                'slug' => 'dresses',
+                'name' => 'Kaftans',
+                'slug' => 'kaftans',
             ],
-            [
-                'name' => 'Jeans, Trousers & Leggins',
-                'slug' => 'jtl',
-            ],
-            [
-                'name' => 'Jumpsuits & Playsuits',
-                'slug' => 'js_ps',
-            ],
-            [
-                'name' => 'Shorts',
-                'slug' => 'shorts',
-            ],
-            [
-                'name' => 'Skirts',
-                'slug' => 'skirts',
-            ],
-            [
-                'name' => 'T-Shirts & Tops',
-                'slug' => 'ts_t',
-            ],
-
         ];
         DB::table('categories')->insert($category);
     }

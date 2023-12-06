@@ -8,7 +8,7 @@
                 <article class="single-content-article single-page-article">
                     <div class="entry" itemprop="text">
                         <h5><strong>Terms and Conditions</strong></h5>
-                        <p>Welcome to Sims & Stitches!</p>
+                        <p>Welcome to Simss & Stitches!</p>
                         <p>These terms and conditions outline the rules and regulations for the use of Simss & Stitches’
                             Website,
                             located at https://simssandstitches.com.</p>
@@ -36,7 +36,7 @@
                             referring to same.
                         </p>
                         <h6><strong>Cookies</strong></h6>
-                        <p>We employ the use of cookies. By accessing Sims & Stitches, you agreed to use cookies in
+                        <p>We employ the use of cookies. By accessing Simss & Stitches, you agreed to use cookies in
                             agreement with
                             the Simss & Stitches’ Privacy Policy.</p>
                         <p>Most interactive websites use cookies to let us retrieve the user’s details for each visit.
@@ -45,35 +45,35 @@
                             people visiting
                             our website. Some of our affiliate/advertising partners may also use cookies.</p>
                         <h6><strong>License</strong></h6>
-                        <p>Unless otherwise stated, Sims & Stitches and/or its licensors own the intellectual property
+                        <p>Unless otherwise stated, Simss & Stitches and/or its licensors own the intellectual property
                             rights for
-                            all material on Sims & Stitches. All intellectual property rights are reserved. You may
+                            all material on Simss & Stitches. All intellectual property rights are reserved. You may
                             access this
-                            from Sims & Stitches for your own personal use subjected to restrictions set in these terms
+                            from Simss & Stitches for your own personal use subjected to restrictions set in these terms
                             and
                             conditions.</p>
                         <p>You must not:</p>
                         <ul>
-                            <li>Republish material from Sims & Stitches</li>
-                            <li>Sell, rent or sub-license material from Sims & Stitches</li>
-                            <li>Reproduce, duplicate or copy material from Sims & Stitches</li>
-                            <li>Redistribute content from Sims & Stitches</li>
+                            <li>Republish material from Simss & Stitches</li>
+                            <li>Sell, rent or sub-license material from Simss & Stitches</li>
+                            <li>Reproduce, duplicate or copy material from Simss & Stitches</li>
+                            <li>Redistribute content from Simss & Stitches</li>
                         </ul>
                         <p>This Agreement shall begin on the date hereof.</p>
                         <p>Parts of this website offer an opportunity for users to post and exchange opinions and
                             information in
-                            certain areas of the website. Sims & Stitches does not filter, edit, publish or review
+                            certain areas of the website. Simss & Stitches does not filter, edit, publish or review
                             Comments prior
-                            to their presence on the website. Comments do not reflect the views and opinions of Sims &
+                            to their presence on the website. Comments do not reflect the views and opinions of Simss &
                             Stitches,its
                             agents and/or affiliates. Comments reflect the views and opinions of the person who post
                             their views and
-                            opinions. To the extent permitted by applicable laws, Sims & Stitches shall not be liable
+                            opinions. To the extent permitted by applicable laws, Simss & Stitches shall not be liable
                             for the
                             Comments or for any liability, damages or expenses caused and/or suffered as a result of any
                             use of
                             and/or posting of and/or appearance of the Comments on this website.</p>
-                        <p>Sims & Stitches reserves the right to monitor all Comments and to remove any Comments which
+                        <p>Simss & Stitches reserves the right to monitor all Comments and to remove any Comments which
                             can be
                             considered inappropriate, offensive or causes breach of these Terms and Conditions.</p>
                         <p>You warrant and represent that:</p>
@@ -91,7 +91,7 @@
                                 commercial
                                 activities or unlawful activity.</li>
                         </ul>
-                        <p>You hereby grant Sims & Stitches a non-exclusive license to use, reproduce, edit and
+                        <p>You hereby grant Simss & Stitches a non-exclusive license to use, reproduce, edit and
                             authorize others to
                             use, reproduce and edit any of your Comments in any and all forms, formats or media.</p>
                         <h6><strong>Hyperlinking to our Content</strong></h6>
@@ -131,7 +131,7 @@
                             have any
                             negative records with us; (c) the benefit to us from the visibility of the hyperlink
                             compensates the
-                            absence of Sims & Stitches; and (d) the link is in the context of general resource
+                            absence of Simss & Stitches; and (d) the link is in the context of general resource
                             information.</p>
                         <p>These organizations may link to our home page so long as the link: (a) is not in any way
                             deceptive; (b)
@@ -140,7 +140,7 @@
                             services; and (c) fits within the context of the linking party’s site.</p>
                         <p>If you are one of the organizations listed in paragraph 2 above and are interested in linking
                             to our
-                            website, you must inform us by sending an e-mail to Sims & Stitches. Please include your
+                            website, you must inform us by sending an e-mail to Simss & Stitches. Please include your
                             name, your
                             organization name, contact information as well as the URL of your site, a list of any URLs
                             from which

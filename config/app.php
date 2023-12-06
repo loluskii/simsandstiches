@@ -182,7 +182,6 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Darryldecode\Cart\CartServiceProvider::class,
-        Srmklive\PayPal\Providers\PayPalServiceProvider::class,
         Unicodeveloper\Paystack\PaystackServiceProvider::class,
         /*
          * Package Service Providers...

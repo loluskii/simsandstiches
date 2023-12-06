@@ -2,56 +2,45 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
-use Darryldecode\Cart\Cart;
 use App\Helpers\Helper;
+use App\Models\Product;
+use App\Models\ProductAttribute;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
     public function add(Request $request, $id)
     {
         $product = Product::find($id);
+        $totalPrice = $product->price;
         $attributes = [];
-        foreach($request->except('_token','quantity','buy_now') as $key => $value){
-            $attributes[$key] = $value;
-        }
-        // dd(Helper::currency_converter($product->price));
-
-        if($request->has('buy_now')){
-            \Cart::session(Helper::getSessionID())->clear();
-            \Cart::session(Helper::getSessionID())->add(array(
-                'id' => $product->id,
-                'name' => $product->name,
-                'price' => $product->price,
-                'quantity' => $request->quantity,
-                'attributes' => $attributes,
-                'associatedModel' => $product
-            ));
-            if(session()->has('session') == false){
-                session()->put('session',session_create_id());
+        foreach ($request->except('_token', 'quantity') as $key => $value) {
+            $attribute = ProductAttribute::findOrFail((int) $value);
+            if ($attribute) {
+                $attributes[$attribute->attribute_name]['value'] = $attribute->value;
+                $attributes[$attribute->attribute_name]['cost'] = $attribute->cost;
+                $totalPrice += $attribute->cost;
             }
-            return redirect()->route('checkout.page-1',['session'=> session('session')]);
         }
 
         \Cart::session(Helper::getSessionID())->add(array(
             'id' => $product->id,
             'name' => $product->name,
-            'price' => $product->price,
+            'price' => $totalPrice,
             'quantity' => $request->quantity,
             'attributes' => $attributes,
-            'associatedModel' => $product
+            'associatedModel' => $product,
         ));
-        return redirect()->route('shop.product.show',['slug' => $product->slug]);
+        return back();
     }
 
-    public function update($id){
-        \Cart::session(Helper::getSessionID())->update($id,[
-            'quantity' =>  array(
+    public function update($id)
+    {
+        \Cart::session(Helper::getSessionID())->update($id, [
+            'quantity' => array(
                 'relative' => false,
                 'value' => request('quantity'),
-            )
+            ),
         ]);
 
         return back();
@@ -63,6 +52,5 @@ class CartController extends Controller
 
         return back();
     }
-
 
 }

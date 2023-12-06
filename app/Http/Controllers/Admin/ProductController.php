@@ -2,14 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Product;
-use App\Models\Category;
-use Illuminate\Http\Request;
 use App\Actions\ProductActions;
-use App\Models\ProductAttribute;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Storage;
+use App\Models\Category;
+use App\Models\Product;
+use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
@@ -17,7 +14,7 @@ class ProductController extends Controller
     {
         $products = Product::all();
         $category = Category::all();
-        return view('admin.catalog.products.index', compact('products','category'));
+        return view('admin.products.index', compact('products', 'category'));
     }
 
     public function create(Request $request)
@@ -25,13 +22,12 @@ class ProductController extends Controller
 
         try {
             $res = ProductActions::create($request);
-            if($res){
-                return back()->with(
-                    'success',
-                    'Product added successfully'
-                );
-            }else{
-                return back()->with('error','Please add an image!');
+            if ($res) {
+                noty()->addSuccess('Product creation successful');
+                return back();
+            } else {
+                noty()->addError($res);
+                return back();
             }
         } catch (\Exception $e) {
             return $e->getMessage();
@@ -40,14 +36,14 @@ class ProductController extends Controller
 
     public function edit(Request $request, $id)
     {
-        try{
+        try {
             $res = ProductActions::update($request, $id);
-            if ($res){
-                return back()->with('success','Product updated!');
-            }else{
-                return back()->with('error','An error occured');
+            if ($res) {
+                return back()->with('success', 'Product updated!');
+            } else {
+                return back()->with('error', 'An error occured');
             }
-        }catch(\Exception $e){
+        } catch (\Exception $e) {
             return back()->with(
                 'error',
                 $e->getMessage()
@@ -55,10 +51,13 @@ class ProductController extends Controller
         }
     }
 
-    public function destroy(Product $id)
+    public function activateOrDeactivate($id)
     {
-        $id->delete();
-        $res = File::deleteDirectory(public_path('images/products/'.$id->slug));
-        return back()->with('success','Deleted successfully');
+        $product = Product::findOrFail($id);
+        $product->update([
+            'status' => $product->status ? 0 : 1,
+        ]);
+        noty()->addSuccess('Operation successful!');
+        return back();
     }
 }

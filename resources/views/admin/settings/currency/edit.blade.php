@@ -1,11 +1,14 @@
-<a data-toggle="modal" data-target="#edit-{{ $currency->id }}" class="btn btn-sm btn-primary"> <i class="fa fa-pencil-square-o text-white"></i> </a>
+<a data-bs-toggle="modal" data-bs-target="#edit-{{ $currency->id }}" class="btn btn-sm btn-primary"> <i
+        data-feather="edit"></i> </a>
 
 
 <a href="{{ route('admin.settings.currency.delete', $currency->id) }}"
-    onclick="return confirm('Are you sure you want to delete this record?')" class="btn btn-sm btn-danger"> <i class="fa fa-trash-o"></i> </a>
+    onclick="return confirm('Are you sure you want to delete this record?')" class="btn btn-sm btn-danger"> <i
+        data-feather="trash-2"></i> </a>
 
 
-<div class="modal fade" id="edit-{{ $currency->id }}" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+<div class="modal fade" id="edit-{{ $currency->id }}" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+    aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -18,23 +21,28 @@
                     <div class="modal-body">
                         <div class="form-group mb-3">
                             <label for="recipient-name" class="form-label">Name:</label>
-                            <input type="text" name="name" value="{{ $currency->name }}" class="form-control" id="recipient-name">
+                            <input type="text" name="name" value="{{ $currency->name }}" class="form-control"
+                                id="recipient-name">
                         </div>
                         <div class="form-group mb-3">
                             <label for="recipient-name" class="form-label">Symbol:</label>
-                            <input type="text" name="symbol" value="{{ $currency->symbol }}" class="form-control" id="recipient-name">
+                            <input type="text" name="symbol" value="{{ $currency->symbol }}" class="form-control"
+                                id="recipient-name">
                         </div>
                         <div class="form-group mb-3">
                             <label for="recipient-name" class="form-label">Exchange Rate:</label>
-                            <input type="text" name="exchange_rate" value="{{ $currency->exchange_rate }}" class="form-control" id="recipient-name">
+                            <input type="text" name="exchange_rate" value="{{ $currency->exchange_rate }}"
+                                class="form-control" id="recipient-name">
                         </div>
                         <div class="form-group mb-3">
                             <label for="recipient-name" class="form-label">Code:</label>
-                            <input type="text" name="code" value="{{ $currency->code }}" class="form-control" id="recipient-name">
+                            <input type="text" name="code" value="{{ $currency->code }}" class="form-control"
+                                id="recipient-name">
                         </div>
                         <div class="form-group mb-3">
                             <label for="recipient-name" class="form-label">Icon:</label>
-                            <input type="text" name="icon" value="{{ $currency->icon }}" class="form-control" id="recipient-name">
+                            <input type="text" name="icon" value="{{ $currency->icon }}" class="form-control"
+                                id="recipient-name">
                         </div>
                     </div>
                 </div>
@@ -44,10 +52,4 @@
                 </div>
             </form>
         </div>
-</div>
-
-
-
-
-
-
+    </div>

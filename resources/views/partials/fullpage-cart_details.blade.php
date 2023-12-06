@@ -18,17 +18,18 @@
                             <div>
                                 <img class="img-fluid img-thumbnail"
                                     style=" height: 64px; width: 64px; object-fit: contain;"
-                                    src="{{ $item->associatedModel->images()->first()->url ?? '' }}"
-                                    alt="">
+                                    src="{{ $item->associatedModel->images()->first()->url ?? '' }}" alt="">
                             </div>
-
                             <span class="position-absolute badge bg-dark border border-light rounded-circle" style="">{{
                                 $item->quantity }}</span>
-
                         </td>
                         <td style="width: 60%;">
-                            <span class="product__description__variant order-summary__small-text text-uppercase"
+                            <span
+                                class="font-weight-bold product__description__variant order-summary__small-text text-uppercase"
                                 style="display: block;">{{ $item->name }}</span>
+                            <p><small>@foreach ($item->attributes as $key => $attribute)
+                                    {{ $key }}: {{ $attribute['value'] }}<br>
+                                    @endforeach</small></p>
                         </td>
                         @php
                         $currencies = App\Models\Currency::where('status','active')->get();
@@ -62,19 +63,29 @@
             </div>
             <div class="d-flex justify-content-between align-items-center">
                 <p>Shipping</p>
+                @php
+                $condition = Cart::session(App\Helpers\Helper::getSessionID())->getCondition('Express Shipping')
+                @endphp
                 @if(Route::is('checkout.page-1'))
                 <p><small class="text-muted">Calculated at the next step</small></p>
                 @else
-                <p><small class="text-muted">{{ $currency_symbol }} {{ number_format(App\Helpers\Helper::currency_converter($conditionValue ?? $condition_value), 2) }}</small></p>
+                <p><small class="text-muted">{{ $currency_symbol }} {{
+                        number_format(App\Helpers\Helper::currency_converter($condition ? $condition->getValue() : ''),
+                        2)
+                        }}</small></p>
                 @endif
             </div>
         </div>
         <div class="d-flex justify-content-between align-items-center py-4">
             <h5>Total</h5>
             @if(Route::is('checkout.page-1'))
-            <h3>{{ $currency_symbol }}{{ number_format(App\Helpers\Helper::currency_converter(Cart::session(App\Helpers\Helper::getSessionID())->getSubTotal()) , 2) }} </h3>
+            <h3>{{ $currency_symbol }}{{
+                number_format(App\Helpers\Helper::currency_converter(Cart::session(App\Helpers\Helper::getSessionID())->getSubTotal())
+                , 2) }} </h3>
             @else
-            <h3>{{ $currency_symbol }} {{ number_format(App\Helpers\Helper::currency_converter(Cart::session(App\Helpers\Helper::getSessionID())->getTotal()), 2) }}</h3>
+            <h3>{{ $currency_symbol }} {{
+                number_format(App\Helpers\Helper::currency_converter(Cart::session(App\Helpers\Helper::getSessionID())->getTotal()),
+                2) }}</h3>
             @endif
         </div>
     </div>

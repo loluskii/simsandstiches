@@ -31,10 +31,6 @@ $currency_code = $system_default_currency_info->code;
                         <tbody>
                             @foreach ($cartItems as $item)
                             <tr class="d-flex justify-content-between align-items-center">
-                                {{-- <td scope="row" style="width: 20%;">
-                                    <img class="img-fluid img-thumbnail" style="height: 60px;"
-                                        src="{{ $item->associatedModel->image }}" alt="">
-                                </td> --}}
                                 <td style="width: 60%;">
                                     <span class="product__description__variant order-summary__small-text text-uppercase"
                                         style="display: block;">{{ $item->name }}</span>
@@ -49,14 +45,24 @@ $currency_code = $system_default_currency_info->code;
 
                 </div>
                 <div class="price border-bottom">
-                    <div class="d-flex justify-content-between align-items-center py-3">
+                    <div class="d-flex justify-content-between align-items-center pt-3">
                         <span>Subtotal</span>
                         <span>{{ $currency_symbol }}{{
                             number_format(Cart::session(App\Helpers\Helper::getSessionID())->getSubTotal(), 2) }}</span>
                     </div>
                     <div class="d-flex justify-content-between align-items-center py-3">
                         <span>Shipping</span>
-                        <span>Calculated at the next step</span>
+                        @php
+                        $condition = Cart::session(App\Helpers\Helper::getSessionID())->getCondition('Express Shipping')
+                        @endphp
+                        @if(Route::is('checkout.page-1'))
+                        <p><small class="text-muted">Calculated at the next step</small></p>
+                        @else
+                        <p><small class="text-muted">{{ $currency_symbol }} {{
+                                number_format(App\Helpers\Helper::currency_converter($condition ? $condition->getValue() : ''),
+                                2)
+                                }}</small></p>
+                        @endif
                     </div>
                 </div>
                 <div class="d-flex justify-content-between align-items-center py-4">

@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\SettingsController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\TransactionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,11 +30,14 @@ Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 Route::middleware('admin')->group(function () {
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-    Route::get('/orders/all', [OrderController::class, 'index'])->name('orders.index');
+    Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
     Route::get('/orders/{ref}',[OrderController::class, 'show'])->name('orders.show');
     Route::post('/orders/update/{id}',[OrderController::class, 'update'])->name('orders.update');
     Route::get('/custom',[OrderController::class, 'customOrders'])->name('orders.custom');
     Route::get('/custom/{id}',[OrderController::class, 'viewCustom'])->name('orders.custom.show');
+
+    Route::get('/transactions', [TransactionController::class, 'index'])->name('transactions.index');
+
 
     Route::get('/category/all', [CategoryController::class, 'index'])->name('category.index');
     Route::post('/category/create',[CategoryController::class,'create'])->name('category.store');
@@ -45,12 +49,20 @@ Route::middleware('admin')->group(function () {
     Route::post('/products/create', [ProductController::class, 'create'])->name('products.create');
     Route::get('/products/{id}/show',[ProductController::class, 'view_products'])->name('products.show');
     Route::post('/products/{id}/update', [ProductController::class, 'edit'])->name('products.update');
-    Route::get('/products/{id}/delete', [ProductController::class, 'destroy'])->name('products.delete');
+    Route::get('/products/{id}/delete', [ProductController::class, 'activateOrDeactivate'])->name('products.delete');
 
+    // Settings
+    // Currency
     Route::get('/settings/currency', [SettingsController::class, 'currencyIndex'])->name('settings.currency.index');
-    Route::post('/settings/create', [SettingsController::class, 'addCurrency'])->name('settings.currency.add');
+    Route::post('/settings/currency/create', [SettingsController::class, 'addCurrency'])->name('settings.currency.add');
     Route::post('/settings/currency/{id}/update', [SettingsController::class, 'editCurrency'])->name('settings.currency.edit');
     Route::get('/settings/currency/{id}/delete', [SettingsController::class, 'deleteCurrency'])->name('settings.currency.delete');
+
+    Route::get('/settings/shipping-rates', [SettingsController::class, 'shippingIndex'])->name('settings.shipping.index');
+    Route::post('/settings/shipping-rates/create', [SettingsController::class, 'addLocation'])->name('settings.shipping.add');
+    Route::post('/settings/location/{id}/update', [SettingsController::class, 'editLocation'])->name('settings.shipping.edit');
+    Route::get('/settings/location/{id}/delete', [SettingsController::class, 'deleteLocation'])->name('settings.shipping.delete');
+
 
     Route::get('/customers/all',[UserController::class, 'index'])->name('user.index');
 

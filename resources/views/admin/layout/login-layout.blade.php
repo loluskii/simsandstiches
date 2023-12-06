@@ -2,48 +2,23 @@
 <html lang="en">
 
 <head>
-    <title>:: Lucid :: Home</title>
+    <title>Home</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <meta name="description" content="Sims & Stitches">
+    <meta name="description" content="Amari | Sims & Stitches">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
-
-    <link rel="stylesheet"
-        href="https://www.wrraptheme.com/templates/lucid/html/assets/vendor/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet"
-        href="https://www.wrraptheme.com/templates/lucid/html/assets/vendor/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet"
-        href="https://www.wrraptheme.com/templates/lucid/html/assets/vendor/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css">
-    <link rel="stylesheet" href="https://www.wrraptheme.com/templates/lucid/html/assets/vendor/toastr/toastr.min.css">
-
-    <link rel="stylesheet" href="{{ secure_asset('admin/css/main.css') }}">
-    <link rel="stylesheet" href="{{ secure_asset('admin/css/color_skins.css') }}">
-
-
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="css/app.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ secure_asset('admin/css/app.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    @yield('styles')
 </head>
 
-<body class="theme-cyan">
-    <div class="page-loader-wrapper">
-        <div class="loader">
-            <div class="m-t-30"><img src="https://www.wrraptheme.com/templates/lucid/html/assets/images/logo-icon.svg"
-                    width="48" height="48" alt="Lucid"></div>
-            <p>Please wait...</p>
-        </div>
-    </div>
-
-    <div class="wrapper">
-        <div class="vertical-align-wrap">
-            <div class="vertical-align-middle auth-main">
-                @yield('content')
-            </div>
-        </div>
-    </div>
-
-
-    <!-- Bootstrap JavaScript Libraries -->
-    @include('admin.layout.footer-scripts')
-    <script src="{{ secure_asset('admin/bundles/mainscripts.bundle.js') }}"></script>
+<body>
+    @yield('content')
+    <script src="{{ secure_asset('admin/js/app.js') }}"></script>
+    @yield('scripts')
 </body>
 
 </html>

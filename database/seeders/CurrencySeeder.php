@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use App\Models\Currency;
 use Illuminate\Database\Seeder;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class CurrencySeeder extends Seeder
 {
@@ -16,27 +15,28 @@ class CurrencySeeder extends Seeder
     public function run()
     {
         Currency::create([
-            'name' => 'British Pound Sterling',
-            'symbol' => '£',
+            'name' => 'Nigerian Naira',
+            'symbol' => '₦',
             'exchange_rate' => 1,
-            'code' => 'GBP',
-            'icon'=>'🇬🇧'
+            'code' => 'NGN',
+            'icon' => '🇳🇬',
+            'is_default' => 1,
         ]);
 
         Currency::create([
-            'name' => 'Nigerian Naira',
-            'symbol' => '₦',
-            'exchange_rate' => 1200,
-            'code' => 'NGN',
-            'icon'=>'🇳🇬'
+            'name' => 'British Pound Sterling',
+            'symbol' => '£',
+            'exchange_rate' => 1400,
+            'code' => 'GBP',
+            'icon' => '🇬🇧',
         ]);
 
         Currency::create([
             'name' => 'US Dollar',
             'symbol' => '$',
-            'exchange_rate' => 1.22,
+            'exchange_rate' => 1140,
             'code' => 'USD',
-            'icon'=>'🇺🇸'
+            'icon' => '🇺🇸',
         ]);
 
     }

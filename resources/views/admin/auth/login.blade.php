@@ -1,58 +1,53 @@
 @extends('admin.layout.login-layout')
 
 @section('content')
-<div class="auth-box">
-    <div class="top">
-        <img src="https://www.wrraptheme.com/templates/lucid/html/assets/images/logo-white.svg" alt="Lucid">
-    </div>
-    <div class="card">
-        <div class="header">
-            <p class="lead">Login to your account</p>
-        </div>
-        <div class="body">
-            <form class="row g-3 needs-validation" autocomplete="off" method="POST" action="{{ route('admin.login') }}">
-                @csrf
-                <div class="col-12">
-                    <div class="form-group">
-                        <div class="input-group has-validation">
-                            <input name="email" type="email" placeholder="Email" class="form-control" value="{{ old('email') }}" required
-                                autocomplete="email" autofocus>
+<main class="d-flex w-100 h-100">
+    <div class="container d-flex flex-column">
+        <div class="row vh-100">
+            <div class="col-sm-10 col-md-8 col-lg-6 col-xl-5 mx-auto d-table h-100">
+                <div class="d-table-cell align-middle">
+
+                    <div class="text-center mt-4">
+                        <h1 class="h2">Welcome back!</h1>
+                        <p class="lead">
+                            Sign in to your account to continue
+                        </p>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="m-sm-3">
+                                <form class="needs-validation" autocomplete="off" method="POST"
+                                    action="{{ route('admin.login') }}">
+                                    @csrf
+                                    <div class="mb-3">
+                                        <label class="form-label">Email</label>
+                                        <input class="form-control form-control-lg" type="email" name="email"
+                                            placeholder="Enter your email" required autocomplete="email" autofocus>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Password</label>
+                                        <input class="form-control form-control-lg" type="password" name="password"
+                                            placeholder="Enter your password">
+                                    </div>
+                                    <div>
+                                        <div class="form-check align-items-center">
+                                            <input id="customControlInline" type="checkbox" class="form-check-input"
+                                                value="remember-me" name="remember-me" checked="">
+                                            <label class="form-check-label text-small"
+                                                for="customControlInline">Remember me</label>
+                                        </div>
+                                    </div>
+                                    <div class="d-grid gap-2 mt-3">
+                                        <button class="btn btn-lg btn-primary" type="submit">Sign in</button>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-12">
-                    <div class="form-group">
-                        <input id="password" type="password" placeholder="Password" class="form-control" name="password" required
-                        autocomplete="current-password">
-                    </div>
-                </div>
-                {{-- <div class="col-12">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember')
-                            ? 'checked' : '' }}>
-                        <label class="form-check-label" for="rememberMe">Remember me</label>
-                    </div>
-                </div> --}}
-                {{-- <div class="col">
-                    <div class="form-group clearfix">
-                        <label class="fancy-checkbox element-left">
-                            <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-                            <span>Remember me</span>
-                        </label>
-                    </div>
-                </div> --}}
-                <div class="col-12">
-                    <button class="btn btn-dark btn-lg w-100" type="submit">Login</button>
-                </div>
-                @if (Route::has('password.request'))
-                <div class="col-12 d-none">
-                    <p class="small mb-0"> <a href="">Forgot
-                            password</a></p>
-                </div>
-                @endif
-            </form>
+            </div>
         </div>
     </div>
-</div>
-
+</main>
 @endsection

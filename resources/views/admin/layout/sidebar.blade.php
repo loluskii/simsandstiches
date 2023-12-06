@@ -1,4 +1,4 @@
-<div id="left-sidebar" class="sidebar">
+{{-- <div id="left-sidebar" class="sidebar">
     <div class="">
         <div class="user-account">
             <hr>
@@ -29,17 +29,79 @@
                     <a href="#" class="has-arrow"><i class="icon-globe"></i> <span>Customers</span></a>
                     <ul>
                         <li><a href="{{ route('admin.user.index') }}">List</a></li>
-                        {{-- <li><a href="blog-list.html">Newsletter Subscriptions</a></li> --}}
+                        <li><a href="blog-list.html">Newsletter Subscriptions</a></li>
                     </ul>
                 </li>
                 <li>
                     <a href="#" class="has-arrow"><i class="icon-diamond"></i> <span>Settings</span></a>
                     <ul>
-                        {{-- <li><a href="ui-typography.html">Locales</a></li> --}}
+                        <li><a href="ui-typography.html">Locales</a></li>
                         <li><a href="{{ route('admin.settings.currency.index') }}">Currency Settings</a></li>
+                        <li><a href="{{ route('admin.settings.currency.index') }}">Shipping Settings</a></li>
                     </ul>
                 </li>
             </ul>
         </nav>
     </div>
-</div>
+</div> --}}
+
+<nav id="sidebar" class="sidebar js-sidebar">
+    <div class="sidebar-content js-simplebar">
+        <a class="sidebar-brand" href="{{ route('admin.dashboard') }}">
+            <span class="align-middle">AdminKit</span>
+        </a>
+
+        <ul class="sidebar-nav">
+            <li class="sidebar-header">
+                Administrator
+            </li>
+
+            <li class="sidebar-item {{ Route::is('admin.dashboard') ? 'active' : '' }}">
+                <a class="sidebar-link" href="{{ route('admin.dashboard') }}">
+                    <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
+                </a>
+            </li>
+
+            <li class="sidebar-item {{ Route::is('admin.orders.*') ? 'active' : '' }}">
+                <a class="sidebar-link" href="{{ route('admin.orders.index') }}">
+                    <i class="align-middle" data-feather="package"></i> <span class="align-middle">Orders</span>
+                </a>
+            </li>
+
+            <li class="sidebar-item {{ Route::is('admin.products.index') ? 'active' : '' }}">
+                <a class="sidebar-link" href="{{ route('admin.products.index') }}">
+                    <i class="align-middle" data-feather="folder"></i> <span class="align-middle">Products</span>
+                </a>
+            </li>
+
+            <li class="sidebar-item {{ Route::is('admin.user.*') ? 'active' : '' }}">
+                <a class="sidebar-link" href="{{ route('admin.user.index') }}">
+                    <i class="align-middle" data-feather="user"></i> <span class="align-middle">Customers
+                    </span>
+                </a>
+            </li>
+
+            <li class="sidebar-item {{ Route::is('admin.transactions.*') ? 'active' : '' }}">
+                <a class="sidebar-link" href="{{ route('admin.transactions.index') }}">
+                    <i class="align-middle" data-feather="credit-card"></i> <span class="align-middle">Transactions</span>
+                </a>
+            </li>
+
+            <li class="sidebar-header">
+               Site Settings
+            </li>
+
+            <li class="sidebar-item {{ Route::is('admin.settings.currency.index') ? 'active' : '' }}">
+                <a class="sidebar-link" href="{{ route('admin.settings.currency.index') }}">
+                    <i class="align-middle" data-feather="bar-chart-2"></i> <span class="align-middle">Currencies</span>
+                </a>
+            </li>
+
+            <li class="sidebar-item {{ Route::is('admin.settings.shipping.index') ? 'active' : '' }}">
+                <a class="sidebar-link" href="{{ route('admin.settings.shipping.index') }}">
+                    <i class="align-middle" data-feather="truck"></i> <span class="align-middle">Shipping Rates</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
