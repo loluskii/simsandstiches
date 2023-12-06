@@ -85,7 +85,7 @@
 
         @else
         <header class="header border-bottom">
-            <div class="d-flex align-items-center justify-content-end top py-2 bg-dark px-2 px-lg-5 px-md">
+            <div class="d-flex d-none align-items-center justify-content-end top py-2 bg-dark px-2 px-lg-5 px-md">
                 {{-- <p class="mb-0 text-white text-decoration-underline d-no" style="cursor: pointer;"
                     data-bs-toggle="modal" data-bs-target="#size-chart">Size Chart</p> --}}
                 @include('partials.size-chart')
