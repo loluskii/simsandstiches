@@ -69,12 +69,12 @@
             <aside class="col-md-6 text-center pb-3 pb-md-3 pb-lg-3 pb-xl-3">
                 <div class="row">
                     <div class="col-lg-9 col-md-9 col-sm-12 product-image">
-                        <img src="{{ $product->images()->first()->url ?? '' }}" id="product-image" style=""
+                        <img src="{{ $product->images()->first()->url ?? '' }}" loading="lazy" id="product-image" style=""
                             class="primary img-fluid">
                     </div>
                     <div class="col-lg-3 col-md-3 col-sm-12 ">
                         <div
-                            class="img-small-wrap d-flex justify-content-start align-items-center flex-lg-column flex-md-column flex-sm-row order-lg-1 mt-lg-0 mt-md-0 mt-3">
+                            class="img-small-wrap d-flex justify-content-start align-items-center flex-lg-column flex-md-column flex-sm-row order-lg-1 mt-lg-0 mt-md-0 mt-3 overflow-auto">
                             @foreach ($product->images->take(5) as $image)
                             <div class="item-gallery d-flex align-items-center ">
                                 <a href="#" class="thumbnail mb-3" data-big="{{ $image->url ?? '' }}"
