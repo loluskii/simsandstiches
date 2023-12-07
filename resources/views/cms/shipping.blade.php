@@ -52,13 +52,6 @@
                     in customers' bank account.</li>
             </ul>
 
-            <h6 class="mt-4">METHOD OF REFUNDING:</h6>
-            <ul>
-                <li>Refunds are issued minus the cost of shipping via the same payment gateway the item(s) were paid for
-                    (e.g.,
-                    Paystack, PayPal).</li>
-            </ul>
-
             <h6 class="mt-4">PRODUCT CONDITION:</h6>
             <ul>
                 <li>ALL items must be received unworn, undamaged, free from blemishes and in their original packaging to

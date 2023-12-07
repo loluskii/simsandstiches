@@ -1,0 +1,5 @@
+shipping location settings
+payment provider settings
+homepage content management - sections
+shipping locations
+

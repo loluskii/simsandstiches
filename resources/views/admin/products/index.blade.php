@@ -166,6 +166,7 @@
 <script>
     var i=0;
     var j=0;
+
     $('#add_attributes').click(function(){
 		i++;
 		$('#dynamic_field_attributes').append(`

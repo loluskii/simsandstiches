@@ -67,22 +67,22 @@
                         <div class="product_action_dynamic_field_attributes">
 			    <input type="hidden" name="no_of_attributes" value="{{ count($product->attributes) }}" />
                             @foreach ($product->attributes as $key => $value)
-                            <div class="attribute_row_{{ $key }}">
-                                <div class="input-group mb-2" id="attribute_input_group_{{ $key }}">
+                            <div class="attribute_row_{{ $key+1 }}">
+                                <div class="input-group mb-2" id="attribute_input_group_{{ $key+1 }}">
                                     <button type="button" class="btn btn-danger btn-sm attribute_btn_remove">-</button>
 
-                                    <input type="text" name="attributes[{{ $key }}][attribute_name]"
+                                    <input type="text" name="attributes[{{ $key+1 }}][attribute_name]"
                                         class="form-control" placeholder="Name" value="{{ $value->attribute_name }}">
-                                    <input type="text" name="attributes[{{ $key }}][value]" value="{{ $value->value }}"
+                                    <input type="text" name="attributes[{{ $key+1 }}][value]" value="{{ $value->value }}"
                                         class="form-control" placeholder="Value">
-                                    <input type="text" name="attributes[{{ $key }}][extra_cost]"
+                                    <input type="text" name="attributes[{{ $key+1 }}][extra_cost]"
                                         class="form-control extra-cost-input" placeholder="Extra Cost"
                                         value="{{ $value->cost }}" style="{{ $value->cost > 0 ? '' : 'display:none' }}">
 
                                 </div>
                                 <label
-                                    class="form-check has_extra_cost_{{ $key }} d-flex align-items-center justify-content-end mb-2">
-                                    <input class="form-check-input me-1" name="attributes[{{ $key }}][has_extra_cost]"
+                                    class="form-check has_extra_cost_{{ $key+1 }} d-flex align-items-center justify-content-end mb-2">
+                                    <input class="form-check-input me-1" name="attributes[{{ $key+1 }}][has_extra_cost]"
                                         type="checkbox" id="has_extra_cost_${i}" {{ $value->cost > 0 ? 'checked' : ''
                                     }}>
                                     <span class="form-check-label small">
@@ -104,7 +104,7 @@
                             @foreach ($product->images as $key => $value)
                             <div class="input-group mb-2" id="image_urls_row">
                                 <button type="button" class="btn btn-danger btn-sm image_urls_btn_remove">-</button>
-                                <input type="text" name="image_urls[{{ $key }}]" class="form-control" placeholder="Name"
+                                <input type="text" name="image_urls[{{ $key+1 }}]" class="form-control" placeholder="Name"
                                     value="{{ $value->url }}">
                             </div>
                             @endforeach

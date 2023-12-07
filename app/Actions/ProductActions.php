@@ -56,6 +56,7 @@ class ProductActions
 
     public static function update($request, $id)
     {
+        dd($request->all());
         return DB::transaction(function () use ($request, $id) {
 
             $product = Product::findOrFail($id);

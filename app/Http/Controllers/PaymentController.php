@@ -2,25 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use App\Actions\OrderActions;
-use App\Actions\VerifyTransaction;
-use App\Helpers\Helper;
-use App\Jobs\AdminOrderNotification;
-use App\Jobs\SendOrderInvoice;
-use App\Models\Address;
-use Illuminate\Support\Str;
-use App\Models\Currency;
-use App\Models\Order;
-use App\Models\Payment;
-use App\Models\Shipping;
-use App\Models\User;
-use App\Services\OrderQueries;
-use Exception;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Http;
 use Paystack;
+use Exception;
+use App\Models\User;
+use App\Models\Order;
+use App\Helpers\Helper;
+use App\Models\Address;
+use App\Models\Currency;
+use App\Models\Shipping;
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use App\Actions\OrderActions;
+use App\Jobs\SendOrderInvoice;
+use App\Services\OrderQueries;
+use App\Actions\VerifyTransaction;
+use Illuminate\Support\Facades\DB;
+use App\Jobs\AdminOrderNotification;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
 
 class PaymentController extends Controller
 {
