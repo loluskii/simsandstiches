@@ -65,6 +65,7 @@
                                 Attributes</button>
                         </div>
                         <div class="product_action_dynamic_field_attributes">
+			    <input type="hidden" name="no_of_attributes" value="{{ count($product->attributes) }}" />
                             @foreach ($product->attributes as $key => $value)
                             <div class="attribute_row_{{ $key }}">
                                 <div class="input-group mb-2" id="attribute_input_group_{{ $key }}">
@@ -99,6 +100,7 @@
                                 URL</button>
                         </div>
                         <div class="product_action_dynamic_field_image_urls">
+			    <input type="hidden" name="no_of_images" value="{{ count($product->images) }}" />
                             @foreach ($product->images as $key => $value)
                             <div class="input-group mb-2" id="image_urls_row">
                                 <button type="button" class="btn btn-danger btn-sm image_urls_btn_remove">-</button>

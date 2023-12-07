@@ -8,6 +8,7 @@ use App\Helpers\Helper;
 use App\Jobs\AdminOrderNotification;
 use App\Jobs\SendOrderInvoice;
 use App\Models\Address;
+use Illuminate\Support\Str;
 use App\Models\Currency;
 use App\Models\Order;
 use App\Models\Payment;
@@ -151,11 +152,11 @@ class PaymentController extends Controller
         try {
             $res = Http::withToken(config('paystack.secretKey'))->post('https://api.paystack.co/transaction/initialize', [
                 'metadata' => json_encode($request->metadata),
-                'reference' => $request->reference,
+                'reference' => Str::random(17),
                 'currency' => $request->currency,
                 'amount' => $request->amount,
                 'email' => $request->email,
-                'callback_url' => 'https://simsandstiches.test/payment/callback',
+                'callback_url' => 'https://simssandstitches.com/payment/callback',
             ]);
 
             $result = $res->collect();
@@ -199,15 +200,15 @@ class PaymentController extends Controller
                 $payment->save();
                 DB::commit();
 
-                $admin = User::where('is_admin', 1)->get();
+//              $admin = User::where('is_admin', 1)->get();
                 $user = $newOrder->shipping_email;
 
                 \Cart::session(Helper::getSessionID())->clear();
                 request()->session()->forget('order');
                 request()->session()->forget('session');
 
-                AdminOrderNotification::dispatch($newOrder, $admin);
-                SendOrderInvoice::dispatch($newOrder, $user)->delay(now()->addMinutes(3));
+//                AdminOrderNotification::dispatch($newOrder, $admin);
+//                SendOrderInvoice::dispatch($newOrder, $user)->delay(now()->addMinutes(3));
 
                 return redirect()->route('checkout.success', ['reference' => $newOrder->order_reference]);
             }

@@ -66,7 +66,7 @@
 <div class="container">
     <div class="border-0 mb-5">
         <div class="row main-content justify-content-center">
-            <aside class="col-md-5 text-center pb-3 pb-md-3 pb-lg-3 pb-xl-3">
+            <aside class="col-md-6 text-center pb-3 pb-md-3 pb-lg-3 pb-xl-3">
                 <div class="row">
                     <div class="col-lg-9 col-md-9 col-sm-12 product-image">
                         <img src="{{ $product->images()->first()->url ?? '' }}" id="product-image" style=""

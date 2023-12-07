@@ -193,18 +193,18 @@
         </div>`)
 	});
 
-
+    let count_attributes = $('input[name=no_of_attributes]').val();
     $('.product_action_add_attributes').click(function(){
-        i++;
+        count_attributes++;
         $('.product_action_dynamic_field_attributes').append(`
             <div class="attribute_row">
-                <div class="input-group mb-2" id="attribute_row_${i}">
-                    <button type="button" name="add" id="${i}" class="btn btn-danger attribute_btn_remove btn-sm">-</button>
-                    <input type="text" name="attributes[${i}][attribute_name]" class="form-control" placeholder="Name">
-                    <input type="text" name="attributes[${i}][value]" class="form-control" placeholder="Value">
+                <div class="input-group mb-2" id="attribute_row_${count_attributes}">
+                    <button type="button" name="add" id="${count_attributes}" class="btn btn-danger attribute_btn_remove btn-sm">-</button>
+                    <input type="text" name="attributes[${count_attributes}][attribute_name]" class="form-control" placeholder="Name">
+                    <input type="text" name="attributes[${count_attributes}][value]" class="form-control" placeholder="Value">
                 </div>
-                <label class="form-check product_action_has_extra_cost_${i} d-flex align-items-center justify-content-end mb-2">
-                    <input class="form-check-input me-1" name="attributes[${i}][has_extra_cost]" type="checkbox" id="has_extra_cost_${i}">
+                <label class="form-check product_action_has_extra_cost_${count_attributes} d-flex align-items-center justify-content-end mb-2">
+                    <input class="form-check-input me-1" name="attributes[${count_attributes}][has_extra_cost]" type="checkbox" id="has_extra_cost_${i}">
                     <span class="form-check-label small">
                         Has Extra Cost
                     </span>
@@ -213,12 +213,13 @@
         `)
     });
 
+    let count = $('input[name=no_of_images]').val();
     $('.product_action_add_image_urls').click(function(){
-        j++;
+        count++;
         $('.product_action_dynamic_field_image_urls').append(`
         <div class="input-group mb-2" id="image_urls_row">
-            <button type="button" name="add" id="${i}" class="btn btn-danger image_urls_btn_remove btn-sm">-</button>
-            <input type="text" name="image_urls[${i}]" class="form-control" placeholder="Image URL">
+            <button type="button" name="add" id="${count}" class="btn btn-danger image_urls_btn_remove btn-sm">-</button>
+            <input type="text" name="image_urls[${count}]" class="form-control" placeholder="Image URL">
         </div>`)
     });
 

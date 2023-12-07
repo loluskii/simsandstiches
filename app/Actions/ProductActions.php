@@ -73,7 +73,7 @@ class ProductActions
                     $attribute->product_id = $product->id;
                     $attribute->attribute_name = $value['attribute_name'];
                     $attribute->value = $value['value'];
-                    $attribute->cost = $value['has_extra_cost'] ? $value['extra_cost'] : 0;
+                    $attribute->cost = $value['has_extra_cost'] ?? 0;
                     $attribute->save();
                 }
             }
