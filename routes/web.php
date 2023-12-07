@@ -1,16 +1,17 @@
 <?php
 
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\BaseController;
-use App\Http\Controllers\CartController;
-use App\Http\Controllers\CurrencyController;
-use App\Http\Controllers\ForgotPasswordController;
-use App\Http\Controllers\PaymentController;
-use App\Http\Controllers\UserController;
-use Illuminate\Foundation\Auth\EmailVerificationRequest as NewRegistrationVerificationEmail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BaseController;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\CurrencyController;
+use App\Http\Controllers\SubscribersController;
+use App\Http\Controllers\ForgotPasswordController;
+use Illuminate\Foundation\Auth\EmailVerificationRequest as NewRegistrationVerificationEmail;
 
 /*
 |--------------------------------------------------------------------------
@@ -123,6 +124,8 @@ Route::middleware(['force_maintenance'])->group(function () {
         Route::get('/user/order/{ref}', [UserController::class, 'show'])->name('user.order.show');
         Route::post('/user/update', [UserController::class, 'edit'])->name('user.edit.address');
     });
+
+    Route::post('/subscriber/store', [SubscribersController::class, 'store'])->name('store.subscriber');
 
     //Custom Orders
     Route::get('/custom-order', function () {
