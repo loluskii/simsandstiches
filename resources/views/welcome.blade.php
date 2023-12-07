@@ -55,10 +55,10 @@
     }
 
     .jumbotron {
-        background-image: url("{{ secure_asset('images/pexels-godisable-jacob-928000.jpg') }}");
+        background-image: url("{{ secure_asset('images/simiExports-33 (1).jpg') }}");
         background-color: #cccccc;
         /* height: 700px; */
-        background-position: center;
+        background-position: center 33% ;
         background-repeat: no-repeat;
         background-size: cover;
         position: relative;
@@ -148,7 +148,7 @@
         <div class="overlay"></div>
         <div class="header-text">
             <h3>get your best wears for your best moments</h3>
-            <button class="btn btn-dark px-3">SHOP NOW</button>
+            <a class="btn btn-dark px-3" href="{{ route('shop') }}">SHOP NOW</a>
         </div>
     </div>
     <div class="section-1 py-5">

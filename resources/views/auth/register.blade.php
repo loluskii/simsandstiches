@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-Register | Sims & Stitches
+Register | Simss & Stitches
 @endsection
 
 @section('css')

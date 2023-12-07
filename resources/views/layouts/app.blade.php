@@ -2,11 +2,11 @@
 <html lang="en">
 
 <head>
-    <title>Amari | Simss & Stitches</title>
+    <title>Simss & Stitches</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="keywords" content="Online Shopping, Online Fashion, fashion, fashion stores, sims and stiches">
+    <meta name="keywords" content="Online Shopping, Online Fashion, fashion, fashion stores, Simss and stiches">
     <meta name="description"
         content="Elevate your style with Simss & Stitches - where tradition meets elegant fashion in the heart of Africa.">
     <meta property="og:image" content="{{ secure_asset('images/favicon/android-chrome-512x512.png') }}" />
@@ -76,6 +76,120 @@
             // transition: width .3s;
         }
     </style>
+    <style>
+        .modal-newsletter {
+            color: #9f9f9f;
+            /* width: 525px; */
+            font-size: 15px;
+        }
+
+        .modal-newsletter .modal-content {
+            padding: 20px 30px;
+            border-radius: 1px;
+            border: none;
+        }
+
+        .modal-newsletter .modal-header {
+            border-bottom: none;
+            position: relative;
+            text-align: center;
+            border-radius: 5px 5px 0 0;
+        }
+
+        .modal-newsletter h4 {
+            color: #000;
+            text-align: center;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 800;
+            font-size: 30px;
+            margin: 0;
+            text-transform: uppercase;
+        }
+
+        .modal-newsletter .close {
+            position: absolute;
+            top: -25px;
+            right: -35px;
+            color: #c0c3c8;
+            text-shadow: none;
+            opacity: 0.5;
+            font-size: 26px;
+            font-weight: normal;
+        }
+
+        .modal-newsletter .close:hover {
+            opacity: 0.8;
+        }
+
+        .modal-newsletter .form-control,
+        .modal-newsletter .btn {
+            min-height: 46px;
+            text-align: center;
+            border-radius: 1px;
+        }
+
+        .modal-newsletter .form-control {
+            box-shadow: none;
+            background: #f5f5f5;
+            border-color: #d5d5d5;
+        }
+
+        .modal-newsletter .form-control:focus {
+            border-color: #ccc;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .modal-newsletter .btn {
+            color: #fff;
+            background: #353535;
+            text-decoration: none;
+            transition: all 0.4s;
+            line-height: normal;
+            padding: 6px 20px;
+            border: none;
+            margin-top: 20px;
+            font-family: 'Raleway', sans-serif;
+            text-transform: uppercase;
+        }
+
+        .modal-newsletter .btn:hover,
+        .modal-newsletter .btn:focus {
+            background: #171717;
+            outline: none;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-newsletter .form-group {
+            padding: 0 20px;
+            margin-top: 30px;
+        }
+
+        .modal-newsletter .footer-link {
+            margin-top: 20px;
+            min-height: 25px;
+        }
+
+        .modal-newsletter .footer-link a {
+            color: #353535;
+            display: inline-block;
+            border-bottom: 2px solid;
+            font-weight: bold;
+            text-align: center;
+            text-transform: uppercase;
+            font-size: 14px;
+        }
+
+        .modal-newsletter .footer-link a:hover,
+        .modal-newsletter .footer-link a:focus {
+            text-decoration: none;
+            border: none;
+        }
+
+        .hint-text {
+            margin: 100px auto;
+            text-align: center;
+        }
+    </style>
     @yield('css')
 </head>
 
@@ -90,8 +204,8 @@
                     data-bs-toggle="modal" data-bs-target="#size-chart">Size Chart</p> --}}
                 @include('partials.size-chart')
                 <div class="col-auto">
-                    <select class="form-select form-select-sm rounded-0 bg-transparent currency text-white" name="currency"
-                        id="currency">
+                    <select class="form-select form-select-sm rounded-0 bg-transparent currency text-white"
+                        name="currency" id="currency">
                         @php
                         $currencies = App\Models\Currency::where('status','active')->get();
                         App\Helpers\Helper::currency_load();
@@ -136,7 +250,7 @@
                                 <i class="bi bi-search me-3" style="font-size: 20px"></i>
                                 <div>
                                     <a data-bs-toggle="modal" data-bs-target="#modelId">
-                                        <i class="bi bi-bag" style="font-size: 20px"></i>
+                                        <i class="bi bi-bag me-3" style="font-size: 20px"></i>
                                         <span
                                             class="position-absolute bage start-100 translate-middle p-1 bg-dark border border-light rounded-circle {{ \Cart::session(App\Helpers\Helper::getSessionID())->getContent()->count() > 0 ? '' : 'd-none'}}"></span>
                                     </a>
@@ -197,13 +311,6 @@
 
         </header>
 
-
-
-        <!-- Optional: Place to the bottom of scripts -->
-        <script>
-            const myModal = new bootstrap.Modal(document.getElementById('modalId'), options)
-
-        </script>
         @include('partials.mobile-nav')
         @include('partials.cart-modal')
         @endif
@@ -222,8 +329,35 @@
             @include('layouts.footer')
         </div>
         @endif
+
+        <div id="subscribeModal" class="modal fade" tabindex="-1" role="dialog">
+            <!-- Modal content goes here -->
+            <div class="modal-dialog" role="document">
+                <div class="modal-dialog modal-dialog-centered modal-newsletter">
+                    <div class="modal-content">
+                        <form>
+                            <div class="modal-header justify-content-center">
+                                <h4>Join Our Newsletter</h4>
+                            </div>
+                            <div class="modal-body text-center">
+                                <p>Subscribe our newsletter to receive the latest news and exclusive offers every week.
+                                    No spam.</p>
+                                <div class="form-group">
+                                    <input type="email" name="email" class="form-control subscriber-email"
+                                        placeholder="Enter your email" required="">
+                                    <input type="button" class="btn btn-primary btn-block subscriber-submit"
+                                        value="Subscribe">
+                                </div>
+                                <div class="footer-link"><a href="#" data-bs-dismiss="modal">No Thanks</a></div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     @include('layouts.footer-scripts')
+
     <!-- Modal trigger button -->
     @yield('scripts')
 

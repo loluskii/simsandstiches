@@ -68,7 +68,8 @@
                 <div class="col-md-11 col-12">
                     <div class="main ps-0 ms-0 ps-md-5 ms-md-5 ps-lg-5">
                         <div class="header text-center">
-                            <img src="{{ secure_asset('images/sss-logo.png') }}" class="img-fluid" style="height: 40px;" alt="">
+                            <img src="{{ secure_asset('images/sss-logo.png') }}" class="img-fluid" style="height: 40px;"
+                                alt="">
                             <nav aria-label="breadcrumb" class="pb-4 text-center">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item " aria-current="page"><a
@@ -150,15 +151,17 @@
                                         <div class="d-flex align-items-center justify-content-between">
                                             <div class="d-flex w-100 justify-content-start align-items-center">
                                                 <input type="radio" class="form-check-input me-4 mt-0 shipping-location"
-                                                    value="{{ $location->id }}" name="shipping" {{
-                                                    $attributes && $attributes['id']===$location->id ? 'checked' : '' }}>
+                                                    value="{{ $location->id }}" name="shipping" {{ $attributes &&
+                                                    $attributes['id']===$location->id ? 'checked' : '' }}>
 
                                                 <div class="d-flex w-100 justify-content-between align-items-center">
                                                     <div>
                                                         <h5 class="h6 mb-0">{{ $location->group_name }}</h5>
                                                         <p class="text-muted mb-0">{{ $location->group_locations }}</p>
                                                     </div>
-                                                    <span>{{ $currency_symbol }}{{ number_format($location->price, 2)
+                                                    <span>{{ $currency_symbol }}{{
+                                                        number_format(App\Helpers\Helper::currency_converter($location->price),
+                                                        2)
                                                         }}</span>
                                                 </div>
                                             </div>

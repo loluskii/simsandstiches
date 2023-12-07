@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-8 col-12 mx-auto">
             <h4>Refunds and Exchanges</h4>
-            <p>Sims & Stitches Brand prides itself in offering the highest quality merchandise to meet the needs of our
+            <p>Simss & Stitches Brand prides itself in offering the highest quality merchandise to meet the needs of our
                 clients. We thoroughly inspect ALL items before shipping. ALL sales are final; ALL items are made to
                 order
                 so we DO NOT issue refunds on any items.

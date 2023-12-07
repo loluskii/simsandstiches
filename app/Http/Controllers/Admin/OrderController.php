@@ -52,7 +52,7 @@ class OrderController extends Controller
                 // dd($newOrder);
                 $user = $newOrder->shipping_email;
                 $res = OrderActions::update($request, $id);
-                $status = "Thank you for shopping with Sims & Stitches. Your order has been delivered. We look forward to you shopping with us again soon.";
+                $status = "Thank you for shopping with Simss & Stitches. Your order has been delivered. We look forward to you shopping with us again soon.";
                 if ($res) {
                     try {
                         SendOrderUpdate::dispatch($newOrder, $user, $status)->delay(now()->addMinutes(3));

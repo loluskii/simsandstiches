@@ -5,7 +5,7 @@
     <div class="row py-5">
         <div class="col-md-7 mx-auto">
             <h2 style="font-weight: 300">Custom Design Order</h2>
-            <p>In addition to the designs offered in our collections, Sims & Stitches also
+            <p>In addition to the designs offered in our collections, Simss & Stitches also
                 offers custom designs for any client that wants to bring their
                 dream dress to life.</p>
 

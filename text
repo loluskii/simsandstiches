@@ -15,7 +15,7 @@
                     "name" => $request->name,
                 ],
                 "customizations" => [
-                    "title" => 'Sims & Stitches',
+                    "title" => 'Simss & Stitches',
                     "description" => Carbon::now(),
                 ],
             ];

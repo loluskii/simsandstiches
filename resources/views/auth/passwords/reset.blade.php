@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-Reset Password | Sims & Stitches
+Reset Password | Simss & Stitches
 @endsection
 
 @section('css')

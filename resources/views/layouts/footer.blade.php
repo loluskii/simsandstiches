@@ -42,13 +42,7 @@
                         <li class="Linklist__Item">
                             <a href="{{ route('contact') }}" class="Link Link--primary">Contact Us</a>
                         </li>
-                        {{-- <li class="Linklist__Item">
-                            <a href="/pages/frequently-asked-questions" class="Link Link--primary">FAQs</a>
-                        </li> --}}
-                        <li class="Linklist__Item">
-                            <a href=""
-                                class="Link Link--primary">Size Chart</a>
-                        </li>
+                        
                         <li class="Linklist__Item">
                             <a href="{{ route('shipping') }}" class="Link Link--primary">Shipping</a>
                         </li>
@@ -79,15 +73,15 @@
                 <div class="Footer__Block Footer__Block--links">
                     <h2 class="Footer__Title Heading u-h6">SIGN UP FOR OUR NEWSLETTER</h2>
                     <p class="mb-0">Subscribe to receive updates, access to exclusive deals, and more.</p>
-                    <form action="">
+                    <form action="{{ route('store.subscriber') }}" method="POST">
                         @csrf
                         <div class="mb-3">
                             <label for="" class="form-label"></label>
-                            <input type="text" name="" id="" class="form-control form-control-lg rounded-0"
+                            <input type="text" name="email" id="" class="form-control form-control-lg rounded-0"
                                 placeholder="Enter your email address" aria-describedby="helpId">
                             <small id="helpId" class="text-muted">We won't share your email</small>
                         </div>
-                        <button class="btn btn-dark rounded-0">Subscribe</button>
+                        <button type="submit" class="btn btn-dark rounded-0">Subscribe</button>
                     </form>
                 </div>
             </div>
@@ -129,7 +123,7 @@
         </div>
         <div class="Footer__Aside mt-5 row justify-content-between">
             <div class="col-md-6 Footer__Copyright text-lg-start text-md-start text-center">
-                <a href="/" class="Footer__StoreName Heading u-h7 Link Link--secondary">© Sims & Stitches</a>
+                <a href="/" class="Footer__StoreName Heading u-h7 Link Link--secondary">© Simss & Stitches</a>
             </div>
             <hr class="d-md-none d-lg-none d-block">
             <div class="col-md-6 text-lg-end text-md-end text-center">
@@ -200,5 +194,3 @@
         </div>
     </div>
 </footer>
-
-

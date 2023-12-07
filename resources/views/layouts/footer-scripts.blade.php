@@ -7,6 +7,7 @@
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type="text/javascript">
 </script>
+
 <script>
     $(document).ready(function (){
         $('.currency').on('change',function (){
@@ -29,6 +30,29 @@
                 }
             })
         });
+
+        $('.subscriber-submit').on('click',function (){
+            var email = $('.subscriber-email').val();
+            $.ajax({
+                type: 'POST',
+                url: "{{ route('store.subscriber') }}",
+                data: {
+                    email: email,
+                    _token: '{{ csrf_token() }}'
+                },
+                success: function (response){
+                    if(response['success']){
+                        $('#subscribeModal').modal('hide');
+                    }
+                }
+            })
+        });
+
+        if({{ Route::is('home') }}){
+            setTimeout(function() {
+                $('#subscribeModal').modal('show');
+            }, 10000);
+        }
     })
 </script>
 <script>

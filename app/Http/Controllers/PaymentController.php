@@ -136,7 +136,7 @@ class PaymentController extends Controller
             'cart' => \Cart::session(Helper::getSessionID())->getContent(),
             'subamount' => \Cart::session(Helper::getSessionID())->getSubTotal(),
         ];
-        $request->merge(['metadata' => $metadata, 'reference' => $reference, 'currency' => $currency, 'amount' => $amount * 100, 'email' => $email]);
+        $request->merge(['metadata' => $metadata, 'reference' => $reference, 'currency' => $currency, 'amount' => (int)($amount * 100), 'email' => $email]);
         return $this->getRedirectUrl($request);
     }
 
