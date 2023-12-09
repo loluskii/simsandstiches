@@ -58,7 +58,7 @@
         background-image: url("{{ secure_asset('images/simiExports-33 (1).jpg') }}");
         background-color: #cccccc;
         /* height: 700px; */
-        background-position: center 33% ;
+        background-position: center 33%;
         background-repeat: no-repeat;
         background-size: cover;
         position: relative;
@@ -169,7 +169,7 @@
             $currency_code = $system_default_currency_info->code;
             }
             @endphp
-            <div class="col-md-3 col-6 mb-3">
+            <div class="col-sm-3 col-md-4 col-6 mb-3">
                 <a class=" text-decoration-none" href="{{ route('shop.product.show',$product->slug) }}">
                     <div class="card rounded-0 border-0">
                         <div class="product-image"
@@ -193,11 +193,14 @@
         </div>
     </div>
     <div class="p-5 mb-4 bg-light rounded-3 jumbotron" style="height: 400px">
-        <div class="container-fluid col-md-4 offset-8 fs-6 py-3 mt-3 mb-5 bg-light bg-opacity-50">
+        <div
+            class="container-fluid col-sm-6 col-md-6 col-lg-4 col-xl-4 offset-8 fs-6 py-3 mt-3 mb-5 bg-light bg-opacity-50">
             <h3 class="text-capitalize">sustainable fashion</h3>
-            <p class="">Conscious of our carbon footprint, we utilize several avenues to actualise sustainability using: natural dyes for our Adire, 100% cotton materials, and a slow fashion approach in producing our materials.</p>
-	    <a class="btn btn-dark btn-sm" href="#">Learn more</a>       
- </div>
+            <p class="">Conscious of our carbon footprint, we utilize several avenues to actualise sustainability using:
+                natural dyes for our Adire, 100% cotton materials, and a slow fashion approach in producing our
+                materials.</p>
+            <a class="btn btn-dark btn-sm" href="{{ route('about') }}">Learn more</a>
+        </div>
     </div>
 </div>
 {{-- <div class="container py-5 d-none">
@@ -235,24 +238,4 @@
 
     </div>
 </div> --}}
-@endsection
-@section('scripts')
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        var video = document.querySelector('.header-video');
-
-        // Check if the video element exists
-        if (video) {
-            // Pause the video on load for mobile devices
-            video.pause();
-
-            // Play the video on click for mobile devices
-            document.addEventListener('click', function () {
-                if (video.paused) {
-                    video.play();
-                }
-            });
-        }
-    });
-</script>
 @endsection

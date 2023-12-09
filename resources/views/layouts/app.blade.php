@@ -281,6 +281,9 @@
                             <li class="nav-item mx-4">
                                 <a class="nav-link" aria-current="page" href="{{ route('home') }}">HOME</a>
                             </li>
+                            <li class="nav-item mx-4">
+                                <a class="nav-link" aria-current="page" href="{{ route('about') }}">ABOUT US</a>
+                            </li>
                             @foreach (App\Models\Category::all() as $item)
                             <li class="nav-item mx-4">
                                 <a class="nav-link text-uppercase" aria-current="page"
@@ -332,7 +335,7 @@
 
         <div id="subscribeModal" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" role="dialog">
             <!-- Modal content goes here -->
-            <div class="modal-dialog" role="document">
+            <div class="modal-dialog " role="document">
                 <div class="modal-dialog modal-dialog-centered modal-newsletter">
                     <div class="modal-content">
                         <form>

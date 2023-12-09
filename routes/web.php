@@ -127,19 +127,6 @@ Route::middleware(['force_maintenance'])->group(function () {
 
     Route::post('/subscriber/store', [SubscribersController::class, 'store'])->name('store.subscriber');
 
-    //Custom Orders
-    Route::get('/custom-order', function () {
-        $message = null;
-        return view('shop.custom')->with('message', $message);
-    })->name('custom');
-
-    Route::post('/custom-order/store', [BaseController::class, 'storeCustom'])->name('custom.store');
-
-    //Gallery
-    Route::get('/gallery', function () {
-        return view('cms.gallery');
-    })->name('gallery');
-
 });
 
 // Route::post('/bridal-order/store',[BaseController::class,'bridalOrder'])->name('store.bridal');
@@ -150,9 +137,13 @@ Route::get('/contact', function () {
     return view('cms.contact');
 })->name('contact');
 
-Route::get('/size-chart', function () {
-    return view('cms.size-chart');
-})->name('size_chart');
+Route::get('/about', function () {
+    return view('cms.about');
+})->name('about');
+
+// Route::get('/size-chart', function () {
+//     return view('cms.size-chart');
+// })->name('size_chart');
 
 Route::get('/return-policy', function () {
     return view('cms.returns');

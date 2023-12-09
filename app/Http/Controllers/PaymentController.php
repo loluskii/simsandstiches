@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Order;
 use App\Helpers\Helper;
 use App\Models\Address;
+use App\Models\Payment;
 use App\Models\Currency;
 use App\Models\Shipping;
 use Illuminate\Support\Str;
@@ -136,7 +137,7 @@ class PaymentController extends Controller
             'cart' => \Cart::session(Helper::getSessionID())->getContent(),
             'subamount' => \Cart::session(Helper::getSessionID())->getSubTotal(),
         ];
-        $request->merge(['metadata' => $metadata, 'reference' => $reference, 'currency' => $currency, 'amount' => (int)($amount * 100), 'email' => $email]);
+        $request->merge(['metadata' => $metadata, 'reference' => $reference, 'currency' => $currency, 'amount' => (int) ($amount * 100), 'email' => $email]);
         return $this->getRedirectUrl($request);
     }
 

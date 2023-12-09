@@ -16,6 +16,11 @@
                                 href="{{ route('home') }}">HOME</a>
                         </div>
 
+                        <div class="py-4 border-bottom">
+                            <a class="text-decoration-none text-uppercase" style="font-weight: 500; font-size: 0.9rem;"
+                                href="{{ route('about') }}">ABOUT</a>
+                        </div>
+
                         <div class="accordion accordion-flush py-2 border-bottom" id="accordionFlushExample">
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="flush-headingOne">
@@ -50,18 +55,6 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="py-4 border-bottom">
-                            <a class="text-decoration-none text-uppercase" style="font-weight: 500; font-size: 0.9rem;"
-                                href="{{ route('custom') }}">CUSTOM ORDER</a>
-                        </div>
-                        <div class="py-4 border-bottom">
-                            <a class="text-decoration-none text-uppercase" style="font-weight: 500; font-size: 0.9rem;"
-                                href="{{ route('gallery') }}">GALLERY</a>
-                        </div>
-                        <div class="py-4 border-bottom">
-                            <a class="text-decoration-none text-uppercase" style="font-weight: 500; font-size: 0.9rem;"
-                                href="{{ route('shop') }}">CONTACT</a>
                         </div>
                         @if (Auth::check())
                         <div class=" py-4">
