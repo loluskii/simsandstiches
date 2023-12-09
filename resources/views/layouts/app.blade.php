@@ -330,7 +330,7 @@
         </div>
         @endif
 
-        <div id="subscribeModal" class="modal fade" tabindex="-1" role="dialog">
+        <div id="subscribeModal" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" role="dialog">
             <!-- Modal content goes here -->
             <div class="modal-dialog" role="document">
                 <div class="modal-dialog modal-dialog-centered modal-newsletter">
@@ -340,7 +340,7 @@
                                 <h4>Join Our Newsletter</h4>
                             </div>
                             <div class="modal-body text-center">
-                                <p>Subscribe our newsletter to receive the latest news and exclusive offers every week.
+                                <p>Subscribe to our newsletter to receive the latest news and exclusive offers every week.
                                     No spam.</p>
                                 <div class="form-group">
                                     <input type="email" name="email" class="form-control subscriber-email"

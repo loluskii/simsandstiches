@@ -147,7 +147,7 @@
         <!-- Add an overlay div for the tint -->
         <div class="overlay"></div>
         <div class="header-text">
-            <h3>get your best wears for your best moments</h3>
+            <h3>discover african elegance here</h3>
             <a class="btn btn-dark px-3" href="{{ route('shop') }}">SHOP NOW</a>
         </div>
     </div>
@@ -194,12 +194,10 @@
     </div>
     <div class="p-5 mb-4 bg-light rounded-3 jumbotron" style="height: 400px">
         <div class="container-fluid col-md-4 offset-8 fs-6 py-3 mt-3 mb-5 bg-light bg-opacity-50">
-            <h3 class="">Look your absolute best.</h3>
-            <p class="">Using a series of utilities, you can create this jumbotron, just like the one in
-                previous versions of Bootstrap. Check out the examples below for how you can remix and restyle it to
-                your
-                liking.</p>
-        </div>
+            <h3 class="text-capitalize">sustainable fashion</h3>
+            <p class="">Conscious of our carbon footprint, we utilize several avenues to actualise sustainability using: natural dyes for our Adire, 100% cotton materials, and a slow fashion approach in producing our materials.</p>
+	    <a class="btn btn-dark btn-sm" href="#">Learn more</a>       
+ </div>
     </div>
 </div>
 {{-- <div class="container py-5 d-none">
