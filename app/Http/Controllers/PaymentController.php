@@ -200,10 +200,11 @@ class PaymentController extends Controller
                 $payment->save();
                 DB::commit();
 
-//              $admin = User::where('is_admin', 1)->get();
+                $admin = User::where('is_admin', 1)->get();
                 $user = $newOrder->shipping_email;
 
                 \Cart::session(Helper::getSessionID())->clear();
+                \Cart::session(Helper::getSessionID())->clearCartConditions();
                 request()->session()->forget('order');
                 request()->session()->forget('session');
 

@@ -65,7 +65,7 @@
 							<div class="top position-relative">
 								<i class="fa-regular fa-3x fa-circle-check position-absolute end-100 me-3" style="top: 12%"></i>
 								<p class="mb-2">Order #{{ $order->order_reference }}</p>
-								<h4>Thank you, Lolu!</h4>
+								<h4>Thank you, {{ $order->shipping_fname }}!</h4>
 							</div>
 
 							<div class="box-1 mt-5 mb-3 p-3 border rounded-2">

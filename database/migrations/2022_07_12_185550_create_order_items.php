@@ -18,9 +18,8 @@ return new class extends Migration
             $table->unsignedBigInteger('order_id');
             $table->unsignedBigInteger('product_id');
             $table->integer('price');
-            $table->smallInteger('quantity');
-            $table->string('size')->nullable();
-            $table->string('color')->nullable();
+            $table->integer('quantity');
+            $table->json('product_attributes')->nullable();
             $table->timestamps();
         });
     }

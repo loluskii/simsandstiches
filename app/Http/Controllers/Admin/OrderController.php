@@ -35,7 +35,7 @@ class OrderController extends Controller
                 $res = OrderActions::update($request, $id);
                 $status = "Your order has been completed and is ready for shipping! We'll notify you once the order has been shipped. ";
                 if ($res) {
-                    SendOrderUpdate::dispatch($newOrder, $user, $status)->delay(now()->addMinutes(3));
+                    // SendOrderUpdate::dispatch($newOrder, $user, $status)->delay(now()->addMinutes(3));
                     return back()->with('success', 'Updated successfully!');
                 }
             } else if ($request->status == 4) {
@@ -44,7 +44,7 @@ class OrderController extends Controller
                 $res = OrderActions::update($request, $id);
                 $status = "Your order has been shipped and is on its way to you!";
                 if ($res) {
-                    SendOrderUpdate::dispatch($newOrder, $user, $status)->delay(now()->addMinutes(3));
+                    // SendOrderUpdate::dispatch($newOrder, $user, $status)->delay(now()->addMinutes(3));
                     return back()->with('success', 'Updated successfully!');
                 }
             } else if ($request->status == 5) {
@@ -55,7 +55,7 @@ class OrderController extends Controller
                 $status = "Thank you for shopping with Simss & Stitches. Your order has been delivered. We look forward to you shopping with us again soon.";
                 if ($res) {
                     try {
-                        SendOrderUpdate::dispatch($newOrder, $user, $status)->delay(now()->addMinutes(3));
+                        // SendOrderUpdate::dispatch($newOrder, $user, $status)->delay(now()->addMinutes(3));
                         return back()->with('success', 'Updated successfully!');
                     } catch (\Exception $e) {
                         return back()->with('error', $e->getMessage());

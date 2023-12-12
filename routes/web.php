@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
@@ -31,17 +32,9 @@ Route::get('/x', function () {
 Route::post('currency_load', [CurrencyController::class, 'currencyLoad'])->name('currency.load');
 
 Route::get('/wipe', function () {
-    Artisan::call('migrate:reset', [
-        '--force' => true,
-    ]);
-    Artisan::call('migrate:fresh', [
-        '--force' => true,
-    ]);
-    Artisan::call('db:seed', [
-        '--force' => true,
-    ]);
-    Artisan::call('optimize:clear');
-    return 'yes';
+    DB::table('order_items')->truncate();
+    DB::table('orders')->truncate();
+    DB::table('payments')->truncate();
 });
 
 // Route::get('update/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
@@ -129,9 +122,6 @@ Route::middleware(['force_maintenance'])->group(function () {
 
 });
 
-// Route::post('/bridal-order/store',[BaseController::class,'bridalOrder'])->name('store.bridal');
-// Route::post('/bridal-order',[BaseController::class,'bespokeOrder'])->name('store.bespoke');
-
 //CMS Routes
 Route::get('/contact', function () {
     return view('cms.contact');
@@ -140,10 +130,6 @@ Route::get('/contact', function () {
 Route::get('/about', function () {
     return view('cms.about');
 })->name('about');
-
-// Route::get('/size-chart', function () {
-//     return view('cms.size-chart');
-// })->name('size_chart');
 
 Route::get('/return-policy', function () {
     return view('cms.returns');

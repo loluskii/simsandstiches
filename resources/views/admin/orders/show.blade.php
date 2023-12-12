@@ -24,17 +24,18 @@ Order {{ $order->order_number }}
 @section('content')
 <div class="row clearfix w-100">
     <div class="col-lg-3 col-md-6">
-        <div class="card overflowhidden">
-            <div class="body">
-                <h3>{{ $currency->symbol }} {{ number_format($order->subtotal, 2) }} <i class="icon-briefcase float-right"></i></h3>
+        <div class="card">
+            <div class="card-body">
+                <h3>{{ $currency->symbol }} {{ number_format($order->subtotal, 2) }} <i
+                        class="icon-briefcase float-right"></i></h3>
                 <span>Order Total</span>
             </div>
         </div>
     </div>
 
     <div class="col-lg-3 col-md-6">
-        <div class="card overflowhidden">
-            <div class="body">
+        <div class="card">
+            <div class="card-body">
                 <h3>{{ $order->item_count }}<i class="icon-clock float-right"></i></h3>
                 <span>Item Count</span>
             </div>
@@ -53,7 +54,7 @@ Order {{ $order->order_number }}
                                 <h3>Invoice</h2>
                                     {{-- <h5><button class="btn btn-sm btn-primary">Update Status</button></h5> --}}
                                     @if ($order->status != 5)
-                                    <button data-toggle="modal" data-target="#update{{ $order->order_reference }}"
+                                    <button data-bs-toggle="modal" data-bs-target="#update{{ $order->order_reference }}"
                                         class="btn btn-primary btn-sm">Update Status</button>
                                     <!-- Modal -->
                                     <div class="modal fade" id="update{{ $order->order_reference }}" tabindex="-1"
@@ -62,8 +63,8 @@ Order {{ $order->order_number }}
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <h5 class="modal-title">Update Order</h5>
-                                                    <button type="button" class="btn-close" data-dismiss="modal"
-                                                        aria-label="Close"><i class="fa fa-times"></i></button>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body pb-0">
                                                     <form action="{{ route('admin.orders.update', $order->id) }}"
@@ -89,7 +90,8 @@ Order {{ $order->order_number }}
                                                                 </option>
                                                                 @endforeach
                                                                 @elseif ( $order->status == 3)
-                                                                @foreach([ "5" => "Delivered","6" => "Cancelled"] AS $status => $statusLabel)
+                                                                @foreach([ "5" => "Delivered","6" => "Cancelled"] AS
+                                                                $status => $statusLabel)
                                                                 <option value="{{ $status }}">{{ $statusLabel }}
                                                                 </option>
                                                                 @endforeach
@@ -127,8 +129,8 @@ Order {{ $order->order_number }}
                                     $color = 'primary';
                                     $status = 'Awaiting Pickup';
                                     }elseif ($order->status == 3) {
-                                        $color = 'success';
-                                        $status = 'Shipping in Progress';
+                                    $color = 'success';
+                                    $status = 'Shipping in Progress';
                                     }elseif ($order->status == 5) {
                                     $color = 'success';
                                     $status = 'Delivered';
@@ -148,8 +150,9 @@ Order {{ $order->order_number }}
                                         <p class="mb-1">Method: <span class="text-capitalize">{{ $order->payment_method
                                                 }}</span></p>
                                         <p class="mb-1">Status: <span class="badge badge-{{ $color ?? 'success' }}">{{
-                                            $status }}</span></p>
-                                        <p>Delivered on: <span>{{ $order->status == 5 ? $order->updated_at->format('d M, Y') : ''  }}</span></p>
+                                                $status }}</span></p>
+                                        <p>Delivered on: <span>{{ $order->status == 5 ? $order->updated_at->format('d M,
+                                                Y') : '' }}</span></p>
                                     </address>
                                 </div>
                                 <div class="col-md-6 text-end">
@@ -181,8 +184,7 @@ Order {{ $order->order_number }}
                                                 <th>Item name</th>
                                                 <th>Quantity</th>
                                                 <th>Price</th>
-                                                <th>Size</th>
-                                                <th>Color</th>
+                                                <th>Attributes</th>
                                                 <th>Total</th>
 
                                             </thead>
@@ -196,15 +198,23 @@ Order {{ $order->order_number }}
                                                 <tr>
                                                     <td>{{ $item->name }}</td>
                                                     <td>{{ $item->pivot->quantity }}</td>
-                                                    <td>{{ $currency->symbol }} {{ number_format($item->pivot->price, 2) }}</td>
-                                                    <td>{{ $item->pivot->size ?? 'None' }}</td>
-                                                    <td>{{ $item->pivot->color ?? 'None' }}</td>
+                                                    <td>{{ $currency->symbol }} {{ number_format($item->pivot->price, 2)
+                                                        }}</td>
+                                                    <td>
+                                                        @if ($item->pivot->product_attributes)
+                                                        @foreach (json_decode($item->pivot->product_attributes) as
+                                                        $attribute => $value)
+                                                        <p class="mb-0">{{ $attribute }}: {{ $value->value }}</p>
+                                                        @endforeach
+                                                        @else
+                                                        None
+                                                        @endif
+                                                    </td>
                                                     <td>{{ $currency->symbol }} {{ number_format($total, 2) }}</td>
                                                 </tr>
                                                 @endforeach
 
                                                 <tr>
-                                                    <td class="thick-line"></td>
                                                     <td class="thick-line"></td>
                                                     <td class="thick-line"></td>
                                                     <td class="thick-line"></td>
@@ -217,7 +227,6 @@ Order {{ $order->order_number }}
                                                     <td class="no-line"></td>
                                                     <td class="no-line"></td>
                                                     <td class="no-line"></td>
-                                                    <td class="no-line"></td>
                                                     <td class="no-line text-start"><strong>Shipping</strong>
                                                     </td>
                                                     @php
@@ -227,7 +236,6 @@ Order {{ $order->order_number }}
                                                         number_format($shipping, 2) }}</td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="no-line"></td>
                                                     <td class="no-line"></td>
                                                     <td class="no-line"></td>
                                                     <td class="no-line"></td>

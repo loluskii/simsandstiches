@@ -16,7 +16,7 @@ Dashboard
                         <h5 class="card-title">Sales This Week</h5>
                     </div>
                 </div>
-                <h1 class="mt-1 mb-3">{{ $sales }}</h1>
+                <h1 class="mt-1 mb-3">{{ number_format($sales, 2) }}</h1>
                 <div class="mb-0 d-none">
                     <span class="badge badge-success-light"> <i class="mdi mdi-arrow-bottom-right"></i> 3.65% </span>
                     <span class="text-muted">Since last week</span>
@@ -32,7 +32,7 @@ Dashboard
                         <h5 class="card-title">Orders This Week</h5>
                     </div>
                 </div>
-                <h1 class="mt-1 mb-3">{{ $sales }}</h1>
+                <h1 class="mt-1 mb-3">{{ number_format($sales, 2) }}</h1>
                 <div class="mb-0 d-none">
                     <span class="badge badge-success-light"> <i class="mdi mdi-arrow-bottom-right"></i> 3.65% </span>
                     <span class="text-muted">Since last week</span>

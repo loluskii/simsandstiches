@@ -34,9 +34,9 @@ class OrderActions
         // $cartItems =  \Cart::session(Helper::getSessionID())->getContent();
         $newOrder->save();
         // dd($cart);
-        // foreach ($cart as $item) {
-        //     $newOrder->items()->attach($item[0], ['price' => floatval($item[1]) * $currency->exchange_rate, 'quantity' => $item[2]]);
-        // }
+        foreach ($cart as $item) {
+            $newOrder->items()->attach($item['id'], ['price' => floatval($item['price'] * $currency->exchange_rate), 'quantity' => $item['quantity'], 'product_attributes' => json_encode($item['attributes'])]);
+        }
 
         $user_address = Address::where([
             ['user_id', '=', $user_id],

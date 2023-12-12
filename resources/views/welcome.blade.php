@@ -169,7 +169,7 @@
             $currency_code = $system_default_currency_info->code;
             }
             @endphp
-            <div class="col-sm-3 col-md-4 col-6 mb-3">
+            <div class="col-sm-3 col-md-4 col-lg-3 col-6 mb-3">
                 <a class=" text-decoration-none" href="{{ route('shop.product.show',$product->slug) }}">
                     <div class="card rounded-0 border-0">
                         <div class="product-image"
