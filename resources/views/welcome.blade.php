@@ -198,7 +198,7 @@
             <h3 class="text-capitalize">sustainable fashion</h3>
             <p class="">Conscious of our carbon footprint, we utilize several avenues to actualise sustainability using:
                 natural dyes for our Adire, 100% cotton materials, and a slow fashion approach in producing our
-                materials.</p>
+                apparel.</p>
             <a class="btn btn-dark btn-sm" href="{{ route('about') }}">Learn more</a>
         </div>
     </div>
