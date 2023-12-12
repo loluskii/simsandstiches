@@ -32,15 +32,16 @@ Route::get('/x', function () {
 Route::post('currency_load', [CurrencyController::class, 'currencyLoad'])->name('currency.load');
 
 Route::get('/wipe', function () {
-    DB::table('order_items')->truncate();
-    DB::table('orders')->truncate();
-    DB::table('payments')->truncate();
+	DB::table('order_items')->truncate();
+	DB::table('orders')->truncate();
+	DB::table('payments')->truncate();
 });
 
 // Route::get('update/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
 //     $request->fulfillUpdateEmail();
 //     return redirect('/');
 // })->middleware(['auth', 'signed'])->name('verification.verify.update');
+
 Route::middleware(['force_maintenance'])->group(function () {
 
     Route::middleware(['guest'])->group(function () {

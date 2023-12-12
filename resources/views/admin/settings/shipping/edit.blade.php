@@ -1,4 +1,4 @@
-<a data-toggle="modal" data-target="#edit-{{ $value->id }}" class="btn btn-sm btn-primary"> <i
+<a data-bs-toggle="modal" data-bs-target="#edit-{{ $value->id }}" class="btn btn-sm btn-primary"> <i
         data-feather="edit"></i> </a>
 
 
@@ -21,7 +21,7 @@
                     <div class="modal-body">
                         <div class="form-group mb-3">
                             <label for="recipient-name" class="form-label">Name:</label>
-                            <input type="text" name="name" value="{{ $value->name }}" class="form-control"
+                            <input type="text" name="group_name" value="{{ $value->group_name }}" class="form-control"
                                 id="recipient-name">
                         </div>
                         <div class="form-group mb-3">

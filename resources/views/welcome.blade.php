@@ -239,3 +239,15 @@
     </div>
 </div> --}}
 @endsection
+
+@section('scripts')
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+	var video = document.querySelector('.header-video');
+	if(video){
+		video.play();
+	}
+});
+</script>
+@endsection
+
