@@ -101,4 +101,11 @@ class SettingsController extends Controller
         $currency->delete();
         return back()->with('success', 'Deleted successfully');
     }
+
+    public function deleteLocation($id)
+    {
+        $location = Shipping::find($id);
+        $location->delete();
+        return back()->with('success', 'Deleted successfully');
+    }
 }

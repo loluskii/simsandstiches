@@ -66,7 +66,8 @@
                 <div class="col-md-11 col-12">
                     <div class="main ps-0 ms-0 ps-md-5 ms-md-5 ps-lg-5">
                         <div class="header text-center">
-                            <img src="{{ secure_asset('images/sss-logo.png') }}" class="img-fluid" style="height: 40px;" alt="">
+                            <img src="{{ secure_asset('images/sss-logo.png') }}" class="img-fluid" style="height: 40px;"
+                                alt="">
                             <nav aria-label="breadcrumb" class="pb-4 text-center">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item " aria-current="page"><a
@@ -114,7 +115,8 @@
                                                 <span class="text-muted">Method</span>
                                             </div>
                                             <div class="col-auto">
-                                                <span class="text-wrap"> <span class="h6">{{ $location->group_name
+                                                <span class="text-wrap small "> <span class="h6">{{
+                                                        $location->group_name
                                                         }}</span> - {{
                                                     $location->group_locations }} </span>
                                             </div>

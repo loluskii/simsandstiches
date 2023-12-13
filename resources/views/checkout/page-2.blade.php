@@ -56,6 +56,29 @@
             margin-right: 0px;
         }
     }
+
+    .shipping-method-container {
+        max-height: 500px;
+        overflow-y: auto;
+    }
+
+
+    /* width */
+    .shipping-method-container::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    /* Track */
+    .shipping-method-container::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 5px rgb(213, 213, 213);
+        /* border-radius: 10px; */
+    }
+
+    /* Handle */
+    .shipping-method-container::-webkit-scrollbar-thumb {
+        background: rgb(218, 218, 218);
+        /* border-radius: 10px; */
+    }
 </style>
 @endsection
 
@@ -143,31 +166,35 @@
                                     $attributes = $condition ? $condition->getAttributes() : null
                                     @endphp
 
-                                    @foreach ($shippings as $key => $location)
+                                    <div class="shipping-method-container" style="">
+                                        @foreach ($shippings as $key => $location)
+                                        <label
+                                            class="card p-3 checkbox-label d-flex w-100 rounded-0 {{ $key == 0 ? 'rounded-top': '' }} {{ $key == $shippings->count() - 1 ? 'rounded-bottom': 'border-bottom-0' }}"
+                                            id="planbox">
+                                            <div class="d-flex align-items-center justify-content-between">
+                                                <div class="d-flex w-100 justify-content-start align-items-center">
+                                                    <input type="radio"
+                                                        class="form-check-input me-4 mt-0 shipping-location"
+                                                        value="{{ $location->id }}" name="shipping" {{ $attributes &&
+                                                        $attributes['id']===$location->id ? 'checked' : '' }}>
 
-                                    <label
-                                        class="card p-3 checkbox-label d-flex w-100 rounded-0 {{ $key == 0 ? 'rounded-top': '' }} {{ $key == $shippings->count() - 1 ? 'rounded-bottom': 'border-bottom-0' }}"
-                                        id="planbox">
-                                        <div class="d-flex align-items-center justify-content-between">
-                                            <div class="d-flex w-100 justify-content-start align-items-center">
-                                                <input type="radio" class="form-check-input me-4 mt-0 shipping-location"
-                                                    value="{{ $location->id }}" name="shipping" {{ $attributes &&
-                                                    $attributes['id']===$location->id ? 'checked' : '' }}>
-
-                                                <div class="d-flex w-100 justify-content-between align-items-center">
-                                                    <div>
-                                                        <h5 class="h6 mb-0">{{ $location->group_name }}</h5>
-                                                        <p class="text-muted mb-0">{{ $location->group_locations }}</p>
+                                                    <div
+                                                        class="d-flex w-100 justify-content-between align-items-center">
+                                                        <div>
+                                                            <h5 class="h6 mb-0">{{ $location->group_name }}</h5>
+                                                            <p class="text-muted small mb-0">{{
+                                                                $location->group_locations }}</p>
+                                                        </div>
+                                                        <span>{{ $currency_symbol }}{{
+                                                            number_format(App\Helpers\Helper::currency_converter($location->price),
+                                                            2)
+                                                            }}</span>
                                                     </div>
-                                                    <span>{{ $currency_symbol }}{{
-                                                        number_format(App\Helpers\Helper::currency_converter($location->price),
-                                                        2)
-                                                        }}</span>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </label>
-                                    @endforeach
+                                        </label>
+                                        @endforeach
+                                    </div>
                                 </div>
 
                                 <div class="d-flex justify-content-between align-items-center pt-3">
