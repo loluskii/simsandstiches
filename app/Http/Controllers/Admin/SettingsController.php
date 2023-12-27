@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use Carbon\Carbon;
+use App\Models\Coupon;
 use App\Models\Currency;
 use App\Models\Shipping;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class SettingsController extends Controller
 {
@@ -107,5 +109,49 @@ class SettingsController extends Controller
         $location = Shipping::find($id);
         $location->delete();
         return back()->with('success', 'Deleted successfully');
+    }
+
+    public function couponsIndex(){
+        $coupons = Coupon::all();
+        return view('admin.settings.coupons.index', compact('coupons'));
+    }
+
+    public function createCoupon(Request $request){
+        try {
+            $coupon = new Coupon;
+            $coupon->name = $request->code;
+            $coupon->description = $request->code;
+            $coupon->type = $request->type;
+            $coupon->value = $request->value;
+            $coupon->maximum_usage = $request->max_usage;
+            $coupon->starts_at = Carbon::parse($request->start_date);
+            $coupon->ends_at = Carbon::parse($request->end_date);
+            $coupon->save();
+            return back();
+        } catch (\Exception $th) {
+            throw $th;
+        }
+    }
+
+    public function editCoupon(Request $request, $id){
+        try {
+            $coupon = Coupon::findOrFail($id);
+            $coupon->name = $request->code ?? $coupon->name;
+            $coupon->type = $request->type ?? $coupon->type;
+            $coupon->value = $request->value ?? $coupon->value;
+            $coupon->starts_at = Carbon::parse($request->start_date) ??  $coupon->ends_at;
+            $coupon->ends_at = Carbon::parse($request->end_date) ??  $coupon->ends_at;
+            $coupon->update();
+
+            return back();
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+
+    public function deleteCoupon($id){
+        $coupon = Coupon::find($id);
+        $coupon->delete();
+        return back()->with('success','coupon deleted');
     }
 }

@@ -54,18 +54,47 @@
             </table>
 
         </div>
+        @php
+        $condition = Cart::session(App\Helpers\Helper::getSessionID())->getCondition('Discount')
+        @endphp
+
+        @if($condition == null)
         <div class="price border-bottom">
-            <div class="d-flex justify-content-between align-items-center pt-3 pb-2">
-                <span>Subtotal</span>
-                <span><span class="currency">{{ $currency_symbol }}</span>{{
+            <form id="discount">
+                <div class="form-group my-3 row align-items-center">
+                    <div class="col-9">
+                        <input type="text" name="coupon" class="form-control form-control-lg">
+                    </div>
+                    <div class="col">
+                        <button type="submit" class="btn btn-secondary py-2 getDiscount">Apply</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        @endif
+        <div class="price border-bottom">
+            <div class="d-flex justify-content-between align-items-center pt-3">
+                <p>Subtotal</p>
+                <p><span class="currency">{{ $currency_symbol }}</span>{{
                     number_format(App\Helpers\Helper::currency_converter(Cart::session(App\Helpers\Helper::getSessionID())->getSubTotal()),
-                    2) }}</span>
+                    2) }}</p>
             </div>
+
+            @if($condition)
             <div class="d-flex justify-content-between align-items-center">
-                <p>Shipping</p>
+                <p>Discount</p>
+                <p><small class="text-muted">{{
+                        number_format(App\Helpers\Helper::currency_converter($condition ? $condition->getValue() :
+                        '0.00'),
+                        1)
+                        }}%</small></p>
+            </div>
+            @endif
+            <div class="d-flex justify-content-between align-items-center">
                 @php
                 $condition = Cart::session(App\Helpers\Helper::getSessionID())->getCondition('Express Shipping')
                 @endphp
+                <p>Shipping</p>
                 @if(Route::is('checkout.page-1'))
                 <p><small class="text-muted">Calculated at the next step</small></p>
                 @else
@@ -75,18 +104,13 @@
                         }}</small></p>
                 @endif
             </div>
+
         </div>
         <div class="d-flex justify-content-between align-items-center py-4">
             <h5>Total</h5>
-            @if(Route::is('checkout.page-1'))
-            <h3>{{ $currency_symbol }}{{
-                number_format(App\Helpers\Helper::currency_converter(Cart::session(App\Helpers\Helper::getSessionID())->getSubTotal())
-                , 2) }} </h3>
-            @else
             <h3>{{ $currency_symbol }} {{
                 number_format(App\Helpers\Helper::currency_converter(Cart::session(App\Helpers\Helper::getSessionID())->getTotal()),
                 2) }}</h3>
-            @endif
         </div>
     </div>
 </div>

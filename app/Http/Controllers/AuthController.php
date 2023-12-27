@@ -32,7 +32,7 @@ class AuthController extends Controller
                 'password' => Hash::make($request['password']),
             ]);
             Auth::login($user, true);
-            $user->sendEmailVerificationNotification();
+            // $user->sendEmailVerificationNotification();
             \DB::commit();
 
             return redirect()->intended('/')->with(
@@ -42,7 +42,7 @@ class AuthController extends Controller
         } catch (\Exception $e) {
             return back()->with(
                 'error',
-                'An Error Occured. Please try again later.'
+                $e->getMessage()
             );
         }
     }

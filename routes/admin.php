@@ -63,6 +63,11 @@ Route::middleware('admin')->group(function () {
     Route::post('/settings/location/{id}/update', [SettingsController::class, 'editLocation'])->name('settings.shipping.edit');
     Route::get('/settings/location/{id}/delete', [SettingsController::class, 'deleteLocation'])->name('settings.shipping.delete');
 
+    Route::get('/settings/coupons', [SettingsController::class, 'couponsIndex'])->name('settings.coupon.index');
+    Route::post('/settings/coupons/create', [SettingsController::class, 'createCoupon'])->name('settings.coupon.add');
+    Route::post('/settings/coupons/{id}/update', [SettingsController::class, 'editCoupon'])->name('settings.coupon.edit');
+    Route::get('/settings/coupons/{id}/delete', [SettingsController::class, 'deleteCoupon'])->name('settings.coupon.delete');
+
 
     Route::get('/customers/all',[UserController::class, 'index'])->name('user.index');
 

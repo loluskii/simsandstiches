@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Paystack;
 use Exception;
+use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Order;
+use App\Models\Coupon;
 use App\Helpers\Helper;
 use App\Models\Address;
 use App\Models\Payment;
@@ -16,6 +18,7 @@ use Illuminate\Http\Request;
 use App\Actions\OrderActions;
 use App\Jobs\SendOrderInvoice;
 use App\Services\OrderQueries;
+use App\Models\CouponRedemption;
 use App\Actions\VerifyTransaction;
 use Illuminate\Support\Facades\DB;
 use App\Jobs\AdminOrderNotification;
@@ -38,6 +41,8 @@ class PaymentController extends Controller
         }
     }
 
+
+
     public function contactInformation(Request $request)
     {
         // dd($request->all());
@@ -57,6 +62,65 @@ class PaymentController extends Controller
             return redirect()->route('checkout.page-2', ['session' => $session]);
         } catch (\Exception $e) {
             return back()->with('error', $e->getMessage());
+        }
+    }
+
+    public function applyCoupon(Request $request){
+        try {
+            $coupon = Coupon::where('name',$request->coupon_code)->first();
+            if($coupon){
+                $order_details = session('order');
+                if(Auth::user()){
+                    $email = Auth::user()->email;
+                    $rowcount = CouponRedemption::where('redeemer_id',$email)->count();
+                    if($rowcount > $coupon->maximum_usage){
+                        return response()->json([
+                            'success' => false,
+                            'message' => 'You already used this coupon',
+                        ], 400);
+                    }else if($coupon->ends_at < Carbon::now()){
+                        return response()->json([
+                            'success' => false,
+                            'message' => 'This coupon has expired',
+                        ], 400);
+                    }else{
+                        $coupon_redemption = new CouponRedemption;
+                        $coupon_redemption->redeemer_id = $email;
+                        $coupon_redemption->coupon_id = $coupon->id;
+                        $coupon_redemption->save();
+
+                        $condition = new \Darryldecode\Cart\CartCondition(array(
+                            'name' => 'Discount',
+                            'type' => 'discount',
+                            'target' => 'total', // this condition will be applied to cart's subtotal when getSubTotal() is called.
+                            'value' => '-'.$coupon->value.'%',
+                        ));
+                        \Cart::session(Helper::getSessionID())->condition($condition);
+                        $conditionValue = $condition->getValue();
+                    }
+                    // Add
+                    return response()->json([
+                        'message' => 'success',
+                        'conditionValue' => $conditionValue,
+                    ], 200);
+                }else{
+                    return response()->json([
+                        'success' => false,
+                        'message' => 'You need to log in to redeem a coupon',
+                    ], 401);
+                }
+            }else{
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Coupon not found',
+                ], 404);
+            }
+            // check if user has used coupon
+        } catch (\Exception $th) {
+            return response()->json([
+                'success' => false,
+                'error' => $th->getMessage(),
+            ], 500);
         }
     }
 

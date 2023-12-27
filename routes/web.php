@@ -77,9 +77,9 @@ Route::middleware(['force_maintenance'])->group(function () {
             return redirect('/');
         })->name('verification.verify');
 
-        Route::get('/email/verify', function () {
-            return view('auth.verify');
-        })->name('verification.notice');
+        // Route::get('/email/verify', function () {
+        //     return view('auth.verify');
+        // })->name('verification.notice');
 
         Route::post('/email/verification-notification', function (Request $request) {
             $request->user()->sendEmailVerificationNotification();
@@ -97,6 +97,7 @@ Route::middleware(['force_maintenance'])->group(function () {
     Route::get('/cart/destroy/{id}', [CartController::class, 'destroy'])->name('cart.destroy');
     //Checkout Routes
     Route::post('/set-shipping', [PaymentController::class, 'setShipping'])->name('shipping.update');
+    Route::post('/set-discount', [PaymentController::class, 'applyCoupon'])->name('shipping.discount');
     Route::get('/checkout/{session}', [PaymentController::class, 'checkout'])->name('checkout.page-1');
     Route::post('/checkout/store', [PaymentController::class, 'contactInformation'])->name('checkout.page-1.store');
     Route::get('/checkout/2/{session}', [PaymentController::class, 'shipping'])->name('checkout.page-2');
@@ -113,7 +114,7 @@ Route::middleware(['force_maintenance'])->group(function () {
     // Route::get('/rave/callback', [PaymentController::class,'flutterwaveCallback'])->name('flutter.callback');
 
     //User Routes
-    Route::middleware(['auth', 'verified'])->group(function () {
+    Route::middleware(['auth'])->group(function () {
         Route::get('/user', [UserController::class, 'index'])->name('user');
         Route::get('/user/order/{ref}', [UserController::class, 'show'])->name('user.order.show');
         Route::post('/user/update', [UserController::class, 'edit'])->name('user.edit.address');

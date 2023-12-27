@@ -102,6 +102,11 @@
                     <i class="align-middle" data-feather="truck"></i> <span class="align-middle">Shipping Rates</span>
                 </a>
             </li>
+            <li class="sidebar-item {{ Route::is('admin.settings.coupon.index') ? 'active' : '' }}">
+                <a class="sidebar-link" href="{{ route('admin.settings.coupon.index') }}">
+                    <i class="align-middle" data-feather="truck"></i> <span class="align-middle">Coupons</span>
+                </a>
+            </li>
         </ul>
     </div>
 </nav>

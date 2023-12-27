@@ -230,3 +230,29 @@
 </div>
 
 @endsection
+
+@section('scripts')
+<script>
+   $('.getDiscount').on('click', function (e){
+        e.preventDefault()
+        console.log(e)
+        e.target.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>'
+        var coupon = $('input[name=coupon]').val();
+        $.ajax({
+            type: 'POST',
+            url: `{{ route('shipping.discount') }}`,
+            data: {
+                _token: '{{ csrf_token() }}',
+                coupon_code: coupon
+            },
+            success: function (response){
+                window.location.reload()
+            },
+            error: function (response) {
+                e.target.innerHTML = 'Apply'
+                alert(response.responseJSON.message)
+            }
+        })
+    })
+</script>
+@endsection
