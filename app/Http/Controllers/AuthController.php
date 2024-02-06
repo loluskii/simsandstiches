@@ -6,8 +6,10 @@ use Exception;
 use App\Models\User;
 use App\Helpers\Helper;
 use Illuminate\Http\Request;
+use App\Mail\NewUsersWelcomeMail;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\RegisterRequest;
 
 class AuthController extends Controller
@@ -32,7 +34,8 @@ class AuthController extends Controller
                 'password' => Hash::make($request['password']),
             ]);
             Auth::login($user, true);
-            // $user->sendEmailVerificationNotification()
+            $mail = new NewUsersWelcomeMail($user);
+            Mail::to($request['email'])->send($mail);
             \DB::commit();
 
             return redirect()->intended('/')->with(
@@ -40,6 +43,7 @@ class AuthController extends Controller
                 'Welcome'
             );
         } catch (\Exception $e) {
+
             return back()->with(
                 'error',
                 $e->getMessage()
@@ -63,7 +67,7 @@ class AuthController extends Controller
             $shouldRemember = $request->remember ? true : false;
             $cartItems = \Cart::session('guest')->getContent();
             \Cart::session('guest')->clear();
-            if (Auth::attempt(array('email' => $input['email'], 'password' => $input['password']),  $shouldRemember)) {
+            if (Auth::attempt(array('email' => $input['email'], 'password' => $input['password']), $shouldRemember)) {
                 $request->session()->regenerate();
                 $userId = auth()->user()->id; // or any string represents user identifier
                 \Cart::session($userId)->add($cartItems);

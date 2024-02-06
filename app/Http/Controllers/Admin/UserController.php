@@ -13,4 +13,10 @@ class UserController extends Controller
         $users = User::all();
         return view('admin.customers.index', compact('users'));
     }
+
+    public function delete($id)
+    {
+        User::findOrFail($id)->delete();
+        return back();
+    }
 }

@@ -41,10 +41,10 @@
                     <span class="text-dark">Administrator</span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-end">
-                    {{-- <a class="dropdown-item" href="index.html"><i class="align-middle me-1"
+                    <a class="dropdown-item" href="{{ route('admin.settings.profile.index') }}"><i class="align-middle me-1"
                             data-feather="settings"></i>
-                        Settings </a> --}}
-                    {{-- <div class="dropdown-divider"></div> --}}
+                        Settings </a>
+                    <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Log out</a>
                     <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" style="display: none;">
                         @csrf

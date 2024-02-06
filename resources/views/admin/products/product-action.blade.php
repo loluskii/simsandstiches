@@ -65,7 +65,7 @@
                                 Attributes</button>
                         </div>
                         <div class="product_action_dynamic_field_attributes">
-			    <input type="hidden" name="no_of_attributes" value="{{ count($product->attributes) }}" />
+                            <input type="hidden" name="no_of_attributes" value="{{ count($product->attributes) }}" />
                             @foreach ($product->attributes as $key => $value)
                             <div class="attribute_row_{{ $key+1 }}">
                                 <div class="input-group mb-2" id="attribute_input_group_{{ $key+1 }}">
@@ -73,8 +73,8 @@
 
                                     <input type="text" name="attributes[{{ $key+1 }}][attribute_name]"
                                         class="form-control" placeholder="Name" value="{{ $value->attribute_name }}">
-                                    <input type="text" name="attributes[{{ $key+1 }}][value]" value="{{ $value->value }}"
-                                        class="form-control" placeholder="Value">
+                                    <input type="text" name="attributes[{{ $key+1 }}][value]"
+                                        value="{{ $value->value }}" class="form-control" placeholder="Value">
                                     <input type="text" name="attributes[{{ $key+1 }}][extra_cost]"
                                         class="form-control extra-cost-input" placeholder="Extra Cost"
                                         value="{{ $value->cost }}" style="{{ $value->cost > 0 ? '' : 'display:none' }}">
@@ -100,12 +100,12 @@
                                 URL</button>
                         </div>
                         <div class="product_action_dynamic_field_image_urls">
-			    <input type="hidden" name="no_of_images" value="{{ count($product->images) }}" />
+                            <input type="hidden" name="no_of_images" value="{{ count($product->images) }}" />
                             @foreach ($product->images as $key => $value)
                             <div class="input-group mb-2" id="image_urls_row">
                                 <button type="button" class="btn btn-danger btn-sm image_urls_btn_remove">-</button>
-                                <input type="text" name="image_urls[{{ $key+1 }}]" class="form-control" placeholder="Name"
-                                    value="{{ $value->url }}">
+                                <input type="text" name="image_urls[{{ $key+1 }}]" class="form-control"
+                                    placeholder="Name" value="{{ $value->url }}">
                             </div>
                             @endforeach
                         </div>

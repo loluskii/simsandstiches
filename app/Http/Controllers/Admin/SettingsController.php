@@ -3,11 +3,14 @@
 namespace App\Http\Controllers\Admin;
 
 use Carbon\Carbon;
+use App\Models\User;
 use App\Models\Coupon;
 use App\Models\Currency;
 use App\Models\Shipping;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class SettingsController extends Controller
 {
@@ -154,4 +157,34 @@ class SettingsController extends Controller
         $coupon->delete();
         return back()->with('success','coupon deleted');
     }
+
+    public function showProfile(){
+        $user = Auth::user();
+        return view('admin.settings.profile.index', compact('user'));
+    }
+
+    public function updateProfile(Request $request){
+        $user = Auth::user();
+        $user->fname = $request->fname;
+        $user->lname = $request->lname;
+        $user->email = $request->email;
+        $user->phone_no = $request->phone_no;
+        $user->update();
+
+        return back()->with('success', 'Update Successful');
+    }
+
+    public function updatePassword(Request $request){
+        $user = Auth::user();
+        $currentPasswordStatus = Hash::check($request->current_password, $user->password);
+        if($currentPasswordStatus){
+            User::findOrFail(Auth::user()->id)->update([
+                'password' => Hash::make($request->new_password),
+            ]);
+            return back()->with('success','Password Updated Successfully');
+        }else{
+            return back()->with('error','Current Password does not match with Old Password');
+        }
+    }
+
 }

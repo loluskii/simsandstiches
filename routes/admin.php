@@ -68,7 +68,11 @@ Route::middleware('admin')->group(function () {
     Route::post('/settings/coupons/{id}/update', [SettingsController::class, 'editCoupon'])->name('settings.coupon.edit');
     Route::get('/settings/coupons/{id}/delete', [SettingsController::class, 'deleteCoupon'])->name('settings.coupon.delete');
 
+    Route::get('/settings/profile', [SettingsController::class, 'showProfile'])->name('settings.profile.index');
+    Route::post('/settings/profile/update', [SettingsController::class, 'updateProfile'])->name('settings.profile.update');
+    Route::post('/settings/profile/password/update', [SettingsController::class, 'updatePassword'])->name('settings.profile.update.password');
 
     Route::get('/customers/all',[UserController::class, 'index'])->name('user.index');
+    Route::post('/{id}/delete',[UserController::class, 'delete'])->name('users.delete');
 
 });
