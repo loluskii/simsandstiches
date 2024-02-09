@@ -168,7 +168,7 @@ class SettingsController extends Controller
         $user->fname = $request->fname;
         $user->lname = $request->lname;
         $user->email = $request->email;
-        $user->phone_no = $request->phone_no;
+        // $user->phone_no = $request->phone_no;
         $user->update();
 
         return back()->with('success', 'Update Successful');

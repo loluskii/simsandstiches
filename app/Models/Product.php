@@ -28,4 +28,9 @@ class Product extends Model
     {
         return $this->hasMany(ProductAttribute::class);
     }
+
+    public function image_count()
+    {
+        return $this->images()->count();
+    }
 }

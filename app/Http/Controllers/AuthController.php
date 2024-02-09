@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\NewUserEmailJob;
 use Exception;
 use App\Models\User;
 use App\Helpers\Helper;
@@ -16,9 +17,7 @@ class AuthController extends Controller
 {
     public function __construct()
     {
-
         $this->middleware('guest', ['except' => ['logout']]);
-
     }
 
 
@@ -31,19 +30,14 @@ class AuthController extends Controller
                 'fname' => $request['fname'],
                 'lname' => $request['lname'],
                 'email' => $request['email'],
+                'phone_no' => $request['phone_no'],
                 'password' => Hash::make($request['password']),
             ]);
             Auth::login($user, true);
-            $mail = new NewUsersWelcomeMail($user);
-            Mail::to($request['email'])->send($mail);
             \DB::commit();
-
-            return redirect()->intended('/')->with(
-                'success',
-                'Welcome'
-            );
-        } catch (\Exception $e) {
-
+            NewUserEmailJob::dispatch($user)->delay(now()->addMinutes(3));
+            return redirect()->route('home');
+        } catch (Exception $e) {
             return back()->with(
                 'error',
                 $e->getMessage()
@@ -54,17 +48,12 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         try {
-            if (Auth::check()) {
-                return redirect()->route('admin.dashboard');
-            }
             $input = $request->all();
-
             $request->validate([
                 'email' => ['required'],
                 'password' => ['required'],
             ]);
-
-            $shouldRemember = $request->remember ? true : false;
+            $shouldRemember = true;
             $cartItems = \Cart::session('guest')->getContent();
             \Cart::session('guest')->clear();
             if (Auth::attempt(array('email' => $input['email'], 'password' => $input['password']), $shouldRemember)) {
@@ -75,7 +64,7 @@ class AuthController extends Controller
             }
             session()->flash('loginMsg', 'The provided credentials do not match our records.');
             return back();
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return back()->with(
                 'error',
                 $e->getMessage()
@@ -87,9 +76,6 @@ class AuthController extends Controller
     {
         Auth::logout();
         \Cart::session(Helper::getSessionID())->clear();
-        return redirect('/')->with(
-            'success',
-            'Logged Out Successfully',
-        );
+        return redirect('/');
     }
 }

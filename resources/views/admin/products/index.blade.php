@@ -189,8 +189,8 @@
 		j++;
 		$('#dynamic_field_image_urls').append(`
         <div class="input-group mb-2" id="image_urls_row">
-            <button type="button" name="add" id="${i}" class="btn btn-danger image_urls_btn_remove btn-sm">-</button>
-            <input type="text" name="image_urls[${i}]" class="form-control" placeholder="Image URL">
+            <button type="button" name="add" id="${j}" class="btn btn-danger image_urls_btn_remove btn-sm">-</button>
+            <input type="text" name="image_urls[${j}]" class="form-control" placeholder="Image URL">
         </div>`)
 	});
 

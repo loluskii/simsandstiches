@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\OrderController;
+use App\Http\Controllers\SubscribersController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\SettingsController;
@@ -73,6 +74,9 @@ Route::middleware('admin')->group(function () {
     Route::post('/settings/profile/password/update', [SettingsController::class, 'updatePassword'])->name('settings.profile.update.password');
 
     Route::get('/customers/all',[UserController::class, 'index'])->name('user.index');
+    Route::post('/customers/update/{id}',[UserController::class, 'edit'])->name('user.update');
     Route::post('/{id}/delete',[UserController::class, 'delete'])->name('users.delete');
+
+    Route::get('/subscribers', [SubscribersController::class, 'index'])->name('subscribers.index');
 
 });

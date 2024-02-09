@@ -20,7 +20,7 @@ class isAdmin
             return $next($request);
         }
         else{
-            return redirect()->route('admin.login.view');
+            return redirect()->route('home');
         }
     }
 }

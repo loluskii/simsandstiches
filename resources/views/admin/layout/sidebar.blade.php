@@ -86,6 +86,11 @@
                     <i class="align-middle" data-feather="credit-card"></i> <span class="align-middle">Transactions</span>
                 </a>
             </li>
+            <li class="sidebar-item {{ Route::is('admin.subscribers.*') ? 'active' : '' }}">
+                <a class="sidebar-link" href="{{ route('admin.subscribers.index') }}">
+                    <i class="align-middle" data-feather="users"></i> <span class="align-middle">Subscribers</span>
+                </a>
+            </li>
 
             <li class="sidebar-header">
                Site Settings

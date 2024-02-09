@@ -55,13 +55,13 @@ Profile
                                     </div>
                                 </div>
                                 <!--end col-->
-                                <div class="col-lg-6">
+                                {{-- <div class="col-lg-6">
                                     <div class="mb-3">
                                         <label for="emailInput" class="form-label">Email Address</label>
                                         <input type="email" name="email" class="form-control" id="emailInput"
                                             placeholder="Enter your email" value="{{ $user->email }}">
                                     </div>
-                                </div>
+                                </div> --}}
 
                             </div>
                             <div class="col-lg-12">

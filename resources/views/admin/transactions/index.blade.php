@@ -25,7 +25,7 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col mt-0">
-                                        <h5 class="card-title">Total Amount</h5>
+                                        <h5 class="card-title">Total Count</h5>
                                     </div>
                                 </div>
                                 <h1 class="mt-1 mb-3">{{ $transactions->count() }}</h1>
@@ -55,17 +55,24 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @if ($transactions->count() > 0)
                                         @foreach ($transactions as $key => $transaction)
                                         <tr>
                                             <td>{{ $key+1 }}</td>
                                             <td class="text-uppercase">{{ $transaction->payment_ref }}</td>
                                             <td>{{ $transaction->created_at ?? '' }}</td>
                                             <td>N{{ number_format($transaction->amount, 2) }}</td>
-                                            <td class="text-uppercase">{{ $transaction->order->order_number ?? ''  }}</td>
+                                            <td class="text-uppercase">{{ $transaction->order->order_number ?? '' }}
+                                            </td>
                                             <td>{{ $transaction->currency }}</td>
                                             {{-- <td></td> --}}
                                         </tr>
                                         @endforeach
+                                        @else
+                                        <tr>
+                                            <td colspan="6" class="text-center">No Data</td>
+                                        </tr>
+                                        @endif
                                     </tbody>
                                 </table>
                             </div>

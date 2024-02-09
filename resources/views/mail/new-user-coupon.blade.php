@@ -94,7 +94,7 @@
                                             <tr>
                                                 <td
                                                     style="padding: 0 0 24px 0; font-size: 18px; line-height: 150%; font-weight: bold; color: #000000; letter-spacing: 0.01em;">
-                                                    Welcome, {{$user->fname}}!
+                                                    Welcome!
                                                 </td>
                                             </tr>
                                             <tr>

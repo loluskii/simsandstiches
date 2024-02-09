@@ -33,7 +33,7 @@ Dashboard
                                 <th style="width:60px;">#</th>
                                 <th>Name</th>
                                 <th>Email</th>
-                                <th>Country</th>
+                                <th>No. of Orders</th>
                                 <th>Member Since</th>
                                 <th>Action</th>
                             </tr>
@@ -44,9 +44,16 @@ Dashboard
                                 <td>{{ ++$key }}</td>
                                 <td>{{ $user->fname }} {{ $user->lname }}</td>
                                 <td>{{ $user->email }}</td>
-                                <td>{{ $user->getCountry() ?? 'Not Available' }}</td>
+                                <td>{{ $user->getOrders()->count() }}</td>
                                 <td>{{ $user->created_at->diffForHumans() }}</td>
                                 <td>
+                                    <li class="list-inline-item" data-bs-toggle="tooltip" data-bs-trigger="hover"
+                                        data-bs-placement="top" aria-label="Remove">
+                                        <a class="text-info d-inline-block remove-item-btn" data-bs-toggle="modal"
+                                            href="#editUserModal{{ $user->id }}">
+                                            Edit
+                                        </a>
+                                    </li>
                                     <li class="list-inline-item" data-bs-toggle="tooltip" data-bs-trigger="hover"
                                         data-bs-placement="top" aria-label="Remove">
                                         <a class="text-danger d-inline-block remove-item-btn" data-bs-toggle="modal"
@@ -82,6 +89,73 @@ Dashboard
                                                     <button type="submit" class="btn w-sm btn-danger"
                                                         id="delete-record">Yes, Delete
                                                         It!</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="modal fade zoomIn" id="editUserModal{{ $user->id }}" tabindex="-1"
+                                aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+
+                                        <div class="modal-body">
+                                            <form method="POST" action="{{ route('admin.user.update', ['id' => $user->id]) }}">
+                                                @csrf
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="mb-2">
+                                                            <label for="" class="form-label"></label>
+                                                            <input type="text" required name="fname" id=""
+                                                                class="form-control form-control-lg"
+                                                                placeholder="First Name" value="{{ $user->fname }}"
+                                                                aria-describedby="helpId">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="mb-2">
+                                                            <label for="" class="form-label"></label>
+                                                            <input type="text" value="{{ $user->lname }}" required
+                                                                name="lname" id="" class="form-control form-control-lg"
+                                                                placeholder="Last Name" aria-describedby="helpId">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="mb-2">
+                                                            <label for="" class="form-label"></label>
+                                                            <input type="text" value="{{ $user->email }}" required
+                                                                name="email" id="" class="form-control form-control-lg"
+                                                                placeholder="Email" aria-describedby="helpId">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="mb-2">
+                                                            <label for="" class="form-label"></label>
+                                                            <input type="tel" value="{{ $user->phone_no }}" required
+                                                                name="phone_no" id=""
+                                                                class="form-control form-control-lg"
+                                                                placeholder="Phone Number" aria-describedby="helpId">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="mb-2">
+                                                            <label for="" class="form-label"></label>
+                                                            <input type="tel" value="{{ $user->is_admin }}" required
+                                                                name="phone_no" id=""
+                                                                class="form-control form-control-lg"
+                                                                placeholder="Phone Number" aria-describedby="helpId">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="d-grid gap-2">
+                                                    <button type="submit" name="" id=""
+                                                        class="rounded-0 btn btn-primary text-uppercase">Update</button>
                                                 </div>
                                             </form>
                                         </div>

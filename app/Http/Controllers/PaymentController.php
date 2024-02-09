@@ -272,8 +272,8 @@ class PaymentController extends Controller
                 request()->session()->forget('order');
                 request()->session()->forget('session');
 
-//                AdminOrderNotification::dispatch($newOrder, $admin);
-//                SendOrderInvoice::dispatch($newOrder, $user)->delay(now()->addMinutes(3));
+               AdminOrderNotification::dispatch($newOrder, $admin);
+               SendOrderInvoice::dispatch($newOrder, $user)->delay(now()->addMinutes(3));
 
                 return redirect()->route('checkout.success', ['reference' => $newOrder->order_reference]);
             }

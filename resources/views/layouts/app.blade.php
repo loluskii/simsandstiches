@@ -258,10 +258,15 @@
                             </div>
                             <div class="desktop d-none d-lg-block">
                                 <ul class="list-unstyled d-flex justify-content-end mb-0">
+                                    @if (Auth::user()->is_admin)
+                                    <li><a href="{{ route('admin.dashboard') }}"
+                                            class="text-decoration-none text-uppercase"
+                                            style="font-weight: 300">dashboard</a></li>
+                                    @endif
                                     <li><a href="{{ route('user') }}" class="text-decoration-none mx-3 text-uppercase"
                                             style="font-weight: 300">Account</a></li>
                                     <li><a href="{{ route('shop.cart') }}"
-                                            class="text-decoration-none mx-3 text-uppercase"
+                                            class="text-decoration-none me-3 text-nowrap text-uppercase"
                                             style="font-weight: 300">Cart ({{
                                             Cart::session(App\Helpers\Helper::getSessionID())->getContent()->count()
                                             }})</a></li>
@@ -333,7 +338,8 @@
         </div>
         @endif
 
-        <div id="subscribeModal" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" role="dialog">
+        <div id="subscribeModal" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            role="dialog">
             <!-- Modal content goes here -->
             <div class="modal-dialog " role="document">
                 <div class="modal-dialog modal-dialog-centered modal-newsletter">
@@ -343,8 +349,9 @@
                                 <h4>Join Our Newsletter</h4>
                             </div>
                             <div class="modal-body text-center">
-                                <p>Subscribe to our newsletter to receive the latest news and exclusive offers every week.
-                                    No spam.</p>
+                                <p>Subscribe to our newsletter to receive the latest news and exclusive offers every
+                                    week.
+                                    No spam. 50% discount when you subscribe to our newsletter</p>
                                 <div class="form-group">
                                     <input type="email" name="email" class="form-control subscriber-email"
                                         placeholder="Enter your email" required="">

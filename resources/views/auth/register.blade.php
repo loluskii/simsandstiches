@@ -36,21 +36,39 @@ Register | Simss & Stitches
                         </div>
                         @enderror
 
-                        <div class="mb-2">
-                            <label for="" class="form-label"></label>
-                            <input type="text" required name="fname" id="" class="form-control form-control-lg"
-                                placeholder="First Name" aria-describedby="helpId">
-                        </div>
-                        <div class="mb-2">
-                            <label for="" class="form-label"></label>
-                            <input type="text" required name="lname" id="" class="form-control form-control-lg"
-                                placeholder="Last Name" aria-describedby="helpId">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-2">
+                                    <label for="" class="form-label"></label>
+                                    <input type="text" required name="fname" id="" class="form-control form-control-lg"
+                                        placeholder="First Name" aria-describedby="helpId">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-2">
+                                    <label for="" class="form-label"></label>
+                                    <input type="text" required name="lname" id="" class="form-control form-control-lg"
+                                        placeholder="Last Name" aria-describedby="helpId">
+                                </div>
+                            </div>
                         </div>
 
-                        <div class="mb-2">
-                            <label for="" class="form-label"></label>
-                            <input type="text" required name="email" id="" class="form-control form-control-lg"
-                                placeholder="Email" aria-describedby="helpId">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-2">
+                                    <label for="" class="form-label"></label>
+                                    <input type="text" required name="email" id="" class="form-control form-control-lg"
+                                        placeholder="Email" aria-describedby="helpId">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-2">
+                                    <label for="" class="form-label"></label>
+                                    <input type="tel" required name="phone_no" id=""
+                                        class="form-control form-control-lg" placeholder="Phone Number"
+                                        aria-describedby="helpId">
+                                </div>
+                            </div>
                         </div>
                         <div class="mb-4">
                             <label for="" class="form-label"></label>
