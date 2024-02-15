@@ -6,6 +6,8 @@ use App\Models\User;
 use App\Models\Subscriber;
 use Illuminate\Http\Request;
 use App\Jobs\NewUserEmailJob;
+use App\Mail\NewUsersWelcomeMail;
+use Illuminate\Support\Facades\Mail;
 
 class SubscribersController extends Controller
 {
@@ -16,17 +18,26 @@ class SubscribersController extends Controller
     }
     public function store(Request $request)
     {
-        $subscriber = new Subscriber;
-        $subscriber->email = $request->email;
-        $subscriber->save();
+        try {
+            $subscriber = Subscriber::where('email', $request->email)->first();
+            if (!$subscriber) {
+                $new = new Subscriber;
+                $new->email = $request->email;
+                $new->save();
 
-        $user = User::where('email', $request->email)->first();
-        if ($user === null) {
-            NewUserEmailJob::dispatch($request->email)->delay(now()->addMinutes(3));
+                $mail = new NewUsersWelcomeMail($request->email);
+                Mail::to($request->email)->send($mail);
+
+                return response()->json([
+                    'success' => true,
+                ], 200);
+            }else{
+                return response()->json([
+                    'error' => true,
+                ], 500);
+            }
+        } catch (\Exception $th) {
+            throw $th;
         }
-
-        return response()->json([
-            'success' => true,
-        ], 200);
     }
 }

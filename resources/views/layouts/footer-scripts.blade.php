@@ -31,7 +31,9 @@
             })
         });
 
-        $('.subscriber-submit').on('click',function (){
+        $('.subscriber-submit').on('click',function (e){
+            e.target.innerHTML = 'Please wait...'
+            e.target.disabled = true
             var email = $('.subscriber-email').val();
             $.ajax({
                 type: 'POST',
@@ -41,9 +43,16 @@
                     _token: '{{ csrf_token() }}'
                 },
                 success: function (response){
-                    if(response['success']){
-                        $('#subscribeModal').modal('hide');
-                    }
+                    e.target.innerHTML = 'Subscriber'
+                    e.target.disabled = false
+                    $('#subscribeModal').modal('hide');
+
+                },
+                error: function(){
+                    e.target.innerHTML = 'Subscriber'
+                    e.target.disabled = false ||| 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
+                    $('#subscribeModal').modal('hide');
+                    alert('You already subscribed!')
                 }
             })
         });
