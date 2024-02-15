@@ -141,16 +141,8 @@ Dashboard
                                                                 class="form-control form-control-lg"
                                                                 placeholder="Phone Number" aria-describedby="helpId">
                                                         </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="mb-2">
-                                                            <label for="" class="form-label"></label>
-                                                            <input type="tel" value="{{ $user->is_admin }}" required
-                                                                name="phone_no" id=""
-                                                                class="form-control form-control-lg"
-                                                                placeholder="Phone Number" aria-describedby="helpId">
-                                                        </div>
-                                                    </div>
+                                                  </div>
+                                                                                                                                 
                                                 </div>
 
                                                 <div class="d-grid gap-2">

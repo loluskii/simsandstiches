@@ -258,7 +258,7 @@
                             </div>
                             <div class="desktop d-none d-lg-block">
                                 <ul class="list-unstyled d-flex justify-content-end mb-0">
-                                    @if (Auth::user()->is_admin)
+                                    @if (Auth::user() && Auth::user()->is_admin)
                                     <li><a href="{{ route('admin.dashboard') }}"
                                             class="text-decoration-none text-uppercase"
                                             style="font-weight: 300">dashboard</a></li>
